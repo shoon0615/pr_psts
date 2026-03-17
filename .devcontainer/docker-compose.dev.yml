@@ -1,0 +1,15 @@
+services:
+  workspace:
+    container_name: side_project_devcontainer
+    image: mcr.microsoft.com/devcontainers/base:bullseye
+    command: sleep infinity
+
+    ports:
+      - "5173:5173" # 프론트엔드 (Vite 개발 서버)
+      - "8080:8080" # 백엔드 (Java 개발 서버)
+
+    volumes:
+      - ..:${containerWorkspaceFolder}:cached
+
+    environment:
+      - TZ=Asia/Seoul

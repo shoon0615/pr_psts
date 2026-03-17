@@ -1,0 +1,5 @@
+rootProject.name = 'pr_psts'
+include 'api'
+include 'biz'
+include 'common'
+include 'domain'

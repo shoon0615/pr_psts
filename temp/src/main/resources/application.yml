@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: temp
+  freemarker:
+    cache: false
+  profiles:
+    active: local
+
+---
+# Messages
+spring:
+  messages:
+    basename: messages/messages
+    encoding: UTF-8
+
+---
+# Etc
+spring:
+  output:
+    ansi:
+      enabled: always   # console 모드별 색상 변환
