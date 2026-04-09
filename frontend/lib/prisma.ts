@@ -24,7 +24,7 @@ export const prisma = new PrismaClient({
   ],
   // errorFormat: 'pretty',
 });
-
+ 
 prisma.$on('query', (e) => {
   console.log(e);
 });
