@@ -28,7 +28,7 @@ export const prisma = new PrismaClient({
 prisma.$on('query', (e) => {
   console.log(e);
 });
-
+ 
 prisma.$on('warn', (e) => {
   console.log(e);
 });
