@@ -5,9 +5,9 @@ import { cn } from '@/lib/utils'
 
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
 // import Sidebar from '@/app/(default-layout)/(main)/board/components/BoardSide'
-import Sidebar from '@/components/ui/custom/Sidebar'
-import Header from '@/components/ui/custom/Header'
-import Footer from '@/components/ui/custom/Footer'
+import Sidebar from '@/components/ui/custom/sidebar'
+import Header from '@/components/ui/custom/header'
+import Footer from '@/components/ui/custom/footer'
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 

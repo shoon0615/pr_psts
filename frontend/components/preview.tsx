@@ -120,7 +120,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Separator } from '@/components/ui/custom/Separator'
+import { Separator } from '@/components/ui/custom/separator'
 import {
   Sheet,
   SheetClose,
