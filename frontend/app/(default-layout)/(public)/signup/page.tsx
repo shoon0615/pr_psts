@@ -1,5 +1,3 @@
-export default function page() {
-  return (
-    <div>page</div>
-  )
+export default function Signup() {
+  return <div>page</div>
 }
