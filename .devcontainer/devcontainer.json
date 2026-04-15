@@ -1,7 +1,10 @@
 {
   // Basic
   "name": "SideProject Dev Container",
-  "dockerComposeFile": "docker-compose.dev.yml",
+  "dockerComposeFile": [
+    "docker-compose.dev.yml",
+    "docker-compose.elasticsearch.yml"
+  ],
   "service": "workspace",
   "workspaceFolder": "/home/vscode/${localWorkspaceFolderBasename}",
 

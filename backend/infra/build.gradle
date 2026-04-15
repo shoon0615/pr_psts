@@ -1,0 +1,13 @@
+tasks.bootJar.enabled = false
+tasks.jar.enabled = true
+
+dependencies {
+    implementation project(':common')
+    implementation project(':domain')
+
+    /* JPA */
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    /* Elasticsearch */
+    implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+}
