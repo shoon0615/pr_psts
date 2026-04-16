@@ -1,0 +1,181 @@
+📦frontend
+ ┣ 📂app
+ ┃ ┣ 📂(default-layout)
+ ┃ ┣ 📂(empty-layout)
+ ┃ ┗ 📂api
+ ┣ 📂public
+ ┣ 📂shared
+ ┃ ┣ 📂components
+ ┃ ┣ 📂hooks
+ ┃ ┣ 📂lib
+ ┃ ┣ 📂styles
+ ┃ ┗ 📂types
+
+---
+
+📦frontend
+ ┣ 📂.gemini
+ ┣ 📂app
+ ┃ ┣ 📂(default-layout)
+ ┃ ┃ ┣ 📂(main)
+ ┃ ┃ ┃ ┣ 📂board
+ ┃ ┃ ┃ ┃ ┣ 📂_components
+ ┃ ┃ ┃ ┗ 📂product
+ ┃ ┃ ┣ 📂(public)
+ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┗ 📂signup
+ ┃ ┃ ┗ 📜layout.tsx
+ ┃ ┣ 📂(empty-layout)
+ ┃ ┗ 📂api
+ ┃ ┃ ┗ 📂board
+ ┣ 📂components
+ ┃ ┣ 📂ui
+ ┃ ┃ ┣ 📂custom
+ ┣ 📂hooks
+ ┣ 📂lib
+ ┣ 📂public
+ ┣ 📂styles
+ ┣ 📂types
+
+
+📦frontend
+ ┣ 📂.gemini
+ ┃ ┣ 📜GEMINI.md
+ ┃ ┗ 📜settings.json
+ ┣ 📂app
+ ┃ ┣ 📂(default-layout)
+ ┃ ┃ ┣ 📂(main)
+ ┃ ┃ ┃ ┣ 📂board
+ ┃ ┃ ┃ ┃ ┣ 📂_components
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜board-item.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜board-list.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜not-found.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜options.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂_temp
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂actions
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜board.actions.ts
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂lib
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜board.ts
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂types
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜board.ts
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┗ 📂product
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┣ 📂(public)
+ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┗ 📂signup
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┗ 📜layout.tsx
+ ┃ ┣ 📂(empty-layout)
+ ┃ ┃ ┣ 📂example
+ ┃ ┃ ┣ 📜layout.tsx
+ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┗ 📂api
+ ┃ ┃ ┗ 📂board
+ ┃ ┃ ┃ ┗ 📜route.ts
+ ┣ 📂components
+ ┃ ┣ 📂ui
+ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┣ 📜footer.tsx
+ ┃ ┃ ┃ ┣ 📜header.tsx
+ ┃ ┃ ┃ ┣ 📜menu-bar.tsx
+ ┃ ┃ ┃ ┣ 📜menu-nav.tsx
+ ┃ ┃ ┃ ┣ 📜separator.tsx
+ ┃ ┃ ┃ ┗ 📜sidebar.tsx
+ ┃ ┃ ┣ 📜accordion.tsx
+ ┃ ┃ ┣ 📜alert-dialog.tsx
+ ┃ ┃ ┣ 📜alert.tsx
+ ┃ ┃ ┣ 📜aspect-ratio.tsx
+ ┃ ┃ ┣ 📜avatar.tsx
+ ┃ ┃ ┣ 📜badge.tsx
+ ┃ ┃ ┣ 📜breadcrumb.tsx
+ ┃ ┃ ┣ 📜button-group.tsx
+ ┃ ┃ ┣ 📜button.tsx
+ ┃ ┃ ┣ 📜calendar.tsx
+ ┃ ┃ ┣ 📜card.tsx
+ ┃ ┃ ┣ 📜carousel.tsx
+ ┃ ┃ ┣ 📜chart.tsx
+ ┃ ┃ ┣ 📜checkbox.tsx
+ ┃ ┃ ┣ 📜collapsible.tsx
+ ┃ ┃ ┣ 📜combobox.tsx
+ ┃ ┃ ┣ 📜command.tsx
+ ┃ ┃ ┣ 📜context-menu.tsx
+ ┃ ┃ ┣ 📜dialog.tsx
+ ┃ ┃ ┣ 📜direction.tsx
+ ┃ ┃ ┣ 📜drawer.tsx
+ ┃ ┃ ┣ 📜dropdown-menu.tsx
+ ┃ ┃ ┣ 📜empty.tsx
+ ┃ ┃ ┣ 📜field.tsx
+ ┃ ┃ ┣ 📜form.tsx
+ ┃ ┃ ┣ 📜hover-card.tsx
+ ┃ ┃ ┣ 📜input-group.tsx
+ ┃ ┃ ┣ 📜input-otp.tsx
+ ┃ ┃ ┣ 📜input.tsx
+ ┃ ┃ ┣ 📜item.tsx
+ ┃ ┃ ┣ 📜kbd.tsx
+ ┃ ┃ ┣ 📜label.tsx
+ ┃ ┃ ┣ 📜menubar.tsx
+ ┃ ┃ ┣ 📜native-select.tsx
+ ┃ ┃ ┣ 📜navigation-menu.tsx
+ ┃ ┃ ┣ 📜pagination.tsx
+ ┃ ┃ ┣ 📜popover.tsx
+ ┃ ┃ ┣ 📜progress.tsx
+ ┃ ┃ ┣ 📜radio-group.tsx
+ ┃ ┃ ┣ 📜resizable.tsx
+ ┃ ┃ ┣ 📜scroll-area.tsx
+ ┃ ┃ ┣ 📜select.tsx
+ ┃ ┃ ┣ 📜sheet.tsx
+ ┃ ┃ ┣ 📜sidebar.tsx
+ ┃ ┃ ┣ 📜skeleton.tsx
+ ┃ ┃ ┣ 📜slider.tsx
+ ┃ ┃ ┣ 📜sonner.tsx
+ ┃ ┃ ┣ 📜spinner.tsx
+ ┃ ┃ ┣ 📜switch.tsx
+ ┃ ┃ ┣ 📜table.tsx
+ ┃ ┃ ┣ 📜tabs.tsx
+ ┃ ┃ ┣ 📜textarea.tsx
+ ┃ ┃ ┣ 📜toast.tsx
+ ┃ ┃ ┣ 📜toaster.tsx
+ ┃ ┃ ┣ 📜toggle-group.tsx
+ ┃ ┃ ┣ 📜toggle.tsx
+ ┃ ┃ ┣ 📜tooltip.tsx
+ ┃ ┃ ┣ 📜use-mobile.tsx
+ ┃ ┃ ┗ 📜use-toast.ts
+ ┃ ┣ 📜alert-example.tsx
+ ┃ ┣ 📜command.tsx
+ ┃ ┣ 📜example.tsx
+ ┃ ┣ 📜github.tsx
+ ┃ ┣ 📜preview.tsx
+ ┃ ┣ 📜sidebar-example.tsx
+ ┃ ┗ 📜vercel.tsx
+ ┣ 📂hooks
+ ┃ ┣ 📜use-mobile.ts
+ ┃ ┗ 📜use-toast.ts
+ ┣ 📂lib
+ ┃ ┣ 📜prisma.ts
+ ┃ ┗ 📜utils.ts
+ ┣ 📂public
+ ┃ ┣ 📜file.svg
+ ┃ ┣ 📜globe.svg
+ ┃ ┣ 📜next.svg
+ ┃ ┣ 📜vercel.svg
+ ┃ ┗ 📜window.svg
+ ┣ 📂styles
+ ┃ ┗ 📜globals.css
+ ┣ 📂types
+ ┃ ┣ 📜common.ts
+ ┃ ┗ 📜env.d.ts
+ ┣ 📜.env.local
+ ┣ 📜.gitignore
+ ┣ 📜.prettierrc
+ ┣ 📜AGENTS.md
+ ┣ 📜CLAUDE.md
+ ┣ 📜README.md
+ ┣ 📜eslint.config.mjs
+ ┣ 📜next-env.d.ts
+ ┣ 📜next.config.ts
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜postcss.config.mjs
+ ┗ 📜tsconfig.json

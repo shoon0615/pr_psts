@@ -7,9 +7,9 @@ import {
   ItemMedia,
   ItemHeader,
   ItemTitle
-} from '@/components/ui/item'
-import { Badge } from '@/components/ui/badge'
-import { Board } from '@/app/(default-layout)/(main)/board/_temp/types/board'
+} from '@/shared/components/ui/item'
+import { Badge } from '@/shared/components/ui/badge'
+import { Board } from '@/app/(default-layout)/(main)/board/_types/board'
 
 export default function BoardItem({ data }: { data: Board }) {
   return (

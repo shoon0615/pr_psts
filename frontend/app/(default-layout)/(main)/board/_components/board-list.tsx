@@ -1,9 +1,9 @@
 import Item from '@/app/(default-layout)/(main)/board/_components/board-item'
 
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent } from '@/shared/components/ui/card'
 import NotFound from '@/app/(default-layout)/(main)/board/_components/not-found'
 
-import { getBoards } from '@/app/(default-layout)/(main)/board/_temp/actions/board.actions'
+import { getBoards } from '@/app/(default-layout)/(main)/board/_actions/board.actions'
 
 export default async function BoardList() {
   // const data = Array(7).fill({})

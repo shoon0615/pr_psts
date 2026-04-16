@@ -4,13 +4,13 @@ import {
   EmptyDescription,
   EmptyHeader,
   EmptyTitle
-} from '@/components/ui/empty'
+} from '@/shared/components/ui/empty'
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput
-} from '@/components/ui/input-group'
-import { Kbd } from '@/components/ui/kbd'
+} from '@/shared/components/ui/input-group'
+import { Kbd } from '@/shared/components/ui/kbd'
 import { SearchIcon } from 'lucide-react'
 
 export default function EmptyInputGroup() {

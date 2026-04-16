@@ -1,17 +1,17 @@
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/shared/components/ui/button'
+import { Card, CardContent } from '@/shared/components/ui/card'
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem
-} from '@/components/ui/select'
-import { Input } from '@/components/ui/input'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Badge } from '@/components/ui/badge'
-import { Label } from '@/components/ui/label'
-import { Separator } from '@/components/ui/custom/separator'
+} from '@/shared/components/ui/select'
+import { Input } from '@/shared/components/ui/input'
+import { Checkbox } from '@/shared/components/ui/checkbox'
+import { Badge } from '@/shared/components/ui/badge'
+import { Label } from '@/shared/components/ui/label'
+import { Separator } from '@/shared/components/ui/custom/separator'
 
 import * as o from '@/app/(default-layout)/(main)/board/_components/options'
 import List from '@/app/(default-layout)/(main)/board/_components/board-list'

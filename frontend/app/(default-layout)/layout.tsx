@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Inter } from 'next/font/google'
-import '@/styles/globals.css'
-import { cn } from '@/lib/utils'
+import '@/shared/styles/globals.css'
+import { cn } from '@/shared/lib/utils'
 
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
+import { SidebarProvider, SidebarInset } from '@/shared/components/ui/sidebar'
 // import Sidebar from '@/app/(default-layout)/(main)/board/components/BoardSide'
-import Sidebar from '@/components/ui/custom/sidebar'
-import Header from '@/components/ui/custom/header'
-import Footer from '@/components/ui/custom/footer'
+import Sidebar from '@/shared/components/ui/custom/sidebar'
+import Header from '@/shared/components/ui/custom/header'
+import Footer from '@/shared/components/ui/custom/footer'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 

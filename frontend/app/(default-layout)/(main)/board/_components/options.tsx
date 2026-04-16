@@ -1,4 +1,4 @@
-import { SelectContent, SelectItem } from '@/components/ui/select'
+import { SelectContent, SelectItem } from '@/shared/components/ui/select'
 
 export function ActivityRegionProvince() {
   return (
