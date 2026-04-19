@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Claude Code and Codex CLI are baked into the image via .devcontainer/Dockerfile (not installed here).
+
 echo "Changing owner of paths that mounted by named volumes"
 sudo chown -R $USER:$USER $VOLUME_PATHS_TO_CHANGE_OWNER
 

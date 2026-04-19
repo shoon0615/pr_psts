@@ -1,7 +1,10 @@
 services:
   workspace:
     container_name: side_project_devcontainer
-    image: mcr.microsoft.com/devcontainers/base:bullseye
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    image: side_project_devcontainer:local
     command: sleep infinity
 
     ports:
