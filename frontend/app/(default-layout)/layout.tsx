@@ -3,8 +3,9 @@ import { Geist, Geist_Mono, Inter } from 'next/font/google'
 import '@/shared/styles/globals.css'
 import { cn } from '@/shared/lib/utils'
 
+import AppProvider from '@/app/(default-layout)/provider'
+
 import { SidebarProvider, SidebarInset } from '@/shared/components/ui/sidebar'
-// import Sidebar from '@/app/(default-layout)/(main)/board/components/BoardSide'
 import Sidebar from '@/shared/components/ui/custom/sidebar'
 import Header from '@/shared/components/ui/custom/header'
 import Footer from '@/shared/components/ui/custom/footer'
@@ -38,17 +39,19 @@ export default function RootLayout({
       className={inter.variable}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SidebarProvider>
-          <Sidebar />
-          <SidebarInset>
-            <Header />
-            {/* <Wrapper>
+        <AppProvider>
+          <SidebarProvider>
+            <Sidebar />
+            <SidebarInset>
+              <Header />
+              {/* <Wrapper>
               {children}
             </Wrapper> */}
-            {children}
-            <Footer />
-          </SidebarInset>
-        </SidebarProvider>
+              {children}
+              <Footer />
+            </SidebarInset>
+          </SidebarProvider>
+        </AppProvider>
       </body>
     </html>
   )
@@ -69,7 +72,7 @@ function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
   )
 }
 
-function RootLayoutNew({
+function CustomRootLayout({
   children
 }: Readonly<{
   children: React.ReactNode

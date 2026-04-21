@@ -9,9 +9,9 @@ import {
   ItemTitle
 } from '@/shared/components/ui/item'
 import { Badge } from '@/shared/components/ui/badge'
-import { Board } from '@/app/(default-layout)/(main)/board/_types/board'
+import { Notice } from '@/app/(default-layout)/(main)/notice/_types/notice'
 
-export default function BoardItem({ data }: { data: Board }) {
+export default function NoticeItem({ data }: { data: Notice }) {
   return (
     <Item
       variant="outline"

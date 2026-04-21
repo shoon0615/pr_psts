@@ -13,10 +13,10 @@ import { Badge } from '@/shared/components/ui/badge'
 import { Label } from '@/shared/components/ui/label'
 import { Separator } from '@/shared/components/ui/custom/separator'
 
-import * as o from '@/app/(default-layout)/(main)/board/_components/options'
-import List from '@/app/(default-layout)/(main)/board/_components/board-list'
+import * as o from '@/app/(default-layout)/(main)/notice/_components/options'
+import List from '@/app/(default-layout)/(main)/notice/_components/notice-list'
 
-export default function Board() {
+export default function Notice() {
   return (
     <div className="mx-auto flex max-w-7xl flex-1 flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
       {/* Filter and Search Section */}

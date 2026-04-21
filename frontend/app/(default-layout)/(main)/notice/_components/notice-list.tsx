@@ -1,13 +1,13 @@
-import Item from '@/app/(default-layout)/(main)/board/_components/board-item'
+import Item from '@/app/(default-layout)/(main)/notice/_components/notice-item'
 
 import { Card, CardContent } from '@/shared/components/ui/card'
-import NotFound from '@/app/(default-layout)/(main)/board/_components/not-found'
+import NotFound from '@/app/(default-layout)/(main)/notice/_components/not-found'
 
-import { getBoards } from '@/app/(default-layout)/(main)/board/_actions/board.actions'
+import { getNotices } from '@/app/(default-layout)/(main)/notice/_actions/notice.actions'
 
-export default async function BoardList() {
+export default async function NoticeList() {
   // const data = Array(7).fill({})
-  const { boards: data } = await getBoards()
+  const { notices: data } = await getNotices()
 
   // if (!data?.length) return <NotFound />
   return (
@@ -26,10 +26,10 @@ export default async function BoardList() {
       ) : (
         // data.map(() => (
         // data.map((_, i) => (
-        data.map(board => (
+        data.map(notice => (
           <Item
-            key={board.id}
-            data={board}
+            key={notice.id}
+            data={notice}
           />
         ))
       )}

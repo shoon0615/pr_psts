@@ -1,6 +1,6 @@
 import type { Base, Common } from '@/shared/types/common'
 
-interface BoardDetail {
+interface NoticeDetail {
   title: string
   contents: string
   hits: number
@@ -12,7 +12,7 @@ interface BoardDetail {
   activityCycleId: string
 }
 
-export interface Board extends Base, BoardDetail {
+export interface Notice extends Base, NoticeDetail {
   activityRegion?: Common
   activityRegionDetail?: Common
   activityType?: Common
