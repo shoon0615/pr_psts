@@ -47,7 +47,7 @@ Action:
 public class SpringSecurityConfig {
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JwtUtil jwtUtil;
-    private final HandlerExceptionResolver handlerExceptionResolver;  // ← 파라미터 2
+    private final HandlerExceptionResolver handlerExceptionResolver;  // 파라미터 2
 }
 ```
 
@@ -55,7 +55,7 @@ Spring은 보통 **파라미터 이름**(`handlerExceptionResolver`)과
 빈 이름(`handlerExceptionResolver`)이 일치하면 자동으로 매칭한다.
 
 하지만 Java 바이트코드는 기본적으로 **파라미터 이름을 저장하지 않는다**.
-→ `javac -parameters` 플래그로 컴파일해야만 `MethodParameters` 속성이 기록됨.
+`javac -parameters` 플래그로 컴파일해야만 `MethodParameters` 속성이 기록됨.
 
 ---
 
@@ -104,7 +104,7 @@ bash gradlew clean
 
 ### 2) IDE 캐시 정리 (Cursor / VS Code)
 
-`Command Palette` → **"Java: Clean Java Language Server Workspace"** → Restart and delete
+`Command Palette` -> **Java: Clean Java Language Server Workspace** -> Restart and delete
 
 이전에 `-parameters` 없이 컴파일된 `.class`가 `bin/` 디렉터리에 남아 있을 수 있음.
 
@@ -126,7 +126,7 @@ bash gradlew :api:bootRun
 | 생성자 직접 작성 + 파라미터에 `@Qualifier` | Lombok 제거 필요 |
 | `@Primary` 지정 | Spring Boot 기본 빈을 건드려 부수효과 가능. 비권장 |
 
-→ 본 프로젝트는 **`-parameters` 플래그 추가**로 근본 해결.
+본 프로젝트는 **`-parameters` 플래그 추가**로 근본 해결.
 
 ---
 
