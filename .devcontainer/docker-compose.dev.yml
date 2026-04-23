@@ -9,7 +9,7 @@ services:
 
     ports:
       - "5173:5173" # 프론트엔드 (Vite 개발 서버)
-      - "8080:8080" # 백엔드 (Java 개발 서버)
+      - "18080:8091" # 백엔드 (Java 개발 서버)
 
     volumes:
       - ..:${containerWorkspaceFolder}:cached
@@ -21,7 +21,7 @@ services:
       - es_network
 
     depends_on:
-      - elasticsearch
+      - elasticsearch # 엘라스틱서치를 완료하면 주석처리 예정
 
 networks:
   es_network:

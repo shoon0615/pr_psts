@@ -50,12 +50,6 @@
       "backend": "IntelliJ"
     }
   },
-
-  // SSH - mounts each user's own ~/.ssh (read-only) so SSH config and keys work inside the container
-  "mounts": [
-    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
-  ],
-
   // LifeCycles
   "initializeCommand": "bash ./.devcontainer/commands/initializeCommand.sh ${localWorkspaceFolder} ${containerWorkspaceFolder} ${localWorkspaceFolderBasename} ${containerWorkspaceFolderBasename}",
   "postCreateCommand": "bash ./.devcontainer/commands/postCommand.sh"
