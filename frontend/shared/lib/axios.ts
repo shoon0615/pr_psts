@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const apiUrl = `${process.env.JSON_SERVER_API_URL}`
-const apiUrl = process.env.JSON_SERVER_API_URL
+const apiUrl = process.env.NEXT_PUBLIC_JSON_SERVER_API_URL
 
 // export const instance = axios.create({
 export const api = axios.create({

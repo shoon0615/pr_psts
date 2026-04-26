@@ -3,24 +3,23 @@
 // route 이용 방법(HTTP 요청)
 import { api } from '@/shared/lib/axios'
 
-/** TODO: */
 // server actions 이용 방법
-import {
-  getSnackList,
-  createSnack
-} from '@/features/snack/actions/snack.action'
+import { createSnack } from '@/features/snack/actions/snack.action'
 
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+// service 이용 방법
+import { selectAllSnack } from '@/features/snack/services/snack.service'
+
+import {
+  useSuspenseQuery,
+  useMutation,
+  useQueryClient
+} from '@tanstack/react-query'
 
 export function useSnacks() {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['snack'],
-    /* queryFn: async () => {
-      const { data } = await api.get('/boards?')
-      return data
-    }
-    queryFn: () => api.get('/boards?').then(res => res.data) */
-    queryFn: getSnackList
+    // queryFn: api.get<Snack[]>(`${apiUrl}`).then(res => res.data)
+    queryFn: selectAllSnack
   })
 }
 

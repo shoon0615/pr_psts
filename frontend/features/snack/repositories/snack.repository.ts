@@ -1,27 +1,18 @@
 import { api } from '@/shared/lib/axios'
+import { Snack } from '@/features/snack/types/snack.type'
 
 const apiUrl = '/snacks'
 
 export const jsonRepository = {
-  /** TODO: */
-  /* findMany:findMany(query = ''): Promise<Type> => api.get(`${apiUrl}?${query}`).then(res => res.data),
-  await selectNotices('_expand=brand&_expand=category') */
+  findMany: () => api.get<Snack[]>(`${apiUrl}`).then(res => res.data),
 
-  // findMany: () => api.get(`${apiUrl}`).then(res => res.data),
+  findUnique: (id: number) => api.get(`${apiUrl}/${id}`).then(res => res.data),
 
-  findMany: () =>
-    api.get(`${apiUrl}`).then(res => {
-      console.log('data', res)
-      return res.data
-    }),
+  create: () => api.post(`${apiUrl}`).then(res => res.data),
 
-  findUnique: (id: number) => api.get(`${apiUrl}`).then(res => res.data),
+  update: (id: number) => api.put(`${apiUrl}/${id}`).then(res => res.data),
 
-  create: () => api.get(`${apiUrl}`).then(res => res.data),
-
-  update: (id: number) => api.get(`${apiUrl}`).then(res => res.data),
-
-  delete: (id: number) => api.get(`${apiUrl}`).then(res => res.data)
+  delete: (id: number) => api.delete(`${apiUrl}/${id}`).then(res => res.data)
 }
 
 /* export const snackRepository = {

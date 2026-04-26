@@ -14,8 +14,9 @@ import {
   deleteSnack
 } from '@/features/snack/services/snack.service'
 
+import { delay } from '@/shared/lib/utils'
+
 export async function getSnackList() {
-  alert('데이터를 가져옵니다.')
   return await selectAllSnack()
 }
 
@@ -33,4 +34,9 @@ export async function modifySnack(id: number) {
 
 export async function removeSnack(id: number) {
   return await deleteSnack(id)
+}
+
+export async function formAction() {
+  // await delay(3000)
+  console.log('test')
 }

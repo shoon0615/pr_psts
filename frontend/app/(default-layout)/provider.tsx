@@ -1,7 +1,6 @@
 'use client'
 
 // import React from 'react'
-import { useState } from 'react'
 import {
   QueryClient,
   QueryClientProvider,
@@ -41,10 +40,6 @@ export default function AppProvider({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // const [queryClient] = React.useState(
-  /* const [queryClient] = useState(() => new QueryClient({
-    defaultOptions: queryConfig
-  }) */
   const queryClient = getQueryClient()
 
   const dehydratedState = dehydrate(queryClient)
@@ -58,9 +53,7 @@ export default function AppProvider({
           {children}
         </HydrationBoundary> */}
 
-        {/* <ReactQueryStreamedHydration>
-          {children}
-        </ReactQueryStreamedHydration> */}
+        {/* <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration> */}
 
         {children}
       </QueryClientProvider>
