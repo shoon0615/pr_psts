@@ -3,7 +3,7 @@
  * fileName     : RestCrudController
  * author       : SangHoon
  * date         : 2026-04-23
- * description  :
+ * description  : CRUD 예제 RestController
  * ===========================================================
  * DATE                 AUTHOR                NOTE
  * -----------------------------------------------------------
@@ -11,7 +11,10 @@
  */
 package com.side.temp.api.controller;
 
+// import com.side.temp.api.schema.RestCrudControllerDocs;
 import com.side.temp.biz.service.CrudService;
+import com.side.temp.domain.dto.request.CrudRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -25,6 +28,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/crud")
+// public class RestCrudController implements RestCrudControllerDocs {
 public class RestCrudController {
 
     private final CrudService crudService;
@@ -47,6 +51,7 @@ public class RestCrudController {
      * @date         : 2026-04-23 오전 10:38
      */
     @GetMapping
+//    public ResponseEntity<?> findAllCrud(@RequestBody(required = false) final CrudRequest request) {
     public ResponseEntity<?> findAllCrud() {
         return ResponseEntity.ok(List.of(Map.of("data", "success")));
     }
@@ -58,8 +63,8 @@ public class RestCrudController {
      * @date         : 2026-04-23 오전 10:38
      */
     @PostMapping
-//    public ResponseEntity<?> createCrud(@Valid @RequestBody final CrudRequest request) {
-    public ResponseEntity<?> createCrud(final Map<String, Object> request) {
+//    public ResponseEntity<?> createCrud(final Map<String, Object> request) {
+    public ResponseEntity<?> createCrud(@Valid @RequestBody final CrudRequest request) {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -69,8 +74,8 @@ public class RestCrudController {
      * @author       : SangHoon
      * @date         : 2026-04-23 오전 10:38
      */
-    @PutMapping
-    public ResponseEntity<?> modifyCrud(@PathVariable final long id, final Map<String, Object> request) {
+    @PutMapping("/{id}")
+    public ResponseEntity<?> modifyCrud(@PathVariable final long id, @RequestBody final CrudRequest request) {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -80,7 +85,7 @@ public class RestCrudController {
      * @author       : SangHoon
      * @date         : 2026-04-23 오전 10:38
      */
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCrud(@PathVariable final long id) {
         return ResponseEntity.ok(HttpStatus.OK);
     }

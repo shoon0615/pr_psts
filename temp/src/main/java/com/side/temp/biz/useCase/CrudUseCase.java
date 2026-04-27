@@ -3,7 +3,7 @@
  * fileName     : CrudUseCase
  * author       : SangHoon
  * date         : 2026-04-23
- * description  :
+ * description  : CRUD 예제 Service
  * ===========================================================
  * DATE                 AUTHOR                NOTE
  * -----------------------------------------------------------

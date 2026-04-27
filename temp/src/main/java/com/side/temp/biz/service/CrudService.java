@@ -3,7 +3,7 @@
  * fileName     : CrudService
  * author       : SangHoon
  * date         : 2026-04-23
- * description  :
+ * description  : CRUD 예제 ServiceImpl(구현체)
  * ===========================================================
  * DATE                 AUTHOR                NOTE
  * -----------------------------------------------------------

@@ -10,6 +10,23 @@ spring:
     active: local
 
 ---
+# Swagger
+springdoc:
+  #  Spring Boot 3+는 기본 UTF-8 처리
+  #  default-consumes-media-type: application/json;charset=UTF-8
+  #  default-produces-media-type: application/json;charset=UTF-8
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  disable-swagger-default-url: true         # 기본 문서 자동 로드 방지
+  show-actuator: true                       # Actuator 엔드포인트까지 Swagger에 포함
+  writer-with-default-pretty-printer: true  # JSON 응답 가독성 향상(pretty)
+  swagger-ui:
+    tags-sorter: alpha                      # 태그 정렬(default: alpha)
+    operations-sorter: method               # API 목록 정렬(default: alpha)
+    writer-with-order-by-keys: true         # JSON key를 정렬해서 출력 (가독성 향상)
+#    path: /swagger-ui/index.html            # Swagger Url(default: /swagger-ui/index.html)
+
+---
 # Messages
 spring:
   messages:
