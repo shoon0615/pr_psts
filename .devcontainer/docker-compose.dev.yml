@@ -1,15 +1,29 @@
 services:
   workspace:
     container_name: side_project_devcontainer
-    image: mcr.microsoft.com/devcontainers/base:bullseye
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    image: side_project_devcontainer:local
     command: sleep infinity
 
     ports:
       - "5173:5173" # 프론트엔드 (Vite 개발 서버)
-      - "8080:8080" # 백엔드 (Java 개발 서버)
+      - "18080:8091" # 백엔드 (Java 개발 서버)
 
     volumes:
       - ..:${containerWorkspaceFolder}:cached
 
     environment:
       - TZ=Asia/Seoul
+
+    networks:
+      - es_network
+
+    depends_on:
+      - elasticsearch # 엘라스틱서치를 완료하면 주석처리 예정
+
+networks:
+  es_network:
+    # external: true
+    driver: bridge # 같은 이름의 네트워크는 자동 merge

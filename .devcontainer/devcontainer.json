@@ -1,7 +1,11 @@
 {
   // Basic
   "name": "SideProject Dev Container",
-  "dockerComposeFile": "docker-compose.dev.yml",
+  // Auth/API keys: follow Anthropic and OpenAI official docs; never commit secrets. Use local-only remoteEnv overrides if needed.
+  "dockerComposeFile": [
+    "docker-compose.dev.yml",
+    "docker-compose.elasticsearch.yml"
+  ],
   "service": "workspace",
   "workspaceFolder": "/home/vscode/${localWorkspaceFolderBasename}",
 
@@ -36,14 +40,16 @@
         "ms-azuretools.vscode-docker",
         "ms-vscode.vscode-typescript-next",
         // Python Extension for development
-        "ms-python.python"
+        "ms-python.python",
+        // AI assistants
+        "openai.chatgpt",
+        "anthropic.claude-code"
       ]
     },
     "jetbrains": {
       "backend": "IntelliJ"
     }
   },
-
   // LifeCycles
   "initializeCommand": "bash ./.devcontainer/commands/initializeCommand.sh ${localWorkspaceFolder} ${containerWorkspaceFolder} ${localWorkspaceFolderBasename} ${containerWorkspaceFolderBasename}",
   "postCreateCommand": "bash ./.devcontainer/commands/postCommand.sh"

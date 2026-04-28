@@ -44,6 +44,17 @@ dependencies {
 
 	/* Test */
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	/* JPA */
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	/* Elasticsearch */
+	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch-test'
+
+	/* 검색어 자동완성(추천 검색어) 기능(elasticsearch 버전과 동일해야함) */
+	/* High level rest client 는 7.15 버전부터 deprecated로 지정 */
+//	implementation 'co.elastic.clients:elasticsearch-java:8.18.8'	// Spring Boot 4 에서 ElasticsearchClient 자동 생성되어 충돌?? 확인 필요
 }
 
 tasks.named('test') {

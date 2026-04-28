@@ -4,6 +4,8 @@ server:
   port: 8091
 
 spring:
+  config:
+    import: optional:classpath:infra-elasticsearch.yml
   freemarker:
     cache: false
   profiles:
