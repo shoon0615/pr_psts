@@ -26,12 +26,19 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 
+	/* Lombok */
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
 
+	/* Validation */
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	/* Test */
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 	/* JPA */
@@ -48,4 +55,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	doFirst {
+		def agent = classpath.find { it.name.contains("byte-buddy-agent") }
+		if (agent != null) {
+			jvmArgs "-javaagent:${agent.absolutePath}"
+		}
+	}
 }
