@@ -4,10 +4,6 @@
 echo "Changing owner of paths that mounted by named volumes"
 sudo chown -R $USER:$USER $VOLUME_PATHS_TO_CHANGE_OWNER
 
-echo "Updating apt package manager"
-sudo apt update -y
-sudo apt upgrade -y
-
 # Python 패키지 제거 (agents SDK는 Node.js용이므로 불필요)
 # pip install pyhwp six uv
 
@@ -27,12 +23,5 @@ nest --version || {
     echo "ERROR: NestJS CLI installation failed!"
     exit 1
 }
-
-# 워크스페이스 패키지 설치 (Monorepo)
-echo "Installing workspace dependencies..."
-cd $containerWorkspaceFolder
-
-# 루트 의존성 설치
-#npm install
 
 echo "Setup completed successfully!"
