@@ -4,9 +4,13 @@
   // Auth/API keys: follow Anthropic and OpenAI official docs; never commit secrets. Use local-only remoteEnv overrides if needed.
   "dockerComposeFile": [
     "docker-compose.dev.yml",
-    "docker-compose.elasticsearch.yml"
+    "docker-compose.search.yml",
+    "docker-compose.db.yml",
+    "docker-compose.message.yml"
   ],
   "service": "workspace",
+  // "runServices": ["workspace", "postgres", "redis", "elasticsearch", "kibana", "kafka"],    // service 명칭으로 실행하는 방식
+  "runServices": ["workspace", "postgres"], // 생략 시, workspace(devcontainer - main) 만 실행됨
   "workspaceFolder": "/home/vscode/${localWorkspaceFolderBasename}",
 
   // Featuring - 프론트엔드 + 백엔드 통합
@@ -15,7 +19,7 @@
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22"
     },
-    "ghcr.io/devcontainers-contrib/features/projen:1": {},
+    "ghcr.io/devcontainers-extra/features/projen:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/python:1": {
       // "version": "3.14"  // 너무 최신 버전이라 일치하는 MCP 가 없음
@@ -53,4 +57,5 @@
   // LifeCycles
   "initializeCommand": "bash ./.devcontainer/commands/initializeCommand.sh ${localWorkspaceFolder} ${containerWorkspaceFolder} ${localWorkspaceFolderBasename} ${containerWorkspaceFolderBasename}",
   "postCreateCommand": "bash ./.devcontainer/commands/postCommand.sh"
+  // "postStartCommand": "bash ./.devcontainer/commands/startServices.sh"   // profiles 명칭으로 실행하는 방식
 }

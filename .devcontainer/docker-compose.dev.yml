@@ -11,19 +11,19 @@ services:
       - "5173:5173" # 프론트엔드 (Vite 개발 서버)
       - "18080:8091" # 백엔드 (Java 개발 서버)
 
+    environment:
+      TZ: Asia/Seoul
+
     volumes:
       - ..:${containerWorkspaceFolder}:cached
 
-    environment:
-      - TZ=Asia/Seoul
-
     networks:
-      - es_network
+      - side_project_network
 
-    depends_on:
-      - elasticsearch # 엘라스틱서치를 완료하면 주석처리 예정
+    # depends_on:
+    #   - db
 
 networks:
-  es_network:
+  side_project_network:
     # external: true
     driver: bridge # 같은 이름의 네트워크는 자동 merge
