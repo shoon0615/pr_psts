@@ -1,4 +1,4 @@
-/**
+/*
  * packageName  : com.side.temp.api.controller
  * fileName     : RestCrudController
  * author       : SangHoon
@@ -9,20 +9,28 @@
  * -----------------------------------------------------------
  * 2026-04-23          SangHoon             최초 생성
  */
+
 package com.side.temp.api.controller;
 
 // import com.side.temp.api.schema.RestCrudControllerDocs;
+
 import com.side.temp.biz.service.CrudService;
 import com.side.temp.domain.dto.request.CrudRequest;
 import jakarta.validation.Valid;
+import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
@@ -35,6 +43,7 @@ public class RestCrudController {
 
     /**
      * 조회(단건)
+     *
      * @method       : findByCrud
      * @author       : SangHoon
      * @date         : 2026-04-23 오전 10:38
@@ -75,7 +84,10 @@ public class RestCrudController {
      * @date         : 2026-04-23 오전 10:38
      */
     @PutMapping("/{id}")
-    public ResponseEntity<?> modifyCrud(@PathVariable final long id, @RequestBody final CrudRequest request) {
+    public ResponseEntity<?> modifyCrud(
+        @PathVariable final long id,
+        @RequestBody final CrudRequest request
+    ) {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
