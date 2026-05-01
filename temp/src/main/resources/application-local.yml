@@ -1,0 +1,41 @@
+# IntelliJ 에서 환경변수 적용(수동)
+# .env 등록: Run - Edit Configurations - Modify options - Environment variables 클릭 후 .env 파일 등록
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+---
+# DB(Database)
+spring:
+
+  #  datasource:
+  #    driver-class-name: org.h2.Driver
+  #    url: jdbc:h2:mem:testdb
+  #    username: sa
+  #    password:
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    #    url: jdbc:postgresql://${DATABASE_URL}/${DATABASE_DB}
+    url: jdbc:postgresql://localhost:15432/${DATABASE_DB}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+---
+# JPA
+#spring:
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    open-in-view: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+---
+# Etc
+logging:
+  level:
+    root: DEBUG

@@ -1,0 +1,36 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+---
+# DB(Database)
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DATABASE_URL}/${DATABASE_DB}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+---
+# JPA
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+  sql:
+    init:
+      mode: always
+      defer-datasource-initialization: true
+
+---
+# Etc
+logging:
+  level:
+    root: INFO
+
+# `출처` https://nourzoo.tistory.com/44

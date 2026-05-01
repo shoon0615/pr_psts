@@ -1,13 +1,24 @@
 server:
   port: 8081
 
+# IntelliJ 에서 Profile 적용
+# 무료 버전: Run - Edit Configurations - Modify options - add VM options 클릭 후 -Dspring.profiles.active={profile명} 등록
+# 유료 버전: Run - Edit Configurations - Active profiles에 {profile명} 등록
+
+# ⚠️ 우선순위
+# 1순위: 환경변수 (SPRING_PROFILES_ACTIVE)
+# 2순위: JVM 옵션 (-Dspring.profiles.active)
+# 3순위: application.yml (spring.profiles.active)
 spring:
   application:
     name: temp
-  freemarker:
-    cache: false
   profiles:
     active: local
+  freemarker:
+    cache: false
+  config:
+    import:   # Spring Boot 내장 규칙에 의해 application-{profile}.yml 은 추가안해도 자동으로 처리
+#      - optional:classpath:application-dev.yml
 
 ---
 # Swagger
@@ -25,6 +36,15 @@ springdoc:
     operations-sorter: method               # API 목록 정렬(default: alpha)
     writer-with-order-by-keys: true         # JSON key를 정렬해서 출력 (가독성 향상)
 #    path: /swagger-ui/index.html            # Swagger Url(default: /swagger-ui/index.html)
+
+---
+# Batch
+spring:
+  batch:
+    jdbc:
+      initialize-schema: never
+    job:
+      enabled: false  # job 실행을 Spring Boot 시작 시점이 아닌 스케줄러에게 위임
 
 ---
 # Messages
