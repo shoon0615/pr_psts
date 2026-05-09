@@ -11,7 +11,7 @@ import {
 } from '@/shared/components/ui/card'
 import { Field } from '@/shared/components/ui/field'
 
-import { Form, FormInput } from '@/shared/components/ui/custom/form'
+import { Form, FormInput, FormSelect } from '@/shared/components/ui/custom/form'
 import { SubmitErrorHandler } from 'react-hook-form'
 
 import {
@@ -72,11 +72,21 @@ export default function SnackNew() {
                   </h4>
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
                 <FormInput
                   name="title"
                   label="상품명"
                   placeholder="과자 이름을 입력하세요 (5자 이상)"
+                />
+                <FormSelect
+                  name="brand"
+                  label="브랜드"
+                  placeholder="- 선택 -"
+                  items={[
+                    { label: '중앙', value: 'central' },
+                    { label: '서울', value: 'seoul' },
+                    { label: '부산', value: 'busan' }
+                  ]}
                 />
               </CardContent>
               <CardFooter>

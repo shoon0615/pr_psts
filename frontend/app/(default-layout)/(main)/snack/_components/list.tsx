@@ -6,10 +6,19 @@ import { Button } from '@/shared/components/ui/button'
 import Image from 'next/image'
 import qrImage from '@/.gemini/image.png'
 
-import { useSnacks } from '@/features/snack/hooks/useSnack'
+import {
+  useSnacks,
+  useSnackList,
+  useSnackList2
+} from '@/features/snack/hooks/useSnack'
 
 export default function SnackList() {
-  const { data } = useSnacks()
+  // const { data } = useSnacks()
+  const { data } = useSnackList2()
+
+  // const { data, isFetching } = useQuery(boardListQueryOptions(queryParams))
+  // {isFetching && <p>조회 중...</p>}
+  // {(data?.items ?? []).map(board => (
 
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">

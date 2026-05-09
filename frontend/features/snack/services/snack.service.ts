@@ -1,13 +1,12 @@
-import { jsonRepository as repository } from '@/features/snack/repositories/snack.repository'
-
-/** TODO: */
-/* export const SnackService = {
-  findMany: () => repository.get('/snack?').then(res => res.data),
-  findUnique: (id: number) => repository.get('/snack?').then(res => res.data)
-} */
+import { snackRepository as repository } from '@/features/snack/repositories/snack.api.repository'
+import { SnackSearchParams } from '@/features/snack/queries/snack.query'
 
 export async function selectAllSnack() {
   return await repository.findMany()
+}
+
+export async function selectAllSnack2(params: SnackSearchParams) {
+  return await repository.findMany2(params)
 }
 
 export async function selectSnack(id: number) {

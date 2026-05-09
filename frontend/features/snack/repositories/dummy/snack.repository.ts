@@ -3,7 +3,7 @@ import { Snack } from '@/features/snack/types/snack.type'
 
 const apiUrl = '/snacks'
 
-export const jsonRepository = {
+export const apiRepository = {
   findMany: () => api.get<Snack[]>(`${apiUrl}`).then(res => res.data),
 
   findUnique: (id: number) => api.get(`${apiUrl}/${id}`).then(res => res.data),
@@ -15,7 +15,7 @@ export const jsonRepository = {
   delete: (id: number) => api.delete(`${apiUrl}/${id}`).then(res => res.data)
 }
 
-/* export const snackRepository = {
+/* export const dbRepository = {
   findMany: () => prisma.snack.findMany(),
 
   findUnique: (id: number) => prisma.snack.findUnique(id),

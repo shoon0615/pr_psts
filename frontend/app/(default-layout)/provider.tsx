@@ -4,13 +4,13 @@
 import {
   QueryClient,
   QueryClientProvider,
-  environmentManager,
-  HydrationBoundary,
-  dehydrate
+  environmentManager
 } from '@tanstack/react-query'
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { queryConfig } from '@/shared/lib/react-query'
+// import { NuqsAdapter } from 'nuqs/adapters/next/pages'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 function makeQueryClient() {
   return new QueryClient({
@@ -42,21 +42,17 @@ export default function AppProvider({
 }>) {
   const queryClient = getQueryClient()
 
-  const dehydratedState = dehydrate(queryClient)
-
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        {process.env.DEV && <ReactQueryDevtools />}
+      <NuqsAdapter>
+        <QueryClientProvider client={queryClient}>
+          {process.env.DEV && <ReactQueryDevtools />}
 
-        {/* <HydrationBoundary state={dehydratedState}>
+          {/* <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration> */}
+
           {children}
-        </HydrationBoundary> */}
-
-        {/* <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration> */}
-
-        {children}
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </NuqsAdapter>
     </>
   )
 }

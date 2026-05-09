@@ -1,11 +1,3 @@
-export interface Common {
-  id: string
-  code: string
-  name: string
-}
-
-// export type Regions = Common
-
 export interface Base extends BaseId, BaseDetail {}
 
 export interface BaseId {

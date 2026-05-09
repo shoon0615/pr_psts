@@ -22,7 +22,8 @@ export const categories = [
  * @param img 상품 이미지(대표)
  */
 export interface Snack {
-  id: number
+  // id: number
+  id: string
   title: string
   brand: string
   price: number

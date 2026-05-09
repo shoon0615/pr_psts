@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -138,5 +138,15 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .cn-calendar-dropdown-root {
+    @apply relative inline-flex items-center justify-center;
+  }
+
+  .cn-calendar-dropdown-root select {
+    @apply absolute inset-0 z-10 h-full w-full cursor-pointer appearance-none border-none bg-transparent opacity-0;
   }
 }

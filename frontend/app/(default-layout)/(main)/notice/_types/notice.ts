@@ -1,4 +1,4 @@
-import type { Base, Common } from '@/shared/types/common'
+import type { Base, Common } from '@/features/common/types/common.type'
 
 interface NoticeDetail {
   title: string

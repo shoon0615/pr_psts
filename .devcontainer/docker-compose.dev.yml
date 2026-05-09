@@ -4,6 +4,9 @@ services:
     image: mcr.microsoft.com/devcontainers/base:bullseye
     command: sleep infinity
 
+    # env_file:
+    #   - .devcontainer/.env
+
     ports:
       - "5173:5173" # 프론트엔드 (Vite 개발 서버)
       - "8080:8080" # 백엔드 (Java 개발 서버)
