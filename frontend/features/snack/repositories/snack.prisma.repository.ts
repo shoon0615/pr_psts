@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { Snack } from '@/features/snack/types/snack.type'
 
 const apiUrl = '/snacks'

@@ -5,8 +5,6 @@ import List from '@/app/(default-layout)/(main)/snack/_components/list'
 
 import {
   QueryClient,
-  QueryClientProvider,
-  environmentManager,
   HydrationBoundary,
   dehydrate
 } from '@tanstack/react-query'

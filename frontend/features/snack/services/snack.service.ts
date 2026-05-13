@@ -1,3 +1,5 @@
+// import 'server-only'
+
 import { snackRepository as repository } from '@/features/snack/repositories/snack.api.repository'
 import { SnackSearchParams } from '@/features/snack/queries/snack.query'
 

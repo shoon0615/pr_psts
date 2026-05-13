@@ -28,6 +28,7 @@ export default function SnackList() {
           className="group flex flex-col">
           {/* Main Card Body */}
           <Link
+            // prefetch={true}
             href={`/snack/${snack.id}`}
             className="flex flex-col">
             <Card className="z-10 flex flex-col border-gray-200 py-0 transition-all duration-300 group-hover:rounded-b-none group-hover:shadow-lg">

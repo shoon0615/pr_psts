@@ -12,10 +12,6 @@ export const commonRepository = {
   // getCommon,
   // getBrands: () => getCommon('brand'),
   // getCategories: () => getCommon('category')
-  getBrands: () =>
-    api.get<Common[]>('/brands').then(res => {
-      console.log('getBrands', res.data)
-      return res.data
-    }),
+  getBrands: () => api.get<Common[]>('/brands').then(res => res.data),
   getCategories: () => api.get<Common[]>('/categories').then(res => res.data)
 }

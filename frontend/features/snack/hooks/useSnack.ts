@@ -75,7 +75,7 @@ function useCreateSnack() {
     } */
   })
 
-  // <button onClick={() => mutation.mutate({ title: 'hi' })}>
+  // <button onClick={() => mutation.mutate({ title: 'hi' })}>등록</button>
 }
 
 /* export function useCreateSnack2() {

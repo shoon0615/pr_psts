@@ -2,6 +2,7 @@ import { cn } from '@/shared/lib/utils'
 import { LoaderIcon } from 'lucide-react'
 
 import { Suspense } from 'react'
+// import { QueryErrorResetBoundary } from '@tanstack/react-query'
 // import { ErrorBoundary } from 'react-error-boundary';
 // import { Notifications } from '@/shared/components/ui/notifications';
 
@@ -37,3 +38,24 @@ export default function Loader({
     </Suspense>
   )
 }
+
+/*
+<QueryErrorResetBoundary>
+  {({ reset }) => (
+    <ErrorBoundary
+      onReset={reset}
+      // FallbackComponent={MainErrorFallback}
+      fallbackRender={({ resetErrorBoundary, error }) => (
+        <div>
+          Error: {String(error)}
+          <button onClick={() => resetErrorBoundary()}>다시 시도</button>
+        </div>
+      )}
+    >
+      <Suspense fallback={<div>불러오는 중…</div>}>
+        {children}
+      </Suspense>
+    </ErrorBoundary>
+  )}
+</QueryErrorResetBoundary>
+*/

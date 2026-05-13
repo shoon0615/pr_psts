@@ -17,7 +17,6 @@ import {
 import { SubmitErrorHandler } from 'react-hook-form'
 
 export default function SnackSearch() {
-  console.log('SnackSearch')
   const { searchParams, setSearchParams } = useSnackSearchParams()
 
   // TODO: useHook 을 통해 return {} 로 변환??
@@ -26,8 +25,6 @@ export default function SnackSearch() {
 
   // const { brands, categories, isLoading, isError } = useSnackSearchOptions()
   const { brands, categories } = useSnackSearchOptions2()
-  console.log('brands', brands)
-  console.log('categories', categories)
 
   const defaultValues = {
     brand: '',
@@ -104,3 +101,29 @@ export default function SnackSearch() {
     </div>
   )
 }
+
+/* 'use client'
+export default function Page() {
+  const [isPending, startTransition] = useTransition()
+  const { data, isFetching } = useSuspenseQuery({
+    queryKey: queryOptions,
+    queryFn: () => axios.get('/api/route')
+  })
+
+  function changePage(page: number) {
+    startTransition(() => {
+      setSearchParams({ page })
+    })
+  }
+
+  return (
+    <>
+      <Pagination
+        disabled={isPending}
+        onChange={changePage}
+      />
+      {isFetching && <SmallSpinner />}
+      <BoardList data={data} />
+    </>
+  )
+} */
