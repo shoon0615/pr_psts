@@ -23,7 +23,8 @@ import {
   parseAsInteger,
   parseAsString,
   useQueryStates,
-  inferParserType
+  inferParserType,
+  debounce
 } from 'nuqs'
 
 import {
@@ -94,19 +95,13 @@ function useCreateSnack() {
 
 // TODO:
 export const snackSearchParams = {
-  // keyword: parseAsString,    // 직접 사용 시 null 반환
   page: parseAsInteger.withDefault(1),
   brand: parseAsString.withDefault(''),
   category: parseAsString.withDefault('')
 }
 
-/**
- * nuqs는 기본적으로 shallow: true 옵션을 사용
- * 이 옵션이 켜져 있으면 브라우저의 URL만 바뀔 뿐,
- * Next.js의 서버 컴포넌트(Server Component)를 다시 실행하지 않습니다.
- * 따라서 옵션을 주어 서버 사이드 렌더링(SSR)이 다시 일어나도록 설정
- */
 export function useSnackSearchParams() {
+  // const [searchParams, setSearchParams] = useQueryStates(snackSearchParams)
   const [searchParams, setSearchParams] = useQueryStates(snackSearchParams, {
     shallow: false
   })

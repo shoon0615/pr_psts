@@ -22,9 +22,9 @@ npx create-next-app@latest 프로젝트이름
 
 ---
 
-## 기본 구성 요소(Component & Function)
+## Basic Components(Component & Function)
 
-**Default**
+**⚬ Default**
 
 - `tsx` Server Component
 - `ts` Shared Function
@@ -33,7 +33,7 @@ npx create-next-app@latest 프로젝트이름
 
 `Server Function` 과 같은 환경이기에 동일한 특징을 갖고있습니다. (자세한 내용은 참조)
 
-**특징**
+**⚬ 특징**
 
 - `async/await Component` 서버에서 생성/전달하기에 컴포넌트 자체도 async/await 가능
 - **Chapter**
@@ -52,7 +52,7 @@ npx create-next-app@latest 프로젝트이름
 
 `Client Function` 과 같은 환경이기에 동일한 특징을 갖고있습니다. (자세한 내용은 참조)
 
-**특징**
+**⚬ 특징**
 
 - `'use client'` 필수
 - **Chapter**
@@ -70,7 +70,7 @@ npx create-next-app@latest 프로젝트이름
 
 ### 3. Shared Function
 
-**특징**
+**⚬ 특징**
 
 - `async/await` 가능(client/server 상관없음)
 - `Client | Server Component` 실행 위치에 따라 결정
@@ -99,7 +99,7 @@ npx create-next-app@latest 프로젝트이름
 3. `import 'server-only'` 사용
 4. `use server` → ⚠️ 서버 함수가 아닌 서버 액션으로 판단(서버 액션 in 서버 함수)
 
-**특징**
+**⚬ 특징**
 
 - Node.js 서버 환경에서 실행
 - DB/API/private logic 처리
@@ -145,7 +145,7 @@ revalidatePath
 3. `클라이언트 요소 | API` 사용 → 사용을 위해 `'use client'` 필수
 4. 사실상 `'use client'` 사용
 
-**특징**
+**⚬ 특징**
 
 - 브라우저 환경에서 실행
 - `'use client'` 사용
@@ -208,7 +208,7 @@ useOptimistic
 
 그래서 반드시 해당 과정을 거쳐야하는데, 이 때 사용되는 개념이 `RPC` 입니다.
 
-**특징**
+**⚬ 특징**
 
 - 브라우저가 서버에게 함수 실행을 요청하고 결과를 돌려받는 구조
 - 코드 상으로는 함수 호출이지만 실제로는 네트워크 요청 발생
@@ -223,7 +223,7 @@ useOptimistic
 
 `Server 전용 요소/API` 가 없고, public env 만 사용한 API
 
-**특징**
+**⚬ 특징**  
 서버 진입점(Server Actions/Route Handler) 을 거치지 않고, 바로 `fetch` 로 연결
 
 ```tsx
@@ -242,7 +242,7 @@ export async function publicApi() {
 
 Client 에서도 호출 가능한 서버 함수
 
-**특징**
+**⚬ 특징**
 
 - `'use server'` 필수
 - 직접 접근 ❌
@@ -257,7 +257,7 @@ Client 에서도 호출 가능한 서버 함수
 - `변경` mutation 기반(POST) 최적화 → 생성/수정/삭제
 - `env` ✅ DB/private 를 포함한 모든 변수 사용 가능
 
-**진행**
+**⚬ 진행**
 
 ```
 개발자는 함수만 연결하면 되고
@@ -271,7 +271,7 @@ Client 에서도 호출 가능한 서버 함수
 등을 Next.js 가 자동 처리합니다.
 ```
 
-**흐름**
+**⚬ 흐름**
 
 ```txt
 Browser
@@ -285,7 +285,7 @@ Server Function
 DB
 ```
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```ts
 /* Server Action */
@@ -327,7 +327,7 @@ export default function ClientComponent() {
 
 HTTP endpoint 역할을 하는 서버 진입점
 
-**특징**
+**⚬ 특징**
 
 - 명시적 HTTP API 호출 방식
 - 개발자가 직접 API endpoint 를 만들고, 직접 HTTP 요청을 보내는 구조
@@ -339,7 +339,7 @@ HTTP endpoint 역할을 하는 서버 진입점
 - `조회` URL 기반(GET) 최적화 → 검색/필터/페이징
 - `env` ✅ DB/private 를 포함한 모든 변수 사용 가능
 
-**진행**
+**⚬ 진행**
 
 ```
 개발자가 직접
@@ -361,7 +361,7 @@ HTTP endpoint 역할을 하는 서버 진입점
 을 작성합니다.
 ```
 
-**흐름**
+**⚬ 흐름**
 
 ```txt
 Browser
@@ -375,7 +375,7 @@ Server Function
 DB
 ```
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```
 ├─app
@@ -500,14 +500,14 @@ Route Handler 는 사실상 `상태 변경 → 새로운 화면` 이다.
 
 #### 1. useFormStatus
 
-**특징**
+**⚬ 특징**
 
 - 현재 form submit 상태
 - props drilling 없음
 - 복잡한 form 내부의 깊은 컴포넌트에서 현재 form 의 submit 상태 확인 가능
 - `주 사용처` 버튼 disable/loading
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```tsx
 export default function Page() {
@@ -529,12 +529,12 @@ export function SubmitButton() {
 
 #### 2. useActionState
 
-**특징**
+**⚬ 특징**
 
 - 해당 action state transition 상태
 - `주 사용처` form validation / action 연결
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```tsx
 'use client'
@@ -611,7 +611,7 @@ export default function Page() {
 
 비동기 작업 실행 시, 작업은 백그라운드에서 실행하고 화면 UI 는 유지하여 UX 향상
 
-**특징**
+**⚬ 특징**
 
 - UI blocking 완화(버튼 클릭해도 UI 유지)
 - 낮은 우선순위 업데이트 처리
@@ -620,7 +620,7 @@ export default function Page() {
 - 필요 시 낙관적 업데이트(useOptimistic) 와 함께 사용
 - 중복 클릭 방지 로직이 필요하다. (ex: disable)
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```tsx
 'use client'
@@ -721,7 +721,7 @@ HTML 전달 이전 Server 에서 초기 데이터 셋팅
 
 - `SSR` SEO 유리 / 초기 렌더링
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```tsx
 import {
@@ -782,7 +782,7 @@ hook 에서 사용했기 때문에 Client 에서 렌더링되어 prerender 영�
 > > Route Handler → Client 에서 Server Function 호출은 원래 불가능  
 > > 하지만 서버 진입점(RPC) 으로 인해 Public API(Shared Function) 호출과 동일하게 가능
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```tsx
 'use client'
@@ -815,7 +815,7 @@ hook 에서 사용했기 때문에 Client 에서 렌더링되어 prerender 영�
 > > Route Handler → Client 에서 Server Function 호출은 원래 불가능  
 > > 하지만 서버 진입점(RPC) 으로 인해 Public API(Shared Function) 호출과 동일하게 가능
 
-**사용 방식**
+**⚬ 사용 방식**
 
 ```tsx
 'use client'
@@ -849,7 +849,7 @@ export default function Page() {
 
 필요 시 낙관적 업데이트(onMutate) 와 함께 사용
 
-**사용 방식**
+**⚬ 사용 방식**
 
 **`form action`**  
 단순 form action
@@ -963,9 +963,9 @@ export default function Page() {
 
 > Server Action 안에서 Client Hook 결과물인 mutate 호출 불가
 
-### Overview
+## Overview
 
-**서버 진입점(RPC)**
+**⚬ 서버 진입점(RPC)**
 
 | 항목                    | Server Actions                                 | Route Handler                                    |
 | ----------------------- | ---------------------------------------------- | ------------------------------------------------ |
@@ -984,28 +984,485 @@ export default function Page() {
 | revalidatePath/redirect | 자동                                           | 수동                                             |
 | 인증/보안               | server actions 함수 내부에서 auth 검증 필수    | route 내부/middleware(proxy) 에서 auth 검증 필수 |
 
-**기술 스택**
+**⚬ 기술 스택**
 
-| 항목             | useFormStatus          | useActionState                   | prefetchQuery             | useQuery               | useSuspenseQuery       | useMutation            | useTransition              |
-| ---------------- | ---------------------- | -------------------------------- | ------------------------- | ---------------------- | ---------------------- | ---------------------- | -------------------------- |
-| 실행 환경        | Client                 | Client                           | Server \| Client          | Client                 | Client                 | Client                 | Client                     |
-| 메인             | form                   | Server Actions                   | Server \| Client Function | Client Function        | Client Function        | Client Function        | Client Function            |
-| 실행 트리거      | form submit            | Server Action                    | queryFn                   | queryFn                | queryFn                | mutationFn             | startTransition            |
-| 필수             | 상위 form              | Server Actions                   | queryKey                  | queryKey               | queryKey               | queryKey               | async/await                |
-| import           | react-dom              | react                            | react-query               | react-query            | react-query            | react-query            | react                      |
-| 입력             | 실행 컴포넌트 위치     | reducerAction, initialState      | queryOptions              | queryOptions           | queryOptions           | mutationOptions        | callback                   |
-| 출력             | pending, data          | state, dispatchAction, isPending | Promise                   | data, isLoading, error | data                   | mutate                 | isPending, startTransition |
-| 용도             | 변경                   | 변경                             | 조회                      | 조회                   | 조회                   | 변경                   | 조회/변경                  |
-| 주 사용처        | 버튼 disable / loading | form validation / action 연결    | 초기 데이터               | 일반 조회              | 초기 렌더링 + Suspense | 변경                   | 좋아요/토글/버튼 disable   |
-| pending 범위     | Server Action 완료     | Server Action 완료 + state 반영  | prefetch 완료             | fetch 완료             | suspense resolve       | mutation 완료          | callback 완료              |
-| HTML 기본 동작   | ✅ browser form 동작   | ✅ browser form 동작             | ❌ 미사용                 | ❌ 미사용              | ❌ 미사용              | ❌ 미사용              | ❌ 미사용                  |
-| JS 비활성화 대응 | ✅ form submit 가능    | ✅ Server Action 가능            | ❌ 불가                   | ❌ 불가                | ❌ 불가                | ❌ 불가                | ❌ 불가                    |
-| SEO              | ✅ SSR                 | ✅ SSR                           | ✅ SSR                    | ⚠️ CSR                 | ✅ SSR                 | ❌ 불가                | ❌ 불가                    |
-| 캐싱             | ❌ 불가                | ❌ 불가                          | ✅ 가능                   | ✅ 가능                | ✅ 가능                | ⚠️ 부분적(무효화 필요) | ❌ 미사용                  |
+| 항목             | useFormStatus          | useActionState                   | prefetchQuery             | useQuery               | useSuspenseQuery       | useMutation                                 | useTransition                   |
+| ---------------- | ---------------------- | -------------------------------- | ------------------------- | ---------------------- | ---------------------- | ------------------------------------------- | ------------------------------- |
+| 실행 환경        | Client                 | Client                           | Server \| Client          | Client                 | Client                 | Client                                      | Client                          |
+| 메인             | form                   | Server Actions                   | Server \| Client Function | Client Function        | Client Function        | Client Function                             | Client Function                 |
+| 실행 트리거      | form submit            | Server Action                    | queryFn                   | queryFn                | queryFn                | mutationFn                                  | startTransition                 |
+| 필수             | 상위 form              | Server Actions                   | queryKey                  | queryKey               | queryKey               | queryKey                                    | async/await                     |
+| import           | react-dom              | react                            | react-query               | react-query            | react-query            | react-query                                 | react                           |
+| 입력             | 실행 컴포넌트 위치     | reducerAction, initialState      | queryOptions              | queryOptions           | queryOptions           | mutationOptions                             | callback                        |
+| 출력             | pending, data          | state, dispatchAction, isPending | Promise                   | data, isLoading, error | data                   | mutate, mutateAsync, isPending, data, error | isPending, startTransition      |
+| 용도             | 변경                   | 변경                             | 조회                      | 조회                   | 조회                   | 변경                                        | 조회/변경                       |
+| 주 사용처        | 버튼 disable / loading | form validation / action 연결    | 초기 데이터               | 일반 조회              | 초기 렌더링 + Suspense | 변경                                        | 좋아요/북마크/토글/버튼 disable |
+| pending 범위     | Server Action 완료     | Server Action 완료 + state 반영  | prefetch 완료             | fetch 완료             | suspense resolve       | mutation 완료                               | callback 완료                   |
+| HTML 기본 동작   | ✅ browser form 동작   | ✅ browser form 동작             | ❌ 미사용                 | ❌ 미사용              | ❌ 미사용              | ❌ 미사용                                   | ❌ 미사용                       |
+| JS 비활성화 대응 | ✅ form submit 가능    | ✅ Server Action 가능            | ❌ 불가                   | ❌ 불가                | ❌ 불가                | ❌ 불가                                     | ❌ 불가                         |
+| SEO              | ✅ SSR                 | ✅ SSR                           | ✅ SSR                    | ⚠️ CSR                 | ✅ SSR                 | ❌ 불가                                     | ❌ 불가                         |
+| 캐싱             | ❌ 불가                | ❌ 불가                          | ✅ 가능                   | ✅ 가능                | ✅ 가능                | ⚠️ 부분적(무효화 필요)                      | ❌ 미사용                       |
 
-mutate, mutateAsync, isPending, data, error
+---
 
-좋아요/북마크/토글/버튼 disable
+## Caution
+
+### Next/Form
+
+`<form action>` 최적화 Next.js 제공 라이브러리
+
+**⚬ 기존 form 과의 차이점**
+
+- `화면 미리 불러오기` 로딩 UI의 프리페칭 가능
+- `깜빡임 없음` form 제출 시 부드러운 페이지 전환
+- `자동 이벤트 처리` preventDefault() 기본 수행
+- `queryString` name 에 맞춰 자동으로 연결 → ex: url?param1=param1&param2=param2
+
+```tsx
+import Form from 'next/form'
+;<Form action="string | function" />
+```
+
+| 항목       | 설명                                                               | Type                                   |
+| ---------- | ------------------------------------------------------------------ | -------------------------------------- |
+| action(\*) | string(이동 URL) \| function(함수 호출 - replace/scroll 특성 무시) | string(URL) \| function(Server Action) |
+| replace    | 뒤로 가기 시, history 유지 여부(true: push, false: replace)        | boolean                                |
+| scroll     | 기존 스크롤 위치 고정 여부                                         | boolean                                |
+| prefetch   | UI 미리 불러오기 여부                                              | boolean                                |
+
+### Radix UI
+
+**⚬ Radix UI**
+
+component 기능적 부분만 제공하고, 시각적인 부분은 제공하지 않는  
+즉, 헤드리스(headless) UI component 라이브러리입니다.
+
+- 기능(behavior) 제공 → 행동, 접근성, 상태 관리 등
+- 디자인(style) 미제공 → 스타일링, 디자인
+
+```txt
+- `Primitive` Radix UI 에서 기본적이고 근본적인 ui components 를 의미
+- 모든 component 는 WAI-ARIA 디자인 패턴을 준수
+- component 간 상태 공유를 위한 일관된 내장 콘텍스트(Context) API 를 제공
+- 각 component 는 자체적으로 내부 상태를 관리하므로, 상태 관리 코드를 직접 작성할 필요 없음
+- 어떤 방식으로도 스타일(CSS)을 적용 가능
+- 다양한 기능 지원
+  - 포커스 스코프(FocusScope)
+  - 비주얼 슬롯(Slot)
+  - 키보드 내비게이션
+  - 스크린 리더 호환
+  - Controlled / Uncontrolled 모두 지원
+  - animation 특수 이벤트와 상태 제공(다른 다양한 animation 라이브러리와 통합 가능)
+```
+
+[출처](https://spare8433.tistory.com/221)
+
+**⚬ shadcn/ui**
+
+`Radix UI` 를 기반으로 기능성과 접근성을 유지하면서, 디자인과 스타일을 추가시켜 만든 component 모음입니다.
+
+- Radix UI + Tailwind CSS + Design System
+
+#### Radix Select
+
+native select 가 아니라 Portal 기반의 Overlay
+
+> `Portal` component 를 DOM 트리의 다른 위치에 렌더링 → Dialog/Popover/SelectContent/Tooltip
+
+**⚬ Native**
+
+- 브라우저 기본 UI 사용
+- SSR 즉시 렌더링 가능(option 이 SSR HTML 에 바로 포함)
+- hydration 이전에도 동작 가능
+- JS 없이도 동작 가능
+
+```html
+<select>
+  <option>서울</option>
+</select>
+```
+
+**⚬ Portal**
+
+- hydration 이후에만 동작 가능
+- JS 의존 → `portal 생성 → options 생성 → 이벤트 연결` 과정 이후 정상 동작
+  - defaultValues 나 data 문제 아님 → 하드코딩 데이터에서도 동일
+
+```tsx
+import { Select as SelectPrimitive } from 'radix-ui'
+;<Select>
+  <SelectTrigger />
+  <SelectContent>
+    <SelectItem />
+  </SelectContent>
+</Select>
+```
+
+**⚬ ⚠️ hydration 이전**
+
+- placeholder 만 존재(options DOM 없음)
+- SelectContent/SelectItem 없음
+
+```html
+<button role="combobox">
+  <span>- 선택 -</span>
+</button>
+```
+
+**⚬ ✅ hydration 이후**
+
+- Portal 초기화
+- options 생성
+- 이벤트 연결
+  - floating position 계산
+  - keyboard navigation 초기화
+  - focus management 연결
+- Select 완성
+
+**⚬ 💻 해결 방법**
+
+1. 그대로 사용  
+   실제로 가장 일반적입니다.  
+   SelectContent 는 원래 닫혀 있으므로 placeholder 만 보이더라도  
+   대부분 프로젝트에서 문제가 없으며, UX 문제로 잘 이어지지 않습니다.
+
+2. dynamic + ssr:false
+
+- hydration 완료 전에는 Select 자체를 렌더링하지 않음
+- hydration mismatch 가 심하거나 browser API 의존성이 강할 때만 사용
+  - SEO 손실(initial HTML 없음)
+
+```
+hydration 이전 → loading skeleton 출력
+hydration 이후 → Select 렌더링
+```
+
+3. useEffect 방식
+
+```tsx
+const [mounted, setMounted] = React.useState(false)
+// 단순 useEffect 만 사용 시, 경고가 발생할 수 있음
+React.useEffect(() => {
+  setMounted(true)
+}, [])
+```
+
+```tsx
+React.useEffect(() => {
+  const frame = window.requestAnimationFrame(() => {
+    setMounted(true)
+  })
+  return () => window.cancelAnimationFrame(frame)
+}, [])
+```
+
+4. native select 사용
+
+### Query String
+
+현재 URL 의 쿼리스트링
+
+- `Server` searchParams
+- `Client` hooks
+  - `react` use
+  - `next/navigation` useRouter, usePathname, useSearchParams
+  - `nuqs` useQueryStates
+- `Shared` qs
+
+#### searchParams
+
+`page.tsx` 는 `searchParams` prop 을 받을 수 있습니다.
+
+```tsx
+export default async function Page({
+  searchParams
+}: {
+  searchParams: Promise<Record<string, string | undefined>>
+}) {
+  const resolvedSearchParams = await searchParams
+}
+```
+
+> /snacks?category=cookie&category=bread
+
+```tsx
+'use client'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+export default function Page() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  searchParams.get('category') // 'cookie' → 첫 번째 값만 반환
+  searchParams.getAll('category') // ['cookie', 'bread'] → 같은 key의 모든 값 반환
+  searchParams.has('category') // key 존재 여부 반환
+}
+```
+
+**⚬ zod 활용 예제**
+
+```ts
+import { z } from 'zod'
+
+const searchSchema = z.object({
+  page: z.coerce.number().int().positive().default(1),
+  keyword: z.string().default('')
+})
+
+type RawSearchParams = {
+  [key: string]: string | string[] | undefined
+}
+
+function firstValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value
+}
+
+export function parseSearchParams(searchParams: RawSearchParams) {
+  return searchSchema.parse({
+    page: firstValue(searchParams.page),
+    keyword: firstValue(searchParams.keyword)
+  })
+}
+
+export default async function Page({
+  searchParams
+}: {
+  searchParams: Promise<{
+    [key: string]: string | string[] | undefined
+  }>
+}) {
+  const params = parseSearchParams(await searchParams)
+}
+```
+
+#### qs
+
+쿼리스트링 문자열을 파싱(parse) 하거나 생성(stringify) 하는 라이브러리
+
+| 역할           | 설명                                            |
+| -------------- | ----------------------------------------------- |
+| `stringify`    | 객체를 query string 문자열로 변환               |
+| `parse`        | query string 문자열을 객체로 변환               |
+| 배열 처리      | `ids=1&ids=2`, `ids[]=1&ids[]=2` 같은 형식 지원 |
+| 중첩 객체 처리 | `{ filter: { brand: 'A' } }` 같은 구조 지원     |
+| 빈 값 제거     | `skipNulls`, 직접 필터링 등으로 처리 가능       |
+| 인코딩 처리    | 한글, 공백, 특수문자 URL 인코딩 처리            |
+
+```ts
+import qs from 'qs'
+
+function removeEmptyParams<T extends Record<string, unknown>>(params: T) {
+  return Object.fromEntries(
+    Object.entries(params).filter(
+      ([, value]) => value !== '' && value !== null && value !== undefined
+    )
+  )
+}
+
+export async function getApi(params: SearchParams) {
+  const queryString = qs.stringify(removeEmptyParams(params), {
+    // skipNulls: true,
+    addQueryPrefix: true
+  })
+  const response = await axios.get(`/url${queryString}`).then(res => res.data)
+  return response
+}
+```
+
+> 프레임워크에 의존하지 않는 단순 유틸리티이므로 어디서든 사용할 수 있습니다.
+
+1. 객체를 query string 으로 변환
+
+```ts
+import qs from 'qs'
+const queryString = qs.stringify({
+  page: 1,
+  keyword: '초코',
+  category: 'cookie'
+})
+```
+
+> page=1&keyword=%EC%B4%88%EC%BD%94&category=cookie
+
+2. query string 을 객체로 변환
+
+```ts
+qs.parse('page=1&keyword=초코&category=cookie')
+```
+
+주의할 점은 `qs.parse()` 결과는 기본적으로 문자열 기반입니다.  
+즉, 숫자 `1` 이 아니라 문자열 `'1'` 로 들어옵니다.  
+타입 변환은 직접 하거나 zod 같은 검증 도구와 함께 처리하는 것이 좋습니다.
+
+3. null 값 제거
+
+```ts
+import qs from 'qs'
+
+const queryString = qs.stringify(
+  {
+    page: 1,
+    keyword: '',
+    brand: null,
+    category: 'cookie'
+  },
+  {
+    skipNulls: true
+  }
+)
+```
+
+> page=1&keyword=&category=cookie
+
+`skipNulls` null 은 제거하지만, 빈 문자열 `''` 은 제거하지 않습니다.
+
+4. 배열 query string 처리
+
+```ts
+const queryString = qs.stringify({
+  categories: ['cookie', 'bread', 'drink']
+})
+
+const queryString = qs.stringify(
+  {
+    categories: ['cookie', 'bread', 'drink']
+  },
+  {
+    arrayFormat: 'repeat'
+  }
+)
+```
+
+> categories=cookie&categories=bread&categories=drink
+
+```ts
+const queryString = qs.stringify(
+  {
+    categories: ['cookie', 'bread', 'drink']
+  },
+  {
+    arrayFormat: 'brackets'
+  }
+)
+```
+
+> categories[]=cookie&categories[]=bread&categories[]=drink
+
+#### nuqs
+
+`Next/React` 에서 쿼리스트링을 React 상태처럼 관리하기 위한 라이브러리
+
+| 역할                    | 설명                                              |
+| ----------------------- | ------------------------------------------------- |
+| URL query 상태 관리     | query string 을 React state 처럼 사용             |
+| 타입 제공               | `parseAsString`, `parseAsInteger` 등              |
+| 기본값 설정             | `.withDefault()` 지원                             |
+| URL 업데이트            | `setSearchParams()` 로 URL 변경                   |
+| Next.js App Router 연동 | searchParams, Server Component 재실행과 연결 가능 |
+| history 제어            | `replace`, `push` 선택 가능                       |
+| shallow 제어            | 서버 재실행 여부 제어                             |
+| debounce/throttle       | URL 업데이트 빈도 제한                            |
+| urlKeys                 | 내부 state 이름과 실제 URL key 분리               |
+
+**⚬ qs ↔ nuqs 차이**
+
+| 구분         | qs                             | nuqs                              |
+| ------------ | ------------------------------ | --------------------------------- |
+| 목적         | query string 문자열 변환       | URL query 를 React 상태로 관리    |
+| 주요 기능    | `parse`, `stringify`           | `useQueryState`, `useQueryStates` |
+| React 의존성 | 없음                           | 있음                              |
+| Next.js 연동 | 직접 없음                      | App Router 연동                   |
+| 상태 관리    | 안 함                          | 함                                |
+| URL 변경     | 직접 문자열 만들어 이동해야 함 | setter 로 URL 변경                |
+| 타입 파싱    | 직접 처리                      | parser 제공                       |
+| 기본값       | 직접 처리                      | `.withDefault()`                  |
+| shallow 제어 | 없음                           | 있음                              |
+
+```ts
+'use client'
+import { parseAsInteger, parseAsString, useQueryStates } from 'nuqs'
+
+export const searchParams = {
+  keyword: parseAsString, // 직접 사용 시 null 반환
+  page: parseAsInteger.withDefault(1),
+  brand: parseAsString.withDefault(''),
+  category: parseAsString.withDefault('').withOptions({
+    // 개별 옵션 가능
+    shallow: false
+  })
+}
+
+/**
+ * @param shallow 서버 재실행 여부(default: true) → URL 은 변경되지만 서버 컴포넌트는 재실행 되지 않음
+ * @param history 브라우저 history 기록 여부(default: 'replace') → replace/push
+ * @param scroll  URL 변경 후 스크롤 위치 여부(default: false)
+ * @param clearOnDefault 기본값 유지 여부(default: true)
+ * @param limitUrlUpdates 고빈도 업데이트 제한(default: 'throttle') → debounce/throttle
+ * @param startTransition useTransition 연동 가능(비동기 백그라운드)
+ * @param urlKeys 내부 state 이름과 URL key 분리(default: 동일)
+ */
+export function useSnackSearchParams() {
+  const [searchParams, setSearchParams] = useQueryStates(searchParams, {
+    /**
+     * true:
+     * - URL 변경을 클라이언트에서만 갱신
+     * - Server Component page.tsx는 다시 실행되지 않음
+     *
+     * false:
+     * - URL 변경이 서버까지 전달됨
+     * - page.tsx 가 다시 실행되어 서버 prefetch 까지 재실행하고, searchParams 가 갱신됨
+     * - Server Component 렌더링이 다시 실행될 수 있음
+     */
+    shallow: false,
+    /**
+     * replace:
+     * - 현재 history를 교체
+     * - 검색, 필터, 정렬, 페이징에 일반적으로 적합
+     *
+     * push:
+     * - history를 새로 추가
+     * - 단계 이동, 탭 이동에 일반적으로 적합
+     */
+    history: 'replace',
+    /**
+     * true:
+     * - URL 변경 후 페이지 상단으로 스크롤(window.scrollTo(0, 0) 적용)
+     *
+     * false:
+     * - URL 변경 후에도 현재 스크롤 위치 유지
+     */
+    scroll: false,
+    /**
+     * true:
+     * - 값이 기본값과 같으면 URL에서 제거
+     *
+     * false:
+     * - 기본값도 URL에 유지
+     */
+    clearOnDefault: true,
+    /**
+     * import { debounce, throttle } from 'nuqs'
+     * 300ms 뒤 1번만 URL 변경
+     */
+    limitUrlUpdates: debounce(300),
+    // startTransition 연동 가능(shallow: false 일 때, pending/loading 상태 처리)
+    /* const [isPending, startTransition] = useTransition()
+    const [params, setParams] = useQueryStates(
+      {
+        shallow: false,
+        startTransition
+      }
+    ) */
+    // url: ?q=hello / param: params.keyword
+    urlKeys: { keyword: 'q' }
+  })
+
+  return {
+    searchParams,
+    setSearchParams
+  }
+}
+```
 
 ---
 
@@ -1804,7 +2261,7 @@ vercel 에서 만든 프레임워크기 때문에, vercel 로 배포하는 것�
 
 ---
 
-## 💻 Tip
+## Tip
 
 - `Prettier` 코드 스타일 및 포맷팅 관리, 일관된 코드 스타일을 적용 가능(Code formatter)
 - `ESLint` 코드 품질 확인 및 버그, 안티패턴(Anti-pattern)을 감지
