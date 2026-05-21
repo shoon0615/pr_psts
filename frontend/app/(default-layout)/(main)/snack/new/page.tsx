@@ -10,47 +10,86 @@ import {
   CardTitle
 } from '@/shared/components/ui/card'
 import { Field } from '@/shared/components/ui/field'
+import {
+  Form,
+  FormInput,
+  FormSelect,
+  FormTextarea
+} from '@/shared/components/ui/custom/form'
+import { SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 
-import { Form, FormInput, FormSelect } from '@/shared/components/ui/custom/form'
-import { SubmitErrorHandler } from 'react-hook-form'
-
+import {
+  useSnackSearchOptions,
+  useCreateSnack
+} from '@/features/snack/hooks/useSnack'
 import {
   createSnackSchema,
   CreateSnackInput
 } from '@/features/snack/schema/snack.schema'
-import { formAction } from '@/features/snack/actions/snack.action'
-
-import { useToast } from '@/shared/hooks/use-toast'
-import { toast as tt } from 'sonner'
+import { useRouter } from 'next/navigation'
+import { toast } from '@/shared/lib/toast'
 
 export default function SnackNew() {
-  const { toast } = useToast()
+  const router = useRouter()
+  const { brands, categories } = useSnackSearchOptions()
+  const { mutate, mutateAsync, isPending, isError, error } = useCreateSnack()
+
   const defaultValues = {
     title: '',
     brand: '',
     category: '',
-    price: 0,
-    description: ''
+    contents: '',
+    description: '',
+    price: 0
   }
 
-  // const onSubmit: SubmitHandler<CreateSnackInput> = formData => {
-  function onSubmit(formData: CreateSnackInput) {
+  /* const onSubmit: SubmitHandler<CreateSnackInput> = async formData => {
+    // mutate(formData)
+    // await mutateAsync(formData)
+
+    // toast.success('제출 성공')
+    // toast.successAction('제출 성공')
+
+    // const promise = mutateAsync(formData)
+    // toast.promise(promise)
+    // toast.promise(promise, {
+    //   loading: '등록 중...',
+    //   // success: '등록 완료',
+    //   success: (data: { brand: string }) =>
+    //     `${data.brand} toast has been added`,
+    //   error: (error: Error) => error.message
+    // })
+
+    try {
+      // const data = await promise
+      await promise
+
+      // router.push(`${decodeURIComponent('/snack')}`)
+      router.replace('/snack')
+    } catch (err) {
+      console.error('error', err)
+      // toast.error(error.message)
+      toast.error(err.message)
+    }
+  } */
+
+  async function onSubmit(formData: CreateSnackInput) {
     console.log('formData', formData)
-    // tt('제출 성공', { position: 'top-center' })
-    /* toast({
-      title: '제출 성공',
-      description: '과자가 성공적으로 등록되었습니다.'
-    }) */
-    formAction()
+    /* await toast.promise(
+      mutateAsync(formData, {
+        onSuccess: () => {
+          router.replace('/snack')
+        }
+      })
+    ) */
+
+    // 실패 시, Promise 를 reject(throw Error) 발생하여 Promise 하단 내용이 실행되지 않음
+    await toast.promise(mutateAsync(formData))
+    router.replace('/snack')
   }
 
   const onError: SubmitErrorHandler<CreateSnackInput> = formData => {
     console.log('Validation Errors:', formData)
-    /* toast({
-      variant: 'destructive',
-      title: '입력 확인 필요',
-      description: '모든 필드를 올바르게 입력해주세요.'
-    }) */
   }
 
   return (
@@ -60,7 +99,7 @@ export default function SnackNew() {
           schema={createSnackSchema}
           onSubmit={onSubmit}
           onError={onError}
-          id="form-rhf-demo"
+          id="form-snack-create"
           className="w-full sm:max-w-xl"
           options={{ defaultValues }}>
           {methods => (
@@ -82,11 +121,19 @@ export default function SnackNew() {
                   name="brand"
                   label="브랜드"
                   placeholder="- 선택 -"
-                  items={[
-                    { label: '중앙', value: 'central' },
-                    { label: '서울', value: 'seoul' },
-                    { label: '부산', value: 'busan' }
-                  ]}
+                  items={brands}
+                />
+                <FormSelect
+                  name="category"
+                  label="카테고리"
+                  placeholder="- 선택 -"
+                  items={categories}
+                />
+                <FormTextarea
+                  name="contents"
+                  label="상품 설명"
+                  placeholder="test"
+                  className="resize-none"
                 />
               </CardContent>
               <CardFooter>
@@ -95,15 +142,18 @@ export default function SnackNew() {
                   className="justify-center">
                   <Button
                     type="button"
+                    form="form-snack"
                     variant="outline"
                     onClick={() => methods.reset()}>
-                    Reset
+                    초기화
                   </Button>
                   <Button
                     type="submit"
-                    form="form-rhf-demo">
-                    Submit
+                    form="form-snack-create"
+                    disabled={isPending}>
+                    {isPending ? '등록 중..' : '등록'}
                   </Button>
+                  {/* {isError && <p>{error.message}</p>} */}
                 </Field>
               </CardFooter>
             </Card>

@@ -11,3 +11,8 @@ export interface BaseDetail {
   modifiedBy: string
   deletedAt: string
 }
+
+export type ApiResponse<T> = {
+  data: T
+  message: string
+}

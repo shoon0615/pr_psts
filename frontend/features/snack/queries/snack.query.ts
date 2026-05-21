@@ -1,23 +1,7 @@
 // features/Snack/queries/Snack.query.ts
 
-import {
-  selectAllSnack,
-  selectAllSnack2
-} from '@/features/snack/services/snack.service'
-
-/**
- * @param keyword 상품 ID
- * @param regionId 상품명
- * @param statusId 브랜드
- * @param page 상품 가격
- */
-// export interface SnackSearchParams {
-export type SnackSearchParams = {
-  keyword?: string
-  regionId?: string
-  statusId?: string
-  page?: number
-}
+import { api } from '@/shared/lib/axios/core'
+import { SnackSearchParams } from '@/features/snack/types/snack.type'
 
 export const snackKeys = {
   all: ['snack'] as const,
@@ -30,7 +14,6 @@ export const snackKeys = {
 
 export const snackListQueryOptions = (params: SnackSearchParams) => ({
   queryKey: snackKeys.list(params),
-  // queryFn: () => snackService.getSnacks(params)
-  // queryFn: () => selectAllSnack()
-  queryFn: () => selectAllSnack2(params)
+  // queryFn: () => api.get('/snack')
+  queryFn: () => api.get('/snack', { params }).then(res => res.data)
 })

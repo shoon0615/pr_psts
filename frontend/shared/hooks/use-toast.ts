@@ -1,3 +1,7 @@
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 'use client'
 
 // Inspired by react-hot-toast library
@@ -142,6 +146,10 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, 'id'>
 
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 function toast({ ...props }: Toast) {
   const id = genId()
 
@@ -171,6 +179,10 @@ function toast({ ...props }: Toast) {
   }
 }
 
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState)
 

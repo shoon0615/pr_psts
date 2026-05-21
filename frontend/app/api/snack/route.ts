@@ -1,64 +1,33 @@
-/** TODO: */
-/* export async function GET(request: Request) {
-  const url = new URL(request.url)
-  const title = url.searchParams.get('title')
-  const res = await fetch(
-    `https://omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${title}`
-  )
-  const data = await res.json()
-  return Response.json({ data })
-} */
-
-export async function GET(request: Request) {
-  return Response.json({ data: false })
-}
-
-/** TODO: */
-/* import { selectAllSnack } from '@/features/snack/services/snack.service'
-import { NextResponse } from 'next/server'
-export async function GET() {
-  const data = await selectAllSnack()
-  // return Response.json(data)
-  
-  const validated = SnackArraySchema.parse(data)  // 응답 검증 추가
-  // const validated = SnackArraySchema.safeParse(data)
-  return NextResponse.json(validated)
-} */
-
-/* --- */
-
-// app/api/snacks/route.ts = Server Action 도 동일
-/* import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { revalidatePath } from 'next/cache'
-import axios from 'axios'
-import { createSnackSchema } from '@/features/snacks/schemas/snack.schema'
-import { createSnackService } from '@/features/snacks/services/snack.service'
+import { snackSearchParamsCache } from '@/features/snack/types/snack.type'
+import { selectManySnack } from '@/features/snack/services/snack.service'
 
-export async function POST(request: NextRequest) {
+/**
+ * @description 목록 조회 (검색/필터/페이징)
+ * @example /api/snack?page=1&brand=001&category=002
+ */
+export async function GET(request: NextRequest) {
   try {
-    // 1. request parsing
-    const body = await request.json()
+    const { searchParams } = request.nextUrl
 
-    // 2. validation
-    const payload = createSnackSchema.parse(body)
+    /* const query = Object.fromEntries(searchParams.entries())
+    const payload = createSnackSchema.parse(query) */
+    // const payload = createSnackSchema.safeParse(query)
 
-    // 3. server logic
-    const result = await axios.post(`${process.env.PRIVATE_URL}`, payload).then(res => res.data)
+    // TODO: 검색/필터/페이징/정렬
+    // nuqs cache 를 사용하여 파싱 (타입 안전성 보장)
+    const query = Object.fromEntries(searchParams.entries())
+    const payload = snackSearchParamsCache.parse(query)
+    const data = await selectManySnack(payload)
 
-    // 4. revalidate/cache
-    revalidatePath('/snack')
+    // revalidatePath('/snack')
 
-    // 3~4. service
-    // const result = await createSnackService(payload)
-
-    // 5. response
-    return NextResponse.json(result, { status: 201 })
+    return NextResponse.json(data)
   } catch (error) {
-    // 6. error
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        // { message: 'Invalid request', errors: error.flatten() },
         { message: 'Invalid request', errors: z.treeifyError(error) },
         { status: 400 }
       )
@@ -70,11 +39,3 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-
-// features/snacks/services/snack.service.ts
-import 'server-only'
-export async function createSnackService(input: CreateSnackInput) {
-  const snack = await createSnackRepository(input)
-  revalidatePath('/snack')
-  return snack
-} */

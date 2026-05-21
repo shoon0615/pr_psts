@@ -1,4 +1,4 @@
-import { DefaultOptions } from '@tanstack/react-query'
+import { DefaultOptions, QueryClient } from '@tanstack/react-query'
 
 /**
  * react-query 설정
@@ -13,5 +13,15 @@ export const queryConfig = {
     refetchOnWindowFocus: false,
     retry: false,
     staleTime: 1000 * 60
+  },
+  mutations: {
+    retry: false,
+    networkMode: 'always'
   }
 } satisfies DefaultOptions
+
+export const makeQueryClient = () => {
+  return new QueryClient({
+    defaultOptions: queryConfig
+  })
+}

@@ -1,4 +1,4 @@
-import { api } from '@/shared/lib/axios'
+import { api } from '@/shared/lib/axios/core'
 import { Snack } from '@/features/snack/types/snack.type'
 
 const apiUrl = '/snacks'

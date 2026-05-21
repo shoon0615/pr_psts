@@ -2,12 +2,13 @@
 import { z } from 'zod'
 
 export const createSnackSchema = z.object({
-  /* title: z
+  title: z
     .string()
-    .min(5, 'title must be at least 5 characters.')
-    .max(32, 'title must be at most 32 characters.'), */
+    .min(2, 'title must be at least 2 characters.')
+    .max(32, 'title must be at most 32 characters.'),
   brand: z.string().min(1, 'Please select your brand.'),
-  category: z.string().min(1, 'Please select your category.')
+  category: z.string().min(1, 'Please select your category.'),
+  contents: z.string().optional()
   // price: z.coerce.number().min(1, 'price must be at least 1'),
   /* price: z.number().min(1, 'price must be at least 1'),
   description: z
@@ -17,6 +18,8 @@ export const createSnackSchema = z.object({
 })
 
 export type CreateSnackInput = z.infer<typeof createSnackSchema>
+/* export type CreateSnackInput = z.input<typeof createSnackSchema>
+export type CreateSnackOutput = z.output<typeof createSnackSchema> */
 
 export const createSnackArraySchema = z.array(
   z.object({

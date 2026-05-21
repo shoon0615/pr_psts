@@ -6,6 +6,7 @@ export async function getSnackList() {
   return await SnackService.getSnackList()
 }*/
 
+import { z } from 'zod'
 import {
   selectAllSnack,
   selectSnack,
@@ -13,19 +14,36 @@ import {
   updateSnack,
   deleteSnack
 } from '@/features/snack/services/snack.service'
+import {
+  createSnackSchema,
+  CreateSnackInput
+} from '@/features/snack/schema/snack.schema'
+import { Snack } from '@/features/snack/types/snack.type'
 
-import { delay } from '@/shared/lib/utils'
+// export async function createSnack(params: CreateSnackInput): Promise<Snack> {
+export async function createSnack(params: CreateSnackInput) {
+  try {
+    // const payload = createSnackSchema.parse(params)
+    // const payload = createSnackSchema.safeParse(query)
 
-export async function getSnackList() {
-  return await selectAllSnack()
-}
+    // revalidatePath('/snack')
 
-export async function getSnack(id: number) {
-  return await selectSnack(id)
-}
+    return await insertSnack(params)
+  } catch (error) {
+    console.error(error)
 
-export async function createSnack() {
-  return await insertSnack()
+    /* if (error instanceof z.ZodError) {
+        return NextResponse.json(
+          { message: 'Invalid request', errors: z.treeifyError(error) },
+          { status: 400 }
+        )
+      }
+  
+      return NextResponse.json(
+        { message: 'Internal server error' },
+        { status: 500 }
+      ) */
+  }
 }
 
 export async function modifySnack(id: number) {
@@ -34,9 +52,4 @@ export async function modifySnack(id: number) {
 
 export async function removeSnack(id: number) {
   return await deleteSnack(id)
-}
-
-export async function formAction() {
-  // await delay(3000)
-  console.log('test')
 }

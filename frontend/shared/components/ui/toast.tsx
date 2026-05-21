@@ -1,3 +1,7 @@
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 'use client'
 
 import * as React from 'react'
@@ -7,8 +11,16 @@ import { X } from 'lucide-react'
 
 import { cn } from '@/shared/lib/utils'
 
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 const ToastProvider = ToastPrimitives.Provider
 
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 const ToastViewport = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Viewport>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
@@ -40,6 +52,10 @@ const toastVariants = cva(
   }
 )
 
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 const Toast = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &

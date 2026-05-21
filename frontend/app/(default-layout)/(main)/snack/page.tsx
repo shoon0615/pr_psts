@@ -2,26 +2,25 @@ import Search from '@/app/(default-layout)/(main)/snack/_components/search'
 import SearchLoader from '@/app/(default-layout)/(main)/snack/_components/search-loader'
 import Loader from '@/app/(default-layout)/(main)/snack/_components/loader'
 import List from '@/app/(default-layout)/(main)/snack/_components/list'
+import { Button } from '@/shared/components/ui/button'
+import { Field } from '@/shared/components/ui/field'
+import Link from 'next/link'
 
-import {
-  QueryClient,
-  HydrationBoundary,
-  dehydrate
-} from '@tanstack/react-query'
-
-// import { SnackSearchParams } from '@/features/snack/types/snack.type'
-import { SnackSearchParams } from '@/features/snack/queries/snack.query'
+import { SnackSearchParams } from '@/features/snack/types/snack.type'
+import { makeQueryClient } from '@/shared/lib/react-query'
 import { prefetchSnackPage } from '@/features/snack/prefetch/snack.prefetch'
-import { queryConfig } from '@/shared/lib/react-query'
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
 
 export default async function Snack({
   searchParams
 }: {
-  // searchParams: Promise<Record<string, string | undefined>>
   searchParams: Promise<SnackSearchParams>
 }) {
   const params = await searchParams
-  const queryClient = new QueryClient({ defaultOptions: queryConfig })
+  // const queryClient = new QueryClient()
+  // const queryClient = new QueryClient({ defaultOptions: queryConfig })
+  const queryClient = makeQueryClient()
+  // const queryClient = useQueryClient()   // client 기능이라 사용 불가
   await prefetchSnackPage(queryClient, params)
 
   return (
@@ -31,6 +30,19 @@ export default async function Snack({
           {/* Filter and Search Section */}
           {/* <SearchLoader /> */}
           <Search />
+          {/* <Search searchParams={params} /> */}
+
+          <Field
+            orientation="horizontal"
+            className="justify-end">
+            <Button
+              type="button"
+              variant="outline"
+              className="mb-3 w-20 bg-gray-100 hover:bg-gray-200"
+              asChild>
+              <Link href="/snack/new">등록</Link>
+            </Button>
+          </Field>
 
           {/* List Section */}
           <Loader>

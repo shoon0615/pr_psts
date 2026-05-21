@@ -1,6 +1,6 @@
 'use client'
 
-// import React from 'react'
+import React from 'react'
 import {
   QueryClient,
   QueryClientProvider,
@@ -8,15 +8,9 @@ import {
 } from '@tanstack/react-query'
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { queryConfig } from '@/shared/lib/react-query'
+import { makeQueryClient } from '@/shared/lib/react-query'
 // import { NuqsAdapter } from 'nuqs/adapters/next/pages'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
-
-function makeQueryClient() {
-  return new QueryClient({
-    defaultOptions: queryConfig
-  })
-}
 
 let browserQueryClient: QueryClient | undefined = undefined
 
@@ -40,6 +34,7 @@ export default function AppProvider({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // const [queryClient] = React.useState(() => getQueryClient())
   const queryClient = getQueryClient()
 
   return (

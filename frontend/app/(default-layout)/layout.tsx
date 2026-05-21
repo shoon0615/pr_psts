@@ -9,7 +9,7 @@ import { SidebarProvider, SidebarInset } from '@/shared/components/ui/sidebar'
 import Sidebar from '@/shared/components/ui/custom/sidebar'
 import Header from '@/shared/components/ui/custom/header'
 import Footer from '@/shared/components/ui/custom/footer'
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/ui/custom/sonner'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
@@ -46,10 +46,17 @@ export default function RootLayout({
             <SidebarInset>
               <Header />
               {/* <Wrapper>
+                {children}
+              </Wrapper> */}
               {children}
-            </Wrapper> */}
-              {children}
-              <Toaster />
+              <Toaster
+                position="top-center"
+                richColors
+                expand
+                // closeButton
+                duration={2000}
+                visibleToasts={3}
+              />
               <Footer />
             </SidebarInset>
           </SidebarProvider>

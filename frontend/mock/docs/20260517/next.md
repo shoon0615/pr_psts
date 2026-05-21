@@ -2074,7 +2074,16 @@ export default async function PhotoPage({
 
 ## Cache
 
+1. 서버 비용 감소
+2. 사용자 체감 속도 향상
+3. 중복 요청 제거
+4. SSR/RSC 를 현실적으로 운영 가능하게 만듦
+
+**⚬ 특징**
+
 - `'use cache'` 필수
+
+**⚬ 사용 방식**
 
 ```typescript
 /* next.config.ts */
@@ -2106,6 +2115,13 @@ export default function Component() {
   클라이언트가 캐시된 데이터를 사용하고, 서버가 백그라운드에서 데이터를 재생성하는 모델  
   지연 시간을 최소화해 성능과 사용자 경험을 최적화하는 캐싱 전략
 
+| API              | 대상 cache                                     | 사용 위치                    | 성격                                                   |
+| ---------------- | ---------------------------------------------- | ---------------------------- | ------------------------------------------------------ |
+| `revalidateTag`  | **Data Cache / Cache Component tag**           | Server Action, Route Handler | stale 처리(tag 기준). 다음 요청에서 갱신               |
+| `updateTag`      | **Data Cache / Cache Component tag**           | Server Action 전용           | 즉시 만료(tag 기준). 다음 요청은 stale 없이 fresh 대기 |
+| `refresh`        | **Client Router Cache**                        | Server Action 전용           | 현재 route 를 다시 서버에서 받아옴                     |
+| `revalidatePath` | **Full Route Cache + 해당 path 의 Data Cache** | Server Action, Route Handler | 페이지/레이아웃 재검증(path 기준)                      |
+
 ### RYW
 
 내가 방금 저장한 데이터가 즉시 조회되는 특성
@@ -2124,6 +2140,182 @@ export default function Component() {
 캐시 데이터 즉시 표시
 → 서버 재요청
 → 최신 데이터 교체
+```
+
+---
+
+> TODO: React Query 사용하면 cache 필요 없는듯??
+
+```ts
+// `Server` HTTP 요청 캐시
+fetch(url, {
+  next: {
+    tags: ['snacks']
+  }
+})
+```
+
+```ts
+// `Server` 함수 결과 캐시
+'use cache'
+```
+
+```ts
+// `Client` 클라이언트 상태 캐시
+useQuery()
+useSuspenseQuery()
+useMutation()
+```
+
+### 1. 왜 cache 가 필요한가?
+
+예를 들어:
+
+```ts
+await fetch('/api/snacks')
+```
+
+이 요청이 페이지 진입마다 발생한다고 가정하면:
+
+```txt
+사용자 1000명
+→ DB 조회 1000번
+→ SSR 렌더링 1000번
+→ 서버 비용 증가
+→ 응답 속도 저하
+```
+
+하지만 cache 를 사용하면:
+
+```txt
+최초 1번만 조회
+→ 결과 저장
+→ 이후 사용자들은 저장된 결과 재사용
+```
+
+즉:
+
+```txt
+DB/서버 부하 감소
+SSR 비용 감소
+응답 속도 증가(UX 향상) → 사용자 체감 성능 상승
+중복 요청 제거
+```
+
+### 2. Next.js 에서 cache 가 중요한 이유
+
+App Router 는 기본적으로:
+
+```txt
+React Server Components (RSC)
++
+SSR
++
+Streaming
+```
+
+기반입니다.
+
+즉 서버 렌더링이 매우 자주 발생합니다.
+
+그래서 cache 없으면:
+
+```txt
+페이지 진입할 때마다
+DB/API 호출
+→ 서버 비용 폭증
+```
+
+가능성이 큽니다.
+
+Next 가 기본적으로 fetch cache 를 aggressive 하게 사용하는 이유입니다.
+
+> 페이지 결과 자체 저장 → /snack
+>
+> > RSC 렌더링/HTML 생성 → 렌더링 없이 바로 반환  
+> > 뒤로가기 → 다시 서버를 가지 않고, 브라우저 memory 에서 즉시 복원
+
+### 3. Next.js cache 종류
+
+| cache               | 목적                    |
+| ------------------- | ----------------------- |
+| Request Memoization | 같은 요청 중복 제거     |
+| Data Cache          | fetch 결과 저장         |
+| Full Route Cache    | HTML/RSC 결과 저장      |
+| Router Cache        | 브라우저 이동 속도 향상 |
+
+### 4. Request Memoization
+
+같은 render 중 중복 fetch 제거
+
+예제:
+
+```ts
+await getUser()
+await getUser()
+await getUser()
+
+const getUser = async () => {
+  await fetch('/api/snacks', {
+    next: {
+      revalidate: 3600 // 1시간 동안 결과 재사용
+    }
+  })
+}
+```
+
+내부:
+
+```ts
+fetch('/api/user')
+```
+
+실제로는:
+
+```txt
+1번만 요청
+나머지는 메모리 재사용
+```
+
+### 5. 사용 예제
+
+**cache 적극 사용**
+
+```
+상품 목록
+카테고리
+공통 코드
+게시판 리스트
+검색 조건
+정적 페이지
+```
+
+**cache 조심**
+
+```
+실시간 데이터
+주식
+채팅
+알림
+로그인 사용자 정보
+결제 상태
+```
+
+```ts
+// 조회
+fetch(url, {
+  next: {
+    tags: ['snacks'],
+    revalidate: 3600
+  }
+})
+
+// 수정 후
+updateTag('snacks')
+refresh()
+
+// 페이지 갱신 필요
+revalidatePath('/snack')
 ```
 
 ---

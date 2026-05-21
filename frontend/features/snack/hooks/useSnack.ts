@@ -1,69 +1,57 @@
 'use client'
 
-// route 이용 방법(HTTP 요청)
-import { api } from '@/shared/lib/axios'
-
-// server actions 이용 방법
-import { createSnack } from '@/features/snack/actions/snack.action'
-
-// service 이용 방법
 import {
-  selectAllSnack,
-  insertSnack
-} from '@/features/snack/services/snack.service'
-
-import {
-  useQuery,
   useSuspenseQuery,
   useMutation,
   useQueryClient
 } from '@tanstack/react-query'
+import { useQueryStates } from 'nuqs'
 
-import {
-  parseAsInteger,
-  parseAsString,
-  useQueryStates,
-  inferParserType,
-  debounce
-} from 'nuqs'
-
-import {
-  SnackSearchParams,
-  snackListQueryOptions
-} from '@/features/snack/queries/snack.query'
-
+import { snackSearchParamsSchema } from '@/features/snack/types/snack.type'
 import {
   brandQueryOptions,
   categoryQueryOptions
 } from '@/features/common/queries/common.query'
+import {
+  snackKeys,
+  snackListQueryOptions
+} from '@/features/snack/queries/snack.query'
+import { createSnack } from '@/features/snack/actions/snack.action'
 
-// TODO:
-export function useSnackList(params: SnackSearchParams) {
-  return useQuery(snackListQueryOptions(params))
+/** 검색 */
+export function useSnackSearchParams() {
+  const [searchParams, setSearchParams] = useQueryStates(
+    snackSearchParamsSchema
+  )
+
+  return {
+    searchParams,
+    setSearchParams
+  }
 }
 
-export function useSnackList2() {
+export function useSnackSearchOptions() {
+  const brandsQuery = useSuspenseQuery(brandQueryOptions())
+  const categoriesQuery = useSuspenseQuery(categoryQueryOptions())
+
+  return {
+    brands: brandsQuery.data,
+    categories: categoriesQuery.data
+  }
+}
+
+/** 조회 */
+export function useSnackList() {
   const { searchParams } = useSnackSearchParams()
-  // return useQuery(snackListQueryOptions(searchParams))
   return useSuspenseQuery(snackListQueryOptions(searchParams))
 }
 
-export function useSnacks() {
-  return useSuspenseQuery({
-    queryKey: ['snack'],
-    // queryFn: api.get<Snack[]>(`${apiUrl}`).then(res => res.data)
-    queryFn: selectAllSnack
-  })
-}
-
-function useCreateSnack() {
+/** 생성 */
+export function useCreateSnack() {
   const queryClient = useQueryClient()
-
   return useMutation({
+    // networkMode: 'always',   // queryConfig 에서 전역 적용으로 변경
     mutationFn: createSnack,
-    onSuccess: () => {
-      // queryClient.invalidateQueries(['snack'])   // 자동 refetch
-    }
     /* onMutate: async newSnack => {
       // 낙관적 업데이트
       await queryClient.cancelQueries(['snack'])
@@ -74,71 +62,20 @@ function useCreateSnack() {
 
       return { prev }
     } */
-  })
-
-  // <button onClick={() => mutation.mutate({ title: 'hi' })}>등록</button>
-}
-
-/* export function useCreateSnack2() {
-  const queryClient = useQueryClient()
-
-  return useMutation({
-    // mutationFn: snackService.create,
-    mutationFn: insertSnack,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: snackKeys.lists()
-      })
+    onSuccess: async () => {
+      /**
+       * 이 key 로 시작하는 목록들은 전부 무효화 + 자동 refetch
+       * @example ['snack', 'list']
+       * @example ['snack', 'list', { page: 1, brand: '', category: '' }]
+       * @example ['snack', 'list', { page: 2, brand: '001', category: '' }]
+       */
+      await queryClient.invalidateQueries({ queryKey: snackKeys.lists() })
     }
+    /* onError: (error, newUser, context) => {
+      console.log('onError', error, newUser, context)
+    } */
+    /* onSettled: (data, error, newUser, context) => {
+      console.log('onSettled', data, error, newUser, context)
+    } */
   })
-} */
-
-// TODO:
-export const snackSearchParams = {
-  page: parseAsInteger.withDefault(1),
-  brand: parseAsString.withDefault(''),
-  category: parseAsString.withDefault('')
-}
-
-export function useSnackSearchParams() {
-  // const [searchParams, setSearchParams] = useQueryStates(snackSearchParams)
-  const [searchParams, setSearchParams] = useQueryStates(snackSearchParams, {
-    shallow: false
-  })
-
-  return {
-    searchParams,
-    setSearchParams
-  }
-}
-
-// hook 에서 직접 추출도 가능하지만 객체 기준으로 타입을 뽑는 방식이 더 효율적
-// export type SnackSearchParamsType = ReturnType<typeof useSnackSearchParams>['searchParams']
-export type SnackSearchParamsType = inferParserType<typeof snackSearchParams>
-
-// TODO:
-export function useSnackSearchOptions() {
-  const brandsQuery = useQuery(brandQueryOptions())
-  const categoriesQuery = useQuery(categoryQueryOptions())
-
-  return {
-    brands: brandsQuery.data ?? [],
-    categories: categoriesQuery.data ?? [],
-    isLoading: brandsQuery.isLoading || categoriesQuery.isLoading,
-    isError: brandsQuery.isError || categoriesQuery.isError
-  }
-}
-
-export function useSnackSearchOptions2() {
-  const brandsQuery = useSuspenseQuery(brandQueryOptions())
-  const categoriesQuery = useSuspenseQuery(categoryQueryOptions())
-
-  return {
-    /* brands: brandsQuery.data ?? [],
-    categories: categoriesQuery.data ?? [],
-    isLoading: brandsQuery.isLoading || categoriesQuery.isLoading,
-    isError: brandsQuery.isError || categoriesQuery.isError */
-    brands: brandsQuery.data,
-    categories: categoriesQuery.data
-  }
 }

@@ -276,6 +276,7 @@ features/
 │  │
 │  └─ types/
 │     └─ snack.type.ts              # DTO/Interfaces/Types Definition
+shared/
 ```
 
 ## 조회
@@ -291,7 +292,7 @@ useSnack.ts
   ↓
 snack.query.ts
   ↓
-fetch('/api/snack')
+axios('/api/snack')
   ↓ `Server` Route Handler
 route.ts
   ↓ `Server` request validation
@@ -300,7 +301,7 @@ snack.schema.safeParse
 snack.service
   ↓
 snack.repository
-  ↓
+  ↓ Prisma/fetch
 DB
 ```
 

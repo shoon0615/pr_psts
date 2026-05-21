@@ -1,22 +1,24 @@
 // import 'server-only'
 
-import { snackRepository as repository } from '@/features/snack/repositories/snack.api.repository'
-import { SnackSearchParams } from '@/features/snack/queries/snack.query'
+// import { snackRepository as repository } from '@/features/snack/repositories/snack.api.repository'
+import { snackRepository as repository } from '@/features/snack/repositories/snack.json.repository'
+import { SnackSearchParams } from '@/features/snack/types/snack.type'
+import { CreateSnackInput } from '@/features/snack/schema/snack.schema'
 
 export async function selectAllSnack() {
-  return await repository.findMany()
+  return await repository.findAll()
 }
 
-export async function selectAllSnack2(params: SnackSearchParams) {
-  return await repository.findMany2(params)
+export async function selectManySnack(params: SnackSearchParams) {
+  return await repository.findMany(params)
 }
 
 export async function selectSnack(id: number) {
   return await repository.findUnique(id)
 }
 
-export async function insertSnack() {
-  return await repository.create()
+export async function insertSnack(params: CreateSnackInput) {
+  return await repository.create(params)
 }
 
 export async function updateSnack(id: number) {

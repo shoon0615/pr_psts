@@ -14,7 +14,8 @@ export const delay = (ms: number) =>
 export const toQueryString = <T extends object>(params: T) => {
   return qs.stringify(removeEmptyQueryParams(params), {
     // skipNulls: true,   // null, undefined 만 제거하고 '' 는 제거되지 않음
-    addQueryPrefix: true
+    addQueryPrefix: true,
+    arrayFormat: 'repeat'
   })
 }
 

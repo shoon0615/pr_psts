@@ -1,3 +1,4 @@
+/** @deprecated `nuqs` 라이브러리 사용 이전 */
 'use client'
 import { useState } from 'react'
 import { Button } from '@/shared/components/ui/button'
@@ -13,7 +14,7 @@ import {
 } from '@/shared/components/ui/custom/form'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { getSearchParam } from '@/shared/lib/dummy/utils'
+import { getSearchParam } from '@/shared/lib/_dummy/utils'
 
 /** @deprecated `nuqs` 라이브러리 사용 이전 */
 export default function SnackSearch() {
@@ -31,7 +32,7 @@ export default function SnackSearch() {
   // react-query 는 searchParams 이라 setForm 으로 변해도 자동 검색 안됨
   const [form, setForm] = useState(queryParams)
 
-  // TODO: useHook 을 통해 return {} 로 변환??
+  // useHook 을 통해 return {} 로 변환??
   // const { data: brands = [] } = useQuery(brandQueryOptions())
   // const { data: categories = [] } = useQuery(categoryQueryOptions())
 

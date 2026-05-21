@@ -1,129 +1,181 @@
 'use client'
-import { useState } from 'react'
+
+import { useTransition } from 'react'
+import { Search, RotateCcw } from 'lucide-react'
 import { Button } from '@/shared/components/ui/button'
-import { Card, CardContent } from '@/shared/components/ui/card'
+import { Card, CardContent, CardFooter } from '@/shared/components/ui/card'
+import { Field, FieldGroup, FieldLabel } from '@/shared/components/ui/field'
+import { Input } from '@/shared/components/ui/input'
 import {
-  createSnackSchema,
-  CreateSnackInput
-} from '@/features/snack/schema/snack.schema'
-import { Form, FormSelect } from '@/shared/components/ui/custom/form'
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue
+} from '@/shared/components/ui/select'
+import { Spinner } from '@/shared/components/ui/spinner'
 
 import {
   useSnackSearchParams,
-  useSnackSearchOptions,
-  useSnackSearchOptions2
+  useSnackSearchOptions
 } from '@/features/snack/hooks/useSnack'
-
-import { SubmitErrorHandler } from 'react-hook-form'
+import { SnackSearchParams } from '@/features/snack/types/snack.type'
 
 export default function SnackSearch() {
   const { searchParams, setSearchParams } = useSnackSearchParams()
+  const { brands, categories } = useSnackSearchOptions()
+  const [isPending, startTransition] = useTransition()
+  const ALL = 'all'
 
-  // TODO: useHook 을 통해 return {} 로 변환??
-  // const { data: brands = [] } = useQuery(brandQueryOptions())
-  // const { data: categories = [] } = useQuery(categoryQueryOptions())
+  // 검색 실행
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    startTransition(() => {
+      const formData = new FormData(event.currentTarget)
+      const data = Object.fromEntries(
+        formData.entries()
+      ) as unknown as SnackSearchParams
 
-  // const { brands, categories, isLoading, isError } = useSnackSearchOptions()
-  const { brands, categories } = useSnackSearchOptions2()
-
-  const defaultValues = {
-    brand: '',
-    category: 'seoul'
-  }
-
-  function onSubmit(formData: CreateSnackInput) {
-    console.log('formData', formData)
-
-    setSearchParams({
-      page: 1,
-      brand: formData.brand,
-      category: formData.category
+      setSearchParams({
+        ...data,
+        // brand: data.brand === ALL ? '' : data.brand,
+        page: 1
+      })
     })
   }
 
-  const onError: SubmitErrorHandler<CreateSnackInput> = formData => {
-    console.log('Validation Errors:', formData)
+  // 검색 조건 초기화
+  const onReset = () => {
+    startTransition(() => {
+      // setSearchParams(null)
+      setSearchParams({
+        brand: null,
+        category: null,
+        contents: null,
+        page: 1
+      })
+    })
   }
 
   return (
     <div className="mb-4">
-      <Form
-        schema={createSnackSchema}
+      <form
         onSubmit={onSubmit}
-        onError={onError}
-        id="form-rhf-demo2"
+        /* key를 통해 URL 파라미터 변경 시 폼 내부 UI 강제 동기화 (Reset 대응) */
+        key={JSON.stringify(searchParams)}
         className="w-full">
-        {/* options={{ defaultValues: searchParams }} */}
-        {methods => (
-          <Card>
-            <CardContent className="p-4">
-              <div className="mb-4 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2 lg:grid-cols-2">
-                <FormSelect
-                  name="brand"
+        <Card>
+          <CardContent className="p-4 pb-2">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-3">
+              <FieldGroup className="contents">
+                {/* 브랜드 선택 */}
+                <SearchField
                   label="브랜드"
-                  placeholder="- 선택 -"
-                  items={brands}
-                />
+                  name="brand">
+                  <Select
+                    name="brand"
+                    defaultValue={searchParams.brand || ALL}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="- 선택 -" />
+                    </SelectTrigger>
+                    <SelectContent position="item-aligned">
+                      <SelectItem value="test">- 선택 -</SelectItem>
+                      <SelectItem value="all">전체</SelectItem>
+                      <SelectSeparator />
+                      {brands.map(brand => (
+                        <SelectItem
+                          key={brand.value}
+                          value={brand.value}>
+                          {brand.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </SearchField>
 
-                <FormSelect
-                  name="category"
+                {/* 카테고리 선택 */}
+                <SearchField
                   label="카테고리"
-                  placeholder="- 선택 -"
-                  // items={categories}
-                  items={[
-                    { label: '중앙', value: 'central' },
-                    { label: '서울', value: 'seoul' },
-                    { label: '부산', value: 'busan' }
-                  ]}
-                />
-              </div>
+                  name="category">
+                  <Select
+                    name="category"
+                    defaultValue={searchParams.category}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="- 선택 -" />
+                    </SelectTrigger>
+                    <SelectContent position="item-aligned">
+                      <SelectItem value="all">전체</SelectItem>
+                      <SelectSeparator />
+                      {categories.map(category => (
+                        <SelectItem
+                          key={category.value}
+                          value={category.value}>
+                          {category.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </SearchField>
 
-              <div className="mt-6 flex justify-center">
-                <Button className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="mr-2 h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path
-                      fillRule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  검색
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-      </Form>
+                {/* 검색어 입력 */}
+                <SearchField
+                  label="검색어"
+                  name="contents">
+                  <Input
+                    name="contents"
+                    defaultValue={searchParams.contents || ''}
+                    placeholder="검색어를 입력하세요"
+                  />
+                </SearchField>
+              </FieldGroup>
+            </div>
+          </CardContent>
+
+          <CardFooter className="flex justify-center gap-2 pt-0 pb-3">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onReset}
+              disabled={isPending}
+              className="px-3">
+              <RotateCcw className="mr-2 size-4" />
+              초기화
+            </Button>
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="px-4">
+              {isPending ? (
+                <Spinner className="mr-2 size-4" />
+              ) : (
+                <Search className="mr-2 size-4" />
+              )}
+              검색
+            </Button>
+          </CardFooter>
+        </Card>
+      </form>
     </div>
   )
 }
 
-/* 'use client'
-export default function Page() {
-  const [isPending, startTransition] = useTransition()
-  const { data, isFetching } = useSuspenseQuery({
-    queryKey: queryOptions,
-    queryFn: () => axios.get('/api/route')
-  })
-
-  function changePage(page: number) {
-    startTransition(() => {
-      setSearchParams({ page })
-    })
-  }
-
+/**
+ * 모듈화를 위한 서브 컴포넌트: 검색 필드 레이아웃
+ */
+function SearchField({
+  label,
+  name,
+  children
+}: {
+  label: string
+  name: string
+  children: React.ReactNode
+}) {
   return (
-    <>
-      <Pagination
-        disabled={isPending}
-        onChange={changePage}
-      />
-      {isFetching && <SmallSpinner />}
-      <BoardList data={data} />
-    </>
+    <Field>
+      <FieldLabel htmlFor={name}>{label}</FieldLabel>
+      {children}
+    </Field>
   )
-} */
+}

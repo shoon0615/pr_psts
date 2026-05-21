@@ -1,4 +1,4 @@
-import { api } from '@/shared/lib/axios'
+import { jsonApi as api } from '@/shared/lib/axios/core'
 import { Common } from '@/features/common/types/common.type'
 
 const apiUrl = '/common'

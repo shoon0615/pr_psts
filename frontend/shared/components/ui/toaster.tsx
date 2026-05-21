@@ -1,3 +1,7 @@
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 'use client'
 
 import { useToast } from '@/shared/hooks/use-toast'
@@ -7,9 +11,13 @@ import {
   ToastDescription,
   ToastProvider,
   ToastTitle,
-  ToastViewport,
+  ToastViewport
 } from '@/shared/components/ui/toast'
 
+/**
+ * @deprecated `구버전`
+ * Redux/Zustand 없이 전역 store 처럼 동작 → sonner 로 대체
+ */
 export function Toaster() {
   const { toasts } = useToast()
 
@@ -17,7 +25,9 @@ export function Toaster() {
     <ToastProvider>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
-          <Toast key={id} {...props}>
+          <Toast
+            key={id}
+            {...props}>
             <div className="grid gap-1">
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && (

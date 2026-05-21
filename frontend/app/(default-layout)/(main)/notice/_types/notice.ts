@@ -1,4 +1,13 @@
-import type { Base, Common } from '@/features/common/types/common.type'
+import type { Base } from '@/shared/types/base.type'
+import type { Common } from '@/features/common/types/common.type'
+
+export const brands = [
+  { label: '오리온', value: '001' },
+  { label: '크라운', value: '002' },
+  { label: '해태', value: '003' },
+  { label: '롯데', value: '004' },
+  { label: '켈로그', value: '005' }
+] as const
 
 interface NoticeDetail {
   title: string

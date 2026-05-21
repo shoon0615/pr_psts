@@ -7,10 +7,11 @@ import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
 import { Separator } from '@/shared/components/ui/custom/separator'
 import qrImage from '@/.gemini/image.png'
+import Link from 'next/link'
 
 export default function SnackDetail() {
   const params = useParams()
-  const id = params.id
+  const { id } = params
 
   // 임시 데이터 (실제 연동 시 useSnack(id) 등으로 대체 가능)
   const snack = {
@@ -120,6 +121,21 @@ export default function SnackDetail() {
               size="lg"
               className="w-full text-lg font-bold">
               장바구니 담기
+            </Button>
+
+            <Button
+              size="lg"
+              // className="mb-3 w-20 bg-gray-100 hover:bg-gray-200"
+              className="mt-1 w-full bg-gray-400 text-lg font-bold hover:bg-gray-500"
+              asChild>
+              <Link href={`/snack/${id}/edit`}>수정</Link>
+            </Button>
+
+            <Button
+              size="lg"
+              className="mt-1 w-full bg-red-500 text-lg font-bold hover:bg-red-600"
+              asChild>
+              <Link href={`/snack`}>삭제</Link>
             </Button>
           </div>
         </div>
