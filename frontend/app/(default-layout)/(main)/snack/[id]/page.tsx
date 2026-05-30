@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter, notFound } from 'next/navigation'
 import { Card, CardContent } from '@/shared/components/ui/card'
 import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
@@ -9,9 +9,21 @@ import { Separator } from '@/shared/components/ui/custom/separator'
 import qrImage from '@/.gemini/image.png'
 import Link from 'next/link'
 
+import { toast } from '@/shared/lib/toast'
+import { ConfirmDialogButton } from '@/shared/components/ui/custom/alert-dialog-button'
+
+import { useSnackDetail, useRemoveSnack } from '@/features/snack/hooks/useSnack'
+
 export default function SnackDetail() {
-  const params = useParams()
-  const { id } = params
+  const { id } = useParams<{ id: string }>()
+  // const { brands, categories } = useSnackSearchOptions()
+  const { data } = useSnackDetail(id)
+  const { mutateAsync } = useRemoveSnack(id)
+  const router = useRouter()
+
+  if (!data) {
+    notFound()
+  }
 
   // 임시 데이터 (실제 연동 시 useSnack(id) 등으로 대체 가능)
   const snack = {
@@ -27,6 +39,23 @@ export default function SnackDetail() {
       calories: '450kcal',
       expiration: '제조일로부터 6개월'
     }
+  }
+
+  const onConfirm = async () => {
+    /* try {
+      await mutateAsync(id)
+      toast.success('삭제 완료', {
+        description: '과자가 삭제되었습니다.'
+      })
+      router.replace('/snack')
+    } catch (error) {
+      console.error(error)
+      toast.error('삭제 실패', {
+        description: '삭제 중 문제가 발생했습니다.'
+      })
+    } */
+    await toast.promise(mutateAsync(id))
+    router.replace('/snack')
   }
 
   return (
@@ -131,12 +160,23 @@ export default function SnackDetail() {
               <Link href={`/snack/${id}/edit`}>수정</Link>
             </Button>
 
-            <Button
+            {/* <Button
               size="lg"
               className="mt-1 w-full bg-red-500 text-lg font-bold hover:bg-red-600"
               asChild>
               <Link href={`/snack`}>삭제</Link>
-            </Button>
+            </Button> */}
+            <ConfirmDialogButton
+              label="삭제"
+              title="정말 삭제하시겠습니까?"
+              description="삭제한 데이터는 복구하기 어렵습니다."
+              onConfirm={onConfirm}
+              buttonProps={{
+                size: 'lg',
+                className:
+                  'mt-1 w-full bg-red-500 text-lg font-bold hover:bg-red-600'
+              }}
+            />
           </div>
         </div>
       </div>

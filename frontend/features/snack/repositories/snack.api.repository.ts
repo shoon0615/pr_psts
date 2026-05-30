@@ -14,14 +14,14 @@ export const snackRepository = {
   findMany: (params: SnackSearchParams) =>
     api.get<Snack[]>(`${apiUrl}${toQueryString(params)}`).then(res => res.data),
 
-  findUnique: (id: number) => api.get(`${apiUrl}/${id}`).then(res => res.data),
+  findUnique: (id: string) => api.get(`${apiUrl}/${id}`).then(res => res.data),
 
   create: (params: CreateSnackInput) =>
     api.post(`${apiUrl}`, params).then(res => res.data),
 
-  update: (id: number) => api.put(`${apiUrl}/${id}`).then(res => res.data),
+  update: (id: string) => api.put(`${apiUrl}/${id}`).then(res => res.data),
 
-  delete: (id: number) => api.delete(`${apiUrl}/${id}`).then(res => res.data)
+  delete: (id: string) => api.delete(`${apiUrl}/${id}`).then(res => res.data)
 }
 
 /* if (!response.ok) {

@@ -12,6 +12,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/shared/components/ui/alert-dialog'
+import { Button } from '@/shared/components/ui/button'
 
 type ConfirmDialogButtonProps = {
   label: string
@@ -20,6 +21,7 @@ type ConfirmDialogButtonProps = {
   cancelLabel?: string
   confirmLabel?: string
   onConfirm: () => void | Promise<void>
+  buttonProps?: React.ComponentProps<typeof Button>
 }
 
 function ConfirmDialogButton({
@@ -28,7 +30,8 @@ function ConfirmDialogButton({
   description = '이 작업은 되돌리기 어려울 수 있습니다.',
   cancelLabel = '취소',
   confirmLabel = '확인',
-  onConfirm
+  onConfirm,
+  buttonProps
 }: ConfirmDialogButtonProps) {
   const [pending, setPending] = useState(false)
 
@@ -44,7 +47,8 @@ function ConfirmDialogButton({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <button type="button">{label}</button>
+        {/* <button type="button">{label}</button> */}
+        <Button {...buttonProps}>{label}</Button>
       </AlertDialogTrigger>
 
       <AlertDialogContent>

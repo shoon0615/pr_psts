@@ -5,9 +5,10 @@ import {
   brandQueryOptions,
   categoryQueryOptions
 } from '@/features/common/queries/common.query'
+import { SnackSearchParams } from '@/features/snack/types/snack.type'
 import {
-  SnackSearchParams,
-  snackListQueryOptions
+  snackListQueryOptions,
+  snackDetailQueryOptions
 } from '@/features/snack/queries/snack.query'
 
 export async function prefetchSnackPage(
@@ -19,5 +20,16 @@ export async function prefetchSnackPage(
     queryClient.prefetchQuery(brandQueryOptions()),
     queryClient.prefetchQuery(categoryQueryOptions()),
     queryClient.prefetchQuery(snackListQueryOptions(params))
+  ])
+}
+
+export async function prefetchSnackDetail(
+  queryClient: QueryClient,
+  id: string
+) {
+  await Promise.all([
+    queryClient.prefetchQuery(brandQueryOptions()),
+    queryClient.prefetchQuery(categoryQueryOptions()),
+    queryClient.prefetchQuery(snackDetailQueryOptions(id))
   ])
 }

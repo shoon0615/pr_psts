@@ -14,9 +14,15 @@ import {
 } from '@/features/common/queries/common.query'
 import {
   snackKeys,
-  snackListQueryOptions
+  snackListQueryOptions,
+  snackDetailQueryOptions
 } from '@/features/snack/queries/snack.query'
-import { createSnack } from '@/features/snack/actions/snack.action'
+import {
+  createSnack,
+  modifySnack,
+  removeSnack
+} from '@/features/snack/actions/snack.action'
+import { CreateSnackInput } from '@/features/snack/schema/snack.schema'
 
 /** 검색 */
 export function useSnackSearchParams() {
@@ -40,10 +46,22 @@ export function useSnackSearchOptions() {
   }
 }
 
-/** 조회 */
+/** 조회(목록) */
 export function useSnackList() {
   const { searchParams } = useSnackSearchParams()
   return useSuspenseQuery(snackListQueryOptions(searchParams))
+}
+
+/** 조회(상세) */
+export function useSnackDetail(id: string) {
+  return useSuspenseQuery(snackDetailQueryOptions(id))
+}
+
+export function useSnackDetail2(id: string) {
+  return {
+    data: useSuspenseQuery(snackDetailQueryOptions(id)).data,
+    ...useSnackSearchOptions()
+  }
 }
 
 /** 생성 */
@@ -77,5 +95,54 @@ export function useCreateSnack() {
     /* onSettled: (data, error, newUser, context) => {
       console.log('onSettled', data, error, newUser, context)
     } */
+  })
+}
+
+/** 수정 */
+export function useModifySnack(id: string) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (params: CreateSnackInput) => modifySnack(id, params),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: snackKeys.lists() }),
+        queryClient.invalidateQueries({
+          queryKey: snackKeys.detail(id)
+        })
+      ])
+    }
+  })
+}
+
+/**
+ * TODO:
+ * - Hook이 특정 id에 묶이지 않음
+ * - 여러 row 수정에도 재사용 가능
+ * - bulk action에도 사용 가능
+ * - React Query 공식 예제 스타일과 유사
+ * @returns
+ */
+export function useModifySnack2() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: ({ id, params }: { id: string; params: CreateSnackInput }) =>
+      modifySnack(id, params),
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: snackKeys.lists() })
+      queryClient.invalidateQueries({
+        queryKey: snackKeys.detail(variables.id)
+      })
+    }
+  })
+}
+
+/** 삭제 */
+export function useRemoveSnack(id: string) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: removeSnack,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: snackKeys.lists() })
+    }
   })
 }

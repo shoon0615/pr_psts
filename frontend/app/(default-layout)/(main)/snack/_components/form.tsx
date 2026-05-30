@@ -1,10 +1,21 @@
 'use client'
 
+import { useParams, useRouter, notFound } from 'next/navigation'
+import {
+  useSnackSearchOptions,
+  useSnackDetail,
+  useModifySnack
+} from '@/features/snack/hooks/useSnack'
+import {
+  createSnackSchema,
+  CreateSnackInput
+} from '@/features/snack/schema/snack.schema'
+import { toast } from '@/shared/lib/toast'
+
 import { Button } from '@/shared/components/ui/button'
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle
@@ -16,80 +27,23 @@ import {
   FormSelect,
   FormTextarea
 } from '@/shared/components/ui/custom/form'
-import { SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 
-import {
-  useSnackSearchOptions,
-  useCreateSnack
-} from '@/features/snack/hooks/useSnack'
-import {
-  createSnackSchema,
-  CreateSnackInput
-} from '@/features/snack/schema/snack.schema'
-import { useRouter } from 'next/navigation'
-import { toast } from '@/shared/lib/toast'
-
-export default function SnackNew() {
+export default function SnackForm() {
+  // const { id } = useParams()
+  const { id } = useParams<{ id: string }>()
   const { brands, categories } = useSnackSearchOptions()
-  const { mutate, mutateAsync, isPending, isError, error } = useCreateSnack()
+  const { data } = useSnackDetail(id)
+  const { mutateAsync, isPending, isError, error } = useModifySnack(id)
   const router = useRouter()
 
-  const defaultValues = {
-    title: '',
-    brand: '',
-    category: '',
-    contents: '',
-    description: '',
-    price: 0
+  if (!data) {
+    notFound()
   }
-
-  /* const onSubmit: SubmitHandler<CreateSnackInput> = async formData => {
-    // mutate(formData)
-    // await mutateAsync(formData)
-
-    // toast.success('제출 성공')
-    // toast.successAction('제출 성공')
-
-    // const promise = mutateAsync(formData)
-    // toast.promise(promise)
-    // toast.promise(promise, {
-    //   loading: '등록 중...',
-    //   // success: '등록 완료',
-    //   success: (data: { brand: string }) =>
-    //     `${data.brand} toast has been added`,
-    //   error: (error: Error) => error.message
-    // })
-
-    try {
-      // const data = await promise
-      await promise
-
-      // router.push(`${decodeURIComponent('/snack')}`)
-      router.replace('/snack')
-    } catch (err) {
-      console.error('error', err)
-      // toast.error(error.message)
-      toast.error(err.message)
-    }
-  } */
 
   async function onSubmit(formData: CreateSnackInput) {
-    console.log('formData', formData)
-    /* await toast.promise(
-      mutateAsync(formData, {
-        onSuccess: () => {
-          router.replace('/snack')
-        }
-      })
-    ) */
-
-    // 실패 시, Promise 를 reject(throw Error) 발생하여 Promise 하단 내용이 실행되지 않음
+    // console.log('formData', formData)
     await toast.promise(mutateAsync(formData))
     router.replace('/snack')
-  }
-
-  const onError: SubmitErrorHandler<CreateSnackInput> = formData => {
-    console.log('Validation Errors:', formData)
   }
 
   return (
@@ -98,10 +52,9 @@ export default function SnackNew() {
         <Form
           schema={createSnackSchema}
           onSubmit={onSubmit}
-          onError={onError}
-          id="form-snack-create"
+          id="form-snack-modify"
           className="w-full sm:max-w-xl"
-          options={{ defaultValues }}>
+          options={{ defaultValues: data }}>
           {methods => (
             <Card>
               <CardHeader>
@@ -149,7 +102,7 @@ export default function SnackNew() {
                   </Button>
                   <Button
                     type="submit"
-                    form="form-snack-create"
+                    form="form-snack-modify"
                     disabled={isPending}>
                     {isPending ? '등록 중..' : '등록'}
                   </Button>

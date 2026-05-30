@@ -24,16 +24,22 @@ export const snackRepository = {
       .then(res => res.data)
   },
 
-  findUnique: (id: number) => api.get(`${apiUrl}/${id}`).then(res => res.data),
+  findUnique: (id: string) =>
+    // api.get(`${apiUrl}/${id}`).then(res => res.data),
+    api.get(`${apiUrl}?id=${id}`).then(res => res.data),
 
   /* create: (params: CreateSnackInput) =>
     api.post<Snack>(`${apiUrl}`, params).then(res => res.data), */
   create: (params: CreateSnackInput) =>
     api.post(`${apiUrl}`, toJsonApiParams2(params)).then(res => res.data),
 
-  update: (id: number) => api.put(`${apiUrl}/${id}`).then(res => res.data),
+  update: (id: string, params: CreateSnackInput) =>
+    // api.put(`${apiUrl}/${id}`, params).then(res => res.data),
+    api
+      .patch(`${apiUrl}/${id}`, toJsonApiParams2(params))
+      .then(res => res.data),
 
-  delete: (id: number) => api.delete(`${apiUrl}/${id}`).then(res => res.data)
+  delete: (id: string) => api.delete(`${apiUrl}/${id}`).then(res => res.data)
 }
 
 // /snacks?page=1&brand=001&category=001

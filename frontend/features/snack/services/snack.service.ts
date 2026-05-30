@@ -13,7 +13,7 @@ export async function selectManySnack(params: SnackSearchParams) {
   return await repository.findMany(params)
 }
 
-export async function selectSnack(id: number) {
+export async function selectSnack(id: string) {
   return await repository.findUnique(id)
 }
 
@@ -21,11 +21,11 @@ export async function insertSnack(params: CreateSnackInput) {
   return await repository.create(params)
 }
 
-export async function updateSnack(id: number) {
-  return await repository.update(id)
+export async function updateSnack(id: string, params: CreateSnackInput) {
+  return await repository.update(id, params)
 }
 
-export async function deleteSnack(id: number) {
+export async function deleteSnack(id: string) {
   return await repository.delete(id)
 }
 

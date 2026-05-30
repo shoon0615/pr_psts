@@ -46,10 +46,10 @@ export async function createSnack(params: CreateSnackInput) {
   }
 }
 
-export async function modifySnack(id: number) {
-  return await updateSnack(id)
+export async function modifySnack(id: string, params: CreateSnackInput) {
+  return await updateSnack(id, params)
 }
 
-export async function removeSnack(id: number) {
+export async function removeSnack(id: string) {
   return await deleteSnack(id)
 }

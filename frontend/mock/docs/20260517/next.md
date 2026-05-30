@@ -391,7 +391,11 @@ DB
 import { NextRequest, NextResponse } from 'next/server'
 import { createUser } from '@/server/user.service'
 
-export async function GET(req: Request, params: Promise<{ userId: string }>) {
+export async function GET(
+  req: Request,
+  // params: Promise<{ userId: string }   // 잘못된 방법(인식 안 됨)
+  { params }: { params: Promise<{ userId: string }> }
+) {
   const { userId } = await params // 동적 경로
   const res = await fetch(`/url?userId=${userId}`)
   const data = await res.json()
