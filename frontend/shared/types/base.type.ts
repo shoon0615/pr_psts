@@ -16,3 +16,12 @@ export type ApiResponse<T> = {
   data: T
   message: string
 }
+
+export type PageResponse<T> = {
+  data: T[]
+  message: string
+  page: number
+  pageSize: number
+  totalCount: number
+  totalPages: number
+}

@@ -19,14 +19,37 @@ export const snackRepository = {
   findMany: (params: SnackSearchParams) => {
     const apiParams = toJsonApiParams(params)
     console.log('url', `${apiUrl}${toQueryString(apiParams)}`)
-    return api
-      .get<Snack[]>(`${apiUrl}${toQueryString(apiParams)}`)
-      .then(res => res.data)
+    return (
+      api
+        .get(`${apiUrl}${toQueryString(apiParams)}`)
+        // .then(res => res.data)
+        .then(res => {
+          // json-server 0.17.x
+          const items = Number(res.headers['x-total-count'] ?? 0)
+          return {
+            data: res.data,
+            items
+          }
+
+          // json-server 1.0.0 이상 → 응답에 page 포함
+          /* {
+          "first": 1,
+          "prev": null,
+          "next": 2,
+          "last": 10,
+          "pages": 10,
+          "items": 95,
+          "data": [...]
+        } */
+        })
+    )
   },
 
   findUnique: (id: string) =>
     // api.get(`${apiUrl}/${id}`).then(res => res.data),
-    api.get(`${apiUrl}?id=${id}`).then(res => res.data),
+    api
+      .get(`${apiUrl}?id=${id}&_expand=brand&_expand=category`)
+      .then(res => res.data),
 
   /* create: (params: CreateSnackInput) =>
     api.post<Snack>(`${apiUrl}`, params).then(res => res.data), */
@@ -49,7 +72,10 @@ type SnackApiParams = {
   brandId?: string
   categoryId?: string
   contents?: string
-  page?: number
+  _page?: number
+  _limit?: number
+  _sort?: string
+  _order?: string
   _expand?: string | string[]
 }
 
@@ -60,7 +86,11 @@ const toJsonApiParams = (params: SnackSearchParams): SnackApiParams => {
     page: params.page,
     contents: params.contents
   } */
-  const apiParams: SnackApiParams = { ...params }
+  // const apiParams: SnackApiParams = { ...params }
+
+  // 구조 분해로 page, sort, order 제외
+  const { page, sort, order, ...excludeParams } = params
+  const apiParams: SnackApiParams = excludeParams
 
   if (params.brand) {
     expand.push('brand')
@@ -74,6 +104,23 @@ const toJsonApiParams = (params: SnackSearchParams): SnackApiParams => {
 
   if (expand.length > 0) {
     apiParams._expand = expand
+  }
+
+  // json-server 0.17.x
+  apiParams._page = params.page
+  apiParams._limit = 10 // default: 10
+
+  // json-server 1.0.0 이상
+  /* apiParams._page = params.page
+  apiParams._per_page = 10 */
+
+  if (params?.sort) {
+    // json-server 0.17.x
+    apiParams._sort = params.sort
+    apiParams._order = params.order
+
+    // json-server 1.0.0 이상 → order(desc: -)
+    // apiParams._sort = (params.order === 'desc' ? '-' : '') + params.sort
   }
 
   return apiParams

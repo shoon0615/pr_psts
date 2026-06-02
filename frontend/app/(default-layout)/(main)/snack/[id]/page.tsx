@@ -13,6 +13,7 @@ import { toast } from '@/shared/lib/toast'
 import { ConfirmDialogButton } from '@/shared/components/ui/custom/alert-dialog-button'
 
 import { useSnackDetail, useRemoveSnack } from '@/features/snack/hooks/useSnack'
+import { formatPrice } from '@/shared/lib/utils'
 
 export default function SnackDetail() {
   const { id } = useParams<{ id: string }>()
@@ -69,7 +70,7 @@ export default function SnackDetail() {
               <div className="relative aspect-square w-full bg-gray-50">
                 <Image
                   src={qrImage}
-                  alt={snack.title}
+                  alt={data.title}
                   fill
                   className="object-contain p-12 transition-transform duration-500 hover:scale-105"
                 />
@@ -84,19 +85,25 @@ export default function SnackDetail() {
             <Badge
               variant="outline"
               className="mb-2">
-              New Collection
+              {data.brand.name}
+            </Badge>
+            <Badge
+              variant="secondary"
+              className="mb-2">
+              {data.category.name}
             </Badge>
             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {snack.title}
+              {data.title}
             </h1>
             <p className="text-primary mt-4 text-2xl font-bold">
-              {snack.price}
+              {/* {data.price.toLocaleString()}원 */}
+              {formatPrice(data.price)}원
             </p>
           </div>
 
           <Separator />
 
-          <p className="text-lg text-gray-600">{snack.contents}</p>
+          <p className="text-lg text-gray-600">{data.contents}</p>
 
           {/* Interactive Hover Area */}
           <div className="group relative mt-4">
@@ -188,7 +195,7 @@ export default function SnackDetail() {
         </div>
         <div className="mt-8 space-y-6">
           <p className="text-lg leading-relaxed whitespace-pre-line text-gray-600">
-            {snack.description}
+            {snack.contents}
           </p>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="relative aspect-video overflow-hidden rounded-2xl bg-gray-100">

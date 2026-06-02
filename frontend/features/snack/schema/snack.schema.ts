@@ -8,8 +8,8 @@ export const createSnackSchema = z.object({
     .max(32, 'title must be at most 32 characters.'),
   brand: z.string().min(1, 'Please select your brand.'),
   category: z.string().min(1, 'Please select your category.'),
-  contents: z.string().optional()
-  // price: z.coerce.number().min(1, 'price must be at least 1'),
+  contents: z.string().optional(),
+  price: z.coerce.number().min(1, 'price must be at least 1')
   /* price: z.number().min(1, 'price must be at least 1'),
   description: z
     .string()
@@ -30,22 +30,35 @@ export const createSnackArraySchema = z.array(
 
 export type SnackArrayInput = z.infer<typeof createSnackArraySchema>
 
+/**
+ * snackDefaultValues: CreateSnackInput → title(string) 추론
+ * satisfies CreateSnackInput → title(string) '' 까지 추론
+ */
+// export const snackDefaultValues: Readonly<CreateSnackInput> = {
+export const snackDefaultValues = {
+  title: '',
+  brand: '',
+  category: '',
+  contents: '',
+  price: 0
+} satisfies CreateSnackInput
+
 /** TODO: */
 export function onSubmit(data: CreateSnackInput) {
   /* toast("You submitted the following values:", {
-      description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
-      style: {
-        "--border-radius": "calc(var(--radius)  + 4px)",
-      } as React.CSSProperties,
-    }) */
+    description: (
+      <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
+    ),
+    position: "bottom-right",
+    classNames: {
+      content: "flex flex-col gap-2",
+    },
+    style: {
+      "--border-radius": "calc(var(--radius)  + 4px)",
+    } as React.CSSProperties,
+  }) */
 }
 
 // service

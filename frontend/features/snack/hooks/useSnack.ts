@@ -3,7 +3,8 @@
 import {
   useSuspenseQuery,
   useMutation,
-  useQueryClient
+  useQueryClient,
+  useIsFetching
 } from '@tanstack/react-query'
 import { useQueryStates } from 'nuqs'
 
@@ -50,6 +51,15 @@ export function useSnackSearchOptions() {
 export function useSnackList() {
   const { searchParams } = useSnackSearchParams()
   return useSuspenseQuery(snackListQueryOptions(searchParams))
+}
+
+export function useSnackListLoading() {
+  const { searchParams } = useSnackSearchParams()
+  return (
+    useIsFetching({
+      queryKey: snackListQueryOptions(searchParams).queryKey
+    }) > 0
+  )
 }
 
 /** 조회(상세) */

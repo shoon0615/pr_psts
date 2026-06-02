@@ -367,6 +367,49 @@ function FormSelect({
   )
 }
 
+function FormSelect2({
+  name,
+  label,
+  description,
+  items,
+  ...props
+}: FormSelectProps) {
+  const { control } = useFormContext()
+  const { field } = useController({ name, control })
+
+  const selectedValue = items.find(option => option.value === field.value)
+
+  return (
+    <FormFieldContext.Provider value={{ name }}>
+      <FormItem>
+        {label && <FormLabel>{label}</FormLabel>}
+        <FormControl>
+          <Select
+            onValueChange={field.onChange}
+            value={field.value || undefined}
+            {...props}>
+            <SelectTrigger className="w-full">
+              {/* <SelectValue placeholder={props.placeholder} /> */}
+              {selectedValue?.label ?? props.placeholder ?? '- 선택 -'}
+            </SelectTrigger>
+            <SelectContent position="popper">
+              {items?.map(item => (
+                <SelectItem
+                  key={String(item.value)}
+                  value={String(item.value)}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </FormControl>
+        {description && <FormDescription>{description}</FormDescription>}
+        <FormMessage />
+      </FormItem>
+    </FormFieldContext.Provider>
+  )
+}
+
 interface FormCheckboxProps extends React.ComponentProps<typeof Checkbox> {
   name: string
   label?: string
@@ -617,6 +660,7 @@ export {
   FormField,
   FormInput,
   FormSelect,
+  FormSelect2,
   FormCheckbox,
   FormRadioGroup,
   FormSwitch,

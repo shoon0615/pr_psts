@@ -7,6 +7,7 @@ import {
   ChevronRightIcon,
   MoreHorizontalIcon
 } from 'lucide-react'
+import Link from 'next/link'
 
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
   return (
@@ -44,12 +45,19 @@ function PaginationItem({ ...props }: React.ComponentProps<'li'>) {
 
 type PaginationLinkProps = {
   isActive?: boolean
+  disabled?: boolean
 } & Pick<React.ComponentProps<typeof Button>, 'size'> &
-  React.ComponentProps<'a'>
+  // React.ComponentProps<"a">
+  Omit<React.ComponentProps<typeof Link>, 'href'> & {
+    href?: React.ComponentProps<typeof Link>['href']
+  }
 
 function PaginationLink({
   className,
   isActive,
+  disabled,
+  // href = '#',
+  href = '',
   size = 'icon',
   ...props
 }: PaginationLinkProps) {
@@ -58,14 +66,52 @@ function PaginationLink({
       asChild
       variant={isActive ? 'outline' : 'ghost'}
       size={size}
-      className={cn(className)}>
-      <a
+      className={cn(
+        disabled && 'pointer-events-none',
+        disabled && !isActive && 'opacity-50',
+        className
+      )}>
+      <Link
+        href={href}
         aria-current={isActive ? 'page' : undefined}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : undefined}
         data-slot="pagination-link"
         data-active={isActive}
+        /* onClick={event => {
+          if (disabled || href === '') {
+            event.preventDefault()
+          }
+          props.onClick?.(event)
+        }} */
         {...props}
       />
     </Button>
+  )
+}
+
+// nuqs + setSearchParams() 방식으로 갈 거라면 Link 를 제거하고 Button 기반으로 만드는 것이 더 깔끔합니다.
+type PaginationButtonProps = {
+  isActive?: boolean
+} & React.ComponentProps<typeof Button>
+
+function PaginationButton({
+  className,
+  isActive,
+  size = 'icon',
+  ...props
+}: PaginationButtonProps) {
+  return (
+    <Button
+      variant={isActive ? 'outline' : 'ghost'}
+      size={size}
+      // aria-current={isActive ? 'page' : undefined}
+      data-slot="pagination-link"
+      data-active={isActive}
+      // className={cn('aria-[current=page]:border-border', className)}
+      className={cn(className)}
+      {...props}
+    />
   )
 }
 
@@ -135,5 +181,6 @@ export {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious
+  PaginationPrevious,
+  PaginationButton
 }

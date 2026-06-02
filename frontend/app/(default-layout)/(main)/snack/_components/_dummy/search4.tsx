@@ -15,41 +15,41 @@ import { Spinner } from '@/shared/components/ui/spinner'
 
 import {
   useSnackSearchParams,
-  useSnackSearchOptions,
-  useSnackList,
-  useSnackListLoading
+  useSnackSearchOptions
 } from '@/features/snack/hooks/useSnack'
 import { SnackSearchParams } from '@/features/snack/types/snack.type'
 
 export default function SnackSearch() {
   const { searchParams, setSearchParams } = useSnackSearchParams()
   const { brands, categories } = useSnackSearchOptions()
-  // const [isPending, startTransition] = useTransition()
-  // const { isFetching } = useSnackList()
-  const isFetching = useSnackListLoading()
+  const [isPending, startTransition] = useTransition()
 
   // 검색 실행
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-    const data = Object.fromEntries(
-      formData.entries()
-    ) as unknown as SnackSearchParams
+    startTransition(() => {
+      const formData = new FormData(event.currentTarget)
+      const data = Object.fromEntries(
+        formData.entries()
+      ) as unknown as SnackSearchParams
 
-    setSearchParams({
-      ...data,
-      page: 1
+      setSearchParams({
+        ...data,
+        page: 1
+      })
     })
   }
 
   // 검색 조건 초기화
   const onReset = () => {
-    // setSearchParams(null)
-    setSearchParams({
-      brand: null,
-      category: null,
-      contents: null,
-      page: 1
+    startTransition(() => {
+      // setSearchParams(null)
+      setSearchParams({
+        brand: null,
+        category: null,
+        contents: null,
+        page: 1
+      })
     })
   }
 
@@ -119,16 +119,16 @@ export default function SnackSearch() {
               type="button"
               variant="outline"
               onClick={onReset}
-              disabled={isFetching}
+              disabled={isPending}
               className="px-3">
               <RotateCcw className="mr-2 size-4" />
               초기화
             </Button>
             <Button
               type="submit"
-              disabled={isFetching}
+              disabled={isPending}
               className="px-4">
-              {isFetching ? (
+              {isPending ? (
                 <Spinner className="mr-2 size-4" />
               ) : (
                 <Search className="mr-2 size-4" />

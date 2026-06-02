@@ -25,6 +25,7 @@ import {
 export default function SnackSearch() {
   const { searchParams, setSearchParams } = useSnackSearchParams()
   const { brands, categories } = useSnackSearchOptions()
+  const ALL = 'all'
 
   /**
    * @deprecated `next/form` form action 과 `nuqs` setSearchParams 같이 사용 시, 충돌 발생
@@ -76,6 +77,7 @@ export default function SnackSearch() {
     const formData = new FormData(event.currentTarget)
     setSearchParams(prev => ({
       ...formData,
+      // brand: data.brand === ALL ? '' : data.brand,
       page: 1
     }))
   }
@@ -95,13 +97,14 @@ export default function SnackSearch() {
                   <FieldLabel htmlFor="brand">브랜드</FieldLabel>
                   <Select
                     name="brand"
-                    // defaultValue={searchParams.brand || 'auto'}>
+                    // defaultValue={searchParams.brand || ALL}>
                     defaultValue={searchParams.brand}>
                     <SelectTrigger>
                       <SelectValue placeholder="- 선택 -" />
                     </SelectTrigger>
                     <SelectContent position="item-aligned">
                       <SelectItem value="auto">- 선택 -</SelectItem>
+                      <SelectItem value="all">전체</SelectItem>
                       <SelectSeparator />
                       {brands.map(brand => (
                         <SelectItem
@@ -118,12 +121,12 @@ export default function SnackSearch() {
                   <FieldLabel htmlFor="category">카테고리</FieldLabel>
                   <Select
                     name="category"
-                    defaultValue={searchParams.category || 'auto'}>
+                    defaultValue={searchParams.category || ALL}>
                     <SelectTrigger>
                       <SelectValue placeholder="- 선택 -" />
                     </SelectTrigger>
                     <SelectContent position="item-aligned">
-                      <SelectItem value="auto">- 선택 -</SelectItem>
+                      <SelectItem value="all">전체</SelectItem>
                       <SelectSeparator />
                       {categories.map(category => (
                         <SelectItem

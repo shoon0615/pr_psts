@@ -11,6 +11,8 @@ import { makeQueryClient } from '@/shared/lib/react-query'
 import { prefetchSnackPage } from '@/features/snack/prefetch/snack.prefetch'
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
 
+import Sort from '@/app/(default-layout)/(main)/snack/_components/sort'
+
 export default async function Snack({
   searchParams
 }: {
@@ -31,6 +33,10 @@ export default async function Snack({
           {/* <SearchLoader /> */}
           <Search />
           {/* <Search searchParams={params} /> */}
+
+          <div className="flex justify-end">
+            <Sort />
+          </div>
 
           <Field
             orientation="horizontal"

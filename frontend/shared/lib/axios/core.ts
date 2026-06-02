@@ -2,6 +2,7 @@
 
 import axios from 'axios'
 import { apiInstance } from '@/shared/lib/axios/interceptor'
+import qs from 'qs'
 
 const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}`
 // const jsonUrl = process.env.JSON_SERVER_API_URL
@@ -22,6 +23,11 @@ export const jsonApi = apiInstance(
 const defaultConfig = {
   timeout: 10000,
   withCredentials: true
+  /* paramsSerializer: params =>
+    qs.stringify(params, {
+      arrayFormat: 'repeat',
+      skipNulls: true
+    }) */
 }
 
 // shared/lib/axios/auth.ts

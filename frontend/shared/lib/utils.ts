@@ -22,7 +22,24 @@ export const toQueryString = <T extends object>(params: T) => {
 const removeEmptyQueryParams = <T extends object>(params: T) => {
   return Object.fromEntries(
     Object.entries(params).filter(([, value]) => {
-      return value !== '' && value !== null && value !== undefined
+      return (
+        value !== '' && value !== 0 && value !== null && value !== undefined
+      )
     })
   )
+}
+
+/** 일부 인자만 Partial<?> 적용 */
+type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+
+/** 일부 인자만 Required 적용 */
+type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
+
+/** 숫자에 콤마 삽입 */
+/* export const formatPrice = (price: number | string) => {
+  price = Number.isNaN(price) ? price : Number(price)
+  return price.toLocaleString('ko-KR')
+} */
+export const formatPrice = (price: number) => {
+  return price.toLocaleString('ko-KR')
 }

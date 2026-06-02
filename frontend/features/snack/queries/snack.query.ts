@@ -16,7 +16,8 @@ export const snackKeys = {
 export const snackListQueryOptions = (params: SnackSearchParams) => ({
   queryKey: snackKeys.list(params),
   // queryFn: () => api.get('/snack')
-  queryFn: () => api.get('/snack', { params }).then(res => res.data)
+  queryFn: () => api.get('/snack', { params }).then(res => res.data),
+  placeholderData: previousData => previousData
 })
 
 export const snackDetailQueryOptions = (id: string) => ({

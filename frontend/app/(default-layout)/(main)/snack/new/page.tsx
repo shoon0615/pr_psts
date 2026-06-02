@@ -14,6 +14,7 @@ import {
   Form,
   FormInput,
   FormSelect,
+  FormSelect2,
   FormTextarea
 } from '@/shared/components/ui/custom/form'
 import { SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
@@ -24,7 +25,8 @@ import {
 } from '@/features/snack/hooks/useSnack'
 import {
   createSnackSchema,
-  CreateSnackInput
+  CreateSnackInput,
+  snackDefaultValues as defaultValues
 } from '@/features/snack/schema/snack.schema'
 import { useRouter } from 'next/navigation'
 import { toast } from '@/shared/lib/toast'
@@ -34,14 +36,13 @@ export default function SnackNew() {
   const { mutate, mutateAsync, isPending, isError, error } = useCreateSnack()
   const router = useRouter()
 
-  const defaultValues = {
+  /* const defaultValues = {
     title: '',
     brand: '',
     category: '',
     contents: '',
-    description: '',
     price: 0
-  }
+  } */
 
   /* const onSubmit: SubmitHandler<CreateSnackInput> = async formData => {
     // mutate(formData)
@@ -123,11 +124,24 @@ export default function SnackNew() {
                   placeholder="- 선택 -"
                   items={brands}
                 />
-                <FormSelect
+                <FormSelect2
                   name="category"
                   label="카테고리"
                   placeholder="- 선택 -"
                   items={categories}
+                />
+                <FormInput
+                  name="price"
+                  label="가격"
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="가격을 입력하세요"
+                  onInput={e => {
+                    e.currentTarget.value = e.currentTarget.value.replace(
+                      /\D/g,
+                      ''
+                    )
+                  }}
                 />
                 <FormTextarea
                   name="contents"

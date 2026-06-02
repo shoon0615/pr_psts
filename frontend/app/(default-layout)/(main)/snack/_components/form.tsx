@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useParams, useRouter, notFound } from 'next/navigation'
 import {
   useSnackSearchOptions,
@@ -25,6 +26,7 @@ import {
   Form,
   FormInput,
   FormSelect,
+  FormSelect2,
   FormTextarea
 } from '@/shared/components/ui/custom/form'
 
@@ -40,6 +42,9 @@ export default function SnackForm() {
     notFound()
   }
 
+  // json-server 전용
+  const jsonData = { ...data, brand: data.brandId, category: data.categoryId }
+
   async function onSubmit(formData: CreateSnackInput) {
     // console.log('formData', formData)
     await toast.promise(mutateAsync(formData))
@@ -54,7 +59,7 @@ export default function SnackForm() {
           onSubmit={onSubmit}
           id="form-snack-modify"
           className="w-full sm:max-w-xl"
-          options={{ defaultValues: data }}>
+          options={{ defaultValues: jsonData }}>
           {methods => (
             <Card>
               <CardHeader>
@@ -76,11 +81,24 @@ export default function SnackForm() {
                   placeholder="- 선택 -"
                   items={brands}
                 />
-                <FormSelect
+                <FormSelect2
                   name="category"
                   label="카테고리"
                   placeholder="- 선택 -"
                   items={categories}
+                />
+                <FormInput
+                  name="price"
+                  label="가격"
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="가격을 입력하세요"
+                  onInput={e => {
+                    e.currentTarget.value = e.currentTarget.value.replace(
+                      /\D/g,
+                      ''
+                    )
+                  }}
                 />
                 <FormTextarea
                   name="contents"
