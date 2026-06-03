@@ -231,24 +231,22 @@ export function CommonSearchForm<TValues>({
 
         onSubmit(values)
       }}
-      className="rounded-md border p-4"
-    >
-      <div className="grid gap-3 md:grid-cols-3">
-        {children}
-      </div>
+      className="rounded-md border p-4">
+      <div className="grid gap-3 md:grid-cols-3">{children}</div>
 
       <div className="mt-4 flex justify-end gap-2">
         {onReset && (
           <Button
             type="button"
             variant="outline"
-            onClick={onReset}
-          >
+            onClick={onReset}>
             초기화
           </Button>
         )}
 
-        <Button type="submit" disabled={isFetching}>
+        <Button
+          type="submit"
+          disabled={isFetching}>
           {isFetching ? '검색 중...' : '검색'}
         </Button>
       </div>
@@ -262,11 +260,7 @@ export function CommonSearchForm<TValues>({
 # 7. SnackSearch에서 CommonSearchForm 사용
 
 ```tsx
-export function SnackSearch({
-  isFetching
-}: {
-  isFetching?: boolean
-}) {
+export function SnackSearch({ isFetching }: { isFetching?: boolean }) {
   const { searchParams, setSearchParams } = useSnackSearchParams()
 
   return (
@@ -292,8 +286,7 @@ export function SnackSearch({
           contents: null,
           page: 1
         })
-      }}
-    >
+      }}>
       <Input
         name="brand"
         defaultValue={searchParams.brand}
@@ -354,8 +347,7 @@ export function CommonSortSelect<TValue extends string>({
   return (
     <Select
       value={value}
-      onValueChange={value => onChange(value as TValue)}
-    >
+      onValueChange={value => onChange(value as TValue)}>
       <SelectTrigger className="w-[160px]">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
@@ -364,8 +356,7 @@ export function CommonSortSelect<TValue extends string>({
         {options.map(option => (
           <SelectItem
             key={option.value}
-            value={option.value}
-          >
+            value={option.value}>
             {option.label}
           </SelectItem>
         ))}
@@ -399,8 +390,7 @@ const SNACK_SORT_OPTIONS = [
   }
 ] as const
 
-type SnackSortValue =
-  (typeof SNACK_SORT_OPTIONS)[number]['value']
+type SnackSortValue = (typeof SNACK_SORT_OPTIONS)[number]['value']
 ```
 
 ```tsx
@@ -480,8 +470,7 @@ export function CommonPagination({
         type="button"
         variant="outline"
         disabled={currentPage <= 1}
-        onClick={() => onPageChange(currentPage - 1)}
-      >
+        onClick={() => onPageChange(currentPage - 1)}>
         이전
       </Button>
 
@@ -490,8 +479,7 @@ export function CommonPagination({
           key={page}
           type="button"
           variant={page === currentPage ? 'default' : 'outline'}
-          onClick={() => onPageChange(page)}
-        >
+          onClick={() => onPageChange(page)}>
           {page}
         </Button>
       ))}
@@ -500,8 +488,7 @@ export function CommonPagination({
         type="button"
         variant="outline"
         disabled={currentPage >= totalPages}
-        onClick={() => onPageChange(currentPage + 1)}
-      >
+        onClick={() => onPageChange(currentPage + 1)}>
         다음
       </Button>
     </nav>
@@ -516,11 +503,7 @@ export function CommonPagination({
 ```tsx
 const PAGE_SIZE = 10
 
-export function SnackPagination({
-  totalCount
-}: {
-  totalCount: number
-}) {
+export function SnackPagination({ totalCount }: { totalCount: number }) {
   const { searchParams, setSearchParams } = useSnackSearchParams()
 
   return (
@@ -569,8 +552,7 @@ export function CommonList<T>({
       {data.map(item => (
         <div
           key={getKey(item)}
-          className="rounded-md border p-4"
-        >
+          className="rounded-md border p-4">
           {renderItem(item)}
         </div>
       ))}
@@ -592,20 +574,14 @@ type Snack = {
   price: number
 }
 
-export function SnackList({
-  data
-}: {
-  data: Snack[]
-}) {
+export function SnackList({ data }: { data: Snack[] }) {
   return (
     <CommonList
       data={data}
       getKey={item => item.id}
       renderItem={item => (
         <Link href={`/snack/${item.id}`}>
-          <div className="font-medium">
-            {item.title}
-          </div>
+          <div className="font-medium">{item.title}</div>
 
           <div className="text-muted-foreground text-sm">
             {item.brand} · {item.category}
@@ -662,8 +638,7 @@ export function CommonTable<T>({
           {columns.map(column => (
             <TableHead
               key={column.key}
-              className={column.className}
-            >
+              className={column.className}>
               {column.header}
             </TableHead>
           ))}
@@ -676,8 +651,7 @@ export function CommonTable<T>({
             {columns.map(column => (
               <TableCell
                 key={column.key}
-                className={column.className}
-              >
+                className={column.className}>
                 {column.cell(item)}
               </TableCell>
             ))}
@@ -694,11 +668,7 @@ export function CommonTable<T>({
 # 15. SnackTable 사용 예시
 
 ```tsx
-export function SnackTable({
-  data
-}: {
-  data: Snack[]
-}) {
+export function SnackTable({ data }: { data: Snack[] }) {
   return (
     <CommonTable
       data={data}
@@ -707,11 +677,7 @@ export function SnackTable({
         {
           key: 'title',
           header: '이름',
-          cell: item => (
-            <Link href={`/snack/${item.id}`}>
-              {item.title}
-            </Link>
-          )
+          cell: item => <Link href={`/snack/${item.id}`}>{item.title}</Link>
         },
         {
           key: 'brand',
@@ -726,8 +692,7 @@ export function SnackTable({
         {
           key: 'price',
           header: '가격',
-          cell: item =>
-            `${item.price.toLocaleString('ko-KR')}원`
+          cell: item => `${item.price.toLocaleString('ko-KR')}원`
         }
       ]}
     />
@@ -759,19 +724,11 @@ export function EmptyState({
 }: EmptyStateProps) {
   return (
     <div className="flex min-h-[240px] flex-col items-center justify-center rounded-md border border-dashed p-8 text-center">
-      <p className="text-lg font-semibold">
-        {title}
-      </p>
+      <p className="text-lg font-semibold">{title}</p>
 
-      <p className="text-muted-foreground mt-2 text-sm">
-        {description}
-      </p>
+      <p className="text-muted-foreground mt-2 text-sm">{description}</p>
 
-      {action && (
-        <div className="mt-4">
-          {action}
-        </div>
-      )}
+      {action && <div className="mt-4">{action}</div>}
     </div>
   )
 }
@@ -785,9 +742,7 @@ export function EmptyState({
   description="새 과자를 등록해보세요."
   action={
     <Button asChild>
-      <Link href="/snack/new">
-        등록
-      </Link>
+      <Link href="/snack/new">등록</Link>
     </Button>
   }
 />
@@ -815,20 +770,15 @@ export function ErrorState({
 }: ErrorStateProps) {
   return (
     <div className="flex min-h-[240px] flex-col items-center justify-center rounded-md border p-8 text-center">
-      <p className="text-lg font-semibold">
-        {title}
-      </p>
+      <p className="text-lg font-semibold">{title}</p>
 
-      <p className="text-muted-foreground mt-2 text-sm">
-        {description}
-      </p>
+      <p className="text-muted-foreground mt-2 text-sm">{description}</p>
 
       {onReset && (
         <Button
           type="button"
           className="mt-4"
-          onClick={onReset}
-        >
+          onClick={onReset}>
           다시 시도
         </Button>
       )}
@@ -842,12 +792,7 @@ Next.js `error.tsx` 사용 예시:
 ```tsx
 'use client'
 
-export default function Error({
-  reset
-}: {
-  error: Error
-  reset: () => void
-}) {
+export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
     <ErrorState
       description="목록을 불러오지 못했습니다."
@@ -893,29 +838,22 @@ export function ConfirmDialogButton({
         <Button
           type="button"
           variant={variant}
-          className={className}
-        >
+          className={className}>
           {label}
         </Button>
       </AlertDialogTrigger>
 
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>
-            {title}
-          </AlertDialogTitle>
+          <AlertDialogTitle>{title}</AlertDialogTitle>
 
           {description && (
-            <AlertDialogDescription>
-              {description}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{description}</AlertDialogDescription>
           )}
         </AlertDialogHeader>
 
         <AlertDialogFooter>
-          <AlertDialogCancel>
-            {cancelLabel}
-          </AlertDialogCancel>
+          <AlertDialogCancel>{cancelLabel}</AlertDialogCancel>
 
           <AlertDialogAction onClick={onConfirm}>
             {confirmLabel}
@@ -957,17 +895,14 @@ type ActionMenuProps = {
   items: ActionMenuItem[]
 }
 
-export function ActionMenu({
-  items
-}: ActionMenuProps) {
+export function ActionMenu({ items }: ActionMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           type="button"
           variant="ghost"
-          size="icon"
-        >
+          size="icon">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -977,8 +912,7 @@ export function ActionMenu({
           <DropdownMenuItem
             key={item.label}
             variant={item.destructive ? 'destructive' : undefined}
-            onClick={item.onClick}
-          >
+            onClick={item.onClick}>
             {item.label}
           </DropdownMenuItem>
         ))}
@@ -1020,19 +954,12 @@ type DetailInfoRowProps = {
   value?: React.ReactNode
 }
 
-export function DetailInfoRow({
-  label,
-  value
-}: DetailInfoRowProps) {
+export function DetailInfoRow({ label, value }: DetailInfoRowProps) {
   return (
     <div className="grid grid-cols-[120px_1fr] gap-4 border-b py-3">
-      <dt className="text-muted-foreground text-sm">
-        {label}
-      </dt>
+      <dt className="text-muted-foreground text-sm">{label}</dt>
 
-      <dd className="text-sm">
-        {value ?? '-'}
-      </dd>
+      <dd className="text-sm">{value ?? '-'}</dd>
     </div>
   )
 }
@@ -1081,17 +1008,15 @@ export function DetailActionButtons({
 }: DetailActionButtonsProps) {
   return (
     <div className="mt-6 flex justify-end gap-2">
-      <Button variant="outline" asChild>
-        <Link href={listHref}>
-          목록
-        </Link>
+      <Button
+        variant="outline"
+        asChild>
+        <Link href={listHref}>목록</Link>
       </Button>
 
       {editHref && (
         <Button asChild>
-          <Link href={editHref}>
-            수정
-          </Link>
+          <Link href={editHref}>수정</Link>
         </Button>
       )}
 
@@ -1133,13 +1058,8 @@ export function FormSubmitButton({
   return (
     <Button
       type="submit"
-      disabled={isPending}
-    >
-      {isPending
-        ? '처리 중...'
-        : mode === 'create'
-          ? createLabel
-          : updateLabel}
+      disabled={isPending}>
+      {isPending ? '처리 중...' : mode === 'create' ? createLabel : updateLabel}
     </Button>
   )
 }
@@ -1192,8 +1112,7 @@ export function SnackForm({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4"
-      >
+        className="space-y-4">
         <FormField
           control={form.control}
           name="title"
@@ -1232,11 +1151,8 @@ export function SnackForm({
           <Button
             type="button"
             variant="outline"
-            asChild
-          >
-            <Link href="/snack">
-              취소
-            </Link>
+            asChild>
+            <Link href="/snack">취소</Link>
           </Button>
 
           <FormSubmitButton
@@ -1294,11 +1210,7 @@ export default function NewSnackPage() {
 # 25. Edit 페이지에서 SnackForm 사용
 
 ```tsx
-export default function EditSnackPage({
-  id
-}: {
-  id: number
-}) {
+export default function EditSnackPage({ id }: { id: number }) {
   const router = useRouter()
   const queryClient = useQueryClient()
 
