@@ -11,6 +11,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { makeQueryClient } from '@/shared/lib/react-query'
 // import { NuqsAdapter } from 'nuqs/adapters/next/pages'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { SessionProvider } from '@/shared/components/provider/session'
 
 let browserQueryClient: QueryClient | undefined = undefined
 
@@ -39,15 +40,17 @@ export default function AppProvider({
 
   return (
     <>
-      <NuqsAdapter>
-        <QueryClientProvider client={queryClient}>
-          {process.env.DEV && <ReactQueryDevtools />}
+      <QueryClientProvider client={queryClient}>
+        <NuqsAdapter>
+          <SessionProvider>
+            {process.env.DEV && <ReactQueryDevtools />}
 
-          {/* <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration> */}
+            {/* <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration> */}
 
-          {children}
-        </QueryClientProvider>
-      </NuqsAdapter>
+            {children}
+          </SessionProvider>
+        </NuqsAdapter>
+      </QueryClientProvider>
     </>
   )
 }

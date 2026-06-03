@@ -20,6 +20,7 @@ import { Label } from '@/shared/components/ui/label'
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -31,8 +32,10 @@ import {
   SidebarRail
 } from '@/shared/components/ui/sidebar'
 import { ChevronsUpDownIcon, CheckIcon, SearchIcon } from 'lucide-react'
+import { NavUser } from '@/app/(default-layout)/(public)/_components/nav-user'
+import type { Session } from 'next-auth'
 
-export default function SideBar() {
+export default function SideBar({ user }: { user?: Session['user'] }) {
   const data = {
     versions: ['1.0.1', '1.1.0-alpha', '2.0.0-beta1'],
     navMain: [
@@ -69,7 +72,12 @@ export default function SideBar() {
           }
         ]
       }
-    ]
+    ],
+    user: {
+      name: 'shadcn',
+      email: 'm@example.com',
+      image: '/avatars/shadcn.jpg'
+    }
   }
 
   const [selectedVersion, setSelectedVersion] = React.useState(data.versions[0])
@@ -152,6 +160,10 @@ export default function SideBar() {
           </SidebarGroup>
         ))}
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={user} />
+        {/* <NavUser user={data.user} /> */}
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )
