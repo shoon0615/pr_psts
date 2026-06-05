@@ -2,8 +2,12 @@
 // import 'server-only'
 
 import { jsonApi as api } from '@/shared/lib/axios/core'
-import { Snack } from '@/features/snack/types/snack.type'
-import { SnackSearchParams } from '@/features/snack/types/snack.type'
+import {
+  Snack,
+  SnackSearchParams,
+  SnackListResponse,
+  SnackDetailResponse
+} from '@/features/snack/types/snack.type'
 import { toQueryString } from '@/shared/lib/utils'
 import { CreateSnackInput } from '@/features/snack/schema/snack.schema'
 
@@ -19,44 +23,55 @@ export const snackRepository = {
   findMany: (params: SnackSearchParams) => {
     const apiParams = toJsonApiParams(params)
     console.log('url', `${apiUrl}${toQueryString(apiParams)}`)
+
     return (
       api
-        .get(`${apiUrl}${toQueryString(apiParams)}`)
+        .get<Snack[]>(`${apiUrl}${toQueryString(apiParams)}`)
         // .then(res => res.data)
         .then(res => {
           // json-server 0.17.x
-          const items = Number(res.headers['x-total-count'] ?? 0)
+          const totalCount = Number(res.headers['x-total-count'] ?? 0)
+          const pageSize = 10
           return {
-            data: res.data,
-            items
+            data: {
+              list: res.data,
+              totalCount,
+              page: params.page,
+              pageSize,
+              totalPages: Math.ceil(totalCount / pageSize)
+            }
           }
 
           // json-server 1.0.0 이상 → 응답에 page 포함
           /* {
-          "first": 1,
-          "prev": null,
-          "next": 2,
-          "last": 10,
-          "pages": 10,
-          "items": 95,
-          "data": [...]
-        } */
+            "first": 1,
+            "prev": null,
+            "next": 2,
+            "last": 10,
+            "pages": 10,
+            "items": 95,
+            "data": [...]
+          } */
         })
     )
   },
 
+  /* findUnique: (id: string): Promise<SnackDetailResponse> =>
+    api
+      .get<Snack[]>(`${apiUrl}?id=${id}&_expand=brand&_expand=category`)
+      .then(res => ({
+        data: res.data[0]
+      })), */
   findUnique: (id: string) =>
     // api.get(`${apiUrl}/${id}`).then(res => res.data),
     api
       .get(`${apiUrl}?id=${id}&_expand=brand&_expand=category`)
       .then(res => res.data),
 
-  /* create: (params: CreateSnackInput) =>
-    api.post<Snack>(`${apiUrl}`, params).then(res => res.data), */
-  create: (params: CreateSnackInput) =>
+  create: (params: CreateSnackInput): Promise<Snack> =>
     api.post(`${apiUrl}`, toJsonApiParams2(params)).then(res => res.data),
 
-  update: (id: string, params: CreateSnackInput) =>
+  update: (id: string, params: CreateSnackInput): Promise<Snack> =>
     // api.put(`${apiUrl}/${id}`, params).then(res => res.data),
     api
       .patch(`${apiUrl}/${id}`, toJsonApiParams2(params))

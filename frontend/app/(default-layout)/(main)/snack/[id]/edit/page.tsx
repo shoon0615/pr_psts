@@ -1,24 +1,36 @@
+import React from 'react'
 import { makeQueryClient } from '@/shared/lib/react-query'
 import { prefetchSnackDetail } from '@/features/snack/prefetch/snack.prefetch'
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card'
+import { SnackEditContent } from './_components/edit-content'
+import Loader from '@/app/(default-layout)/(main)/snack/_components/loader'
 
-import SnackForm from '@/app/(default-layout)/(main)/snack/_components/form'
-
-export default async function SnackEdit({
+export default async function SnackEditPage({
   params
 }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
   const queryClient = makeQueryClient()
+  
+  // 서버에서 상세 데이터와 필요한 옵션들을 프리페치합니다.
   await prefetchSnackDetail(queryClient, id)
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      {/* <Loader>
-        <SnackForm />
-      </Loader> */}
-      <SnackForm />
-    </HydrationBoundary>
+    <div className="container mx-auto py-8 max-w-2xl">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">간식 수정</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <HydrationBoundary state={dehydrate(queryClient)}>
+            <Loader>
+              <SnackEditContent id={id} />
+            </Loader>
+          </HydrationBoundary>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

@@ -126,6 +126,74 @@ npx create-next-app@latest 프로젝트이름
 
 ```text
 📦frontend
+ ┣ 📂app
+ ┃ ┣ 📂(default-layout)
+ ┃ ┃ ┣ 📂(main)
+ ┃ ┃ ┃ ┣ 📂notice
+ ┃ ┃ ┃ ┗ 📂snack
+ ┃ ┃ ┃ ┃ ┣ 📂[id]
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂edit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx   # 수정
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx     # 조회(상세)
+ ┃ ┃ ┃ ┃ ┣ 📂new
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx     # 생성
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx       # 조회(목록)
+ ┃ ┃ ┣ 📂(public)
+ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┣ 📂mypage
+ ┃ ┃ ┃ ┗ 📂signup
+ ┃ ┃ ┣ 📜error.tsx
+ ┃ ┃ ┣ 📜layout.tsx
+ ┃ ┃ ┣ 📜loading.tsx
+ ┃ ┃ ┣ 📜not-found.tsx
+ ┃ ┃ ┗ 📜provider.tsx
+ ┃ ┗ 📂api
+ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┣ 📂notice
+ ┃ ┃ ┗ 📂snack
+ ┣ 📂features
+ ┃ ┣ 📂auth
+ ┃ ┣ 📂common
+ ┃ ┗ 📂snack
+ ┃ ┃ ┣ 📂actions
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂hooks
+ ┃ ┃ ┣ 📂prefetch
+ ┃ ┃ ┣ 📂queries
+ ┃ ┃ ┣ 📂repositories
+ ┃ ┃ ┣ 📂schema
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┗ 📂types
+ ┣ 📂mock
+ ┃ ┣ 📂docs
+ ┃ ┣ 📜notice.json
+ ┃ ┗ 📜snack.json
+ ┣ 📂public
+ ┣ 📂shared
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂provider
+ ┃ ┃ ┃ ┗ 📜session.tsx
+ ┃ ┃ ┣ 📂ui
+ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┣ 📂hooks
+ ┃ ┃ ┣ 📜use-mobile.ts
+ ┃ ┣ 📂lib
+ ┃ ┃ ┣ 📂axios
+ ┃ ┃ ┣ 📜auth.ts
+ ┃ ┃ ┣ 📜fetch.ts
+ ┃ ┃ ┣ 📜prisma.ts
+ ┃ ┃ ┣ 📜react-query.ts
+ ┃ ┃ ┣ 📜toast.ts
+ ┃ ┃ ┗ 📜utils.ts
+ ┃ ┣ 📂styles
+ ┃ ┗ 📂types
+```
+
+> `page` 서버 진입점
+> `features/*` 화면/비즈니스 기능
+
+```text
+📦frontend
  ┣ 📂.gemini
  ┃ ┣ 📜GEMINI.md
  ┃ ┣ 📜folder.tree

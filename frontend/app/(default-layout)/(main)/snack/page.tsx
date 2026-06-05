@@ -1,61 +1,57 @@
-import Search from '@/app/(default-layout)/(main)/snack/_components/search'
-import SearchLoader from '@/app/(default-layout)/(main)/snack/_components/search-loader'
-import Loader from '@/app/(default-layout)/(main)/snack/_components/loader'
-import List from '@/app/(default-layout)/(main)/snack/_components/list'
-import { Button } from '@/shared/components/ui/button'
-import { Field } from '@/shared/components/ui/field'
+import React from 'react'
 import Link from 'next/link'
+import { Plus } from 'lucide-react'
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
+
+import { SnackSearch } from '@/features/snack/components/snack-search'
+import { SnackSort } from '@/features/snack/components/snack-sort'
+import { SnackList } from '@/features/snack/components/snack-list'
+import { Button } from '@/shared/components/ui/button'
 
 import { SnackSearchParams } from '@/features/snack/types/snack.type'
 import { makeQueryClient } from '@/shared/lib/react-query'
 import { prefetchSnackPage } from '@/features/snack/prefetch/snack.prefetch'
-import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
+import Loader from '@/app/(default-layout)/(main)/snack/_components/loader'
 
-import Sort from '@/app/(default-layout)/(main)/snack/_components/sort'
-
-export default async function Snack({
+export default async function SnackPage({
   searchParams
 }: {
   searchParams: Promise<SnackSearchParams>
 }) {
   const params = await searchParams
-  // const queryClient = new QueryClient()
-  // const queryClient = new QueryClient({ defaultOptions: queryConfig })
   const queryClient = makeQueryClient()
-  // const queryClient = useQueryClient()   // client 기능이라 사용 불가
+  
+  // 서버에서 모든 필요한 데이터를 미리 가져옵니다.
   await prefetchSnackPage(queryClient, params)
 
   return (
-    <div className="flex w-full flex-1 flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-5xl">
-        <HydrationBoundary state={dehydrate(queryClient)}>
-          {/* Filter and Search Section */}
-          {/* <SearchLoader /> */}
-          <Search />
-          {/* <Search searchParams={params} /> */}
+    <div className="container mx-auto py-8 space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold tracking-tight">간식 관리</h1>
+        <Button asChild>
+          <Link href="/snack/new">
+            <Plus className="mr-2 h-4 w-4" />
+            새 간식 등록
+          </Link>
+        </Button>
+      </div>
+
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <div className="space-y-4">
+          <Loader>
+            <SnackSearch />
+          </Loader>
 
           <div className="flex justify-end">
-            <Sort />
+            <SnackSort />
           </div>
 
-          <Field
-            orientation="horizontal"
-            className="justify-end">
-            <Button
-              type="button"
-              variant="outline"
-              className="mb-3 w-20 bg-gray-100 hover:bg-gray-200"
-              asChild>
-              <Link href="/snack/new">등록</Link>
-            </Button>
-          </Field>
-
-          {/* List Section */}
+          {/* SnackList는 내부에서 useSuspenseQuery를 사용하므로 Loader(Suspense)로 감쌉니다. */}
           <Loader>
-            <List />
+            <SnackList />
           </Loader>
-        </HydrationBoundary>
-      </div>
+        </div>
+      </HydrationBoundary>
     </div>
   )
 }

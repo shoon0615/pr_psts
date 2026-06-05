@@ -1,4 +1,3 @@
-// import { parseAsInteger, parseAsString, inferParserType } from 'nuqs'
 import {
   createSearchParamsCache,
   parseAsInteger,
@@ -6,11 +5,11 @@ import {
   parseAsStringEnum,
   inferParserType
 } from 'nuqs/server'
+import { ApiResponse, PageResponse } from '@/shared/types/base.type'
 import { CreateSnackInput } from '@/features/snack/schema/snack.schema'
 
 /* const SORT_OPTIONS = ['title', 'price'] as const
 sort: parseAsStringEnum([...SORT_OPTIONS]).withDefault('title'), */
-
 export const SORT_OPTIONS = [
   { value: 'title', label: '이름순', order: 'asc' },
   { value: 'price', label: '가격순', order: 'desc' }
@@ -76,6 +75,7 @@ export const snackSearchParamsCache = createSearchParamsCache(
  * @param id 상품 ID
  * @param title 상품명
  * @param brand 브랜드
+ * @param category 카테고리
  * @param price 상품 가격
  * @param contents 상품 설명
  * @param img 상품 이미지(대표)
@@ -84,8 +84,18 @@ export interface Snack {
   // id: number
   id: string
   title: string
-  brand: string
+  brand: {
+    id: string
+    name: string
+  }
+  category: {
+    id: string
+    name: string
+  }
   price: number
   contents?: string
   img: string
 }
+
+export type SnackListResponse = PageResponse<Snack>
+export type SnackDetailResponse = ApiResponse<Snack>

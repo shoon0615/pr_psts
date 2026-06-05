@@ -150,7 +150,7 @@ export function useModifySnack2() {
 export function useRemoveSnack(id: string) {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: removeSnack,
+    mutationFn: (id: string) => removeSnack(id),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: snackKeys.lists() })
     }

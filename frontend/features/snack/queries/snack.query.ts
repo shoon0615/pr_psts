@@ -1,7 +1,7 @@
 // features/Snack/queries/Snack.query.ts
 
 import { api } from '@/shared/lib/axios/core'
-import { SnackSearchParams } from '@/features/snack/types/snack.type'
+import { SnackSearchParams, SnackListResponse, SnackDetailResponse } from '@/features/snack/types/snack.type'
 import { CreateSnackInput } from '@/features/snack/schema/snack.schema'
 
 export const snackKeys = {
@@ -16,6 +16,7 @@ export const snackKeys = {
 export const snackListQueryOptions = (params: SnackSearchParams) => ({
   queryKey: snackKeys.list(params),
   // queryFn: () => api.get('/snack')
+  // queryFn: (): Promise<SnackListResponse> => api.get('/snack', { params }).then(res => res.data),
   queryFn: () => api.get('/snack', { params }).then(res => res.data),
   placeholderData: previousData => previousData
 })

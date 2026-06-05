@@ -14,14 +14,18 @@ export interface BaseDetail {
 
 export type ApiResponse<T> = {
   data: T
-  message: string
+  message?: string
 }
 
-export type PageResponse<T> = {
-  data: T[]
-  message: string
-  page: number
-  pageSize: number
+export type ListResponse<T> = {
+  list: T[]
   totalCount: number
-  totalPages: number
 }
+
+export type PageResponse<T> = ApiResponse<
+  ListResponse<T> & {
+    page: number
+    pageSize: number
+    totalPages: number
+  }
+>
