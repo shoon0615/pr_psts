@@ -17,12 +17,34 @@ import {
 } from '@/shared/components/ui/field'
 import { Input } from '@/shared/components/ui/input'
 
-import Form from 'next/form'
-import { signInWithCredentials } from '@/shared/actions/auth'
+import {
+  signupSchema,
+  SignupInput,
+  signupDefaultValues as defaultValues
+} from '@/features/auth/schema/auth.schema'
+import { Form, FormInput } from '@/shared/components/ui/custom/form'
+import {
+  signInWithCredentials,
+  signInWithCredentials2
+} from '@/shared/actions/auth'
+import { toast } from '@/shared/lib/toast'
+import { useRouter } from 'next/navigation'
 
 export default function SigninForm({
   ...props
 }: React.ComponentProps<typeof Card>) {
+  const router = useRouter()
+
+  // async function onSubmit(formData: SignupInput) {
+  async function onSubmit(formData) {
+    // await signInWithCredentials2(formData)
+    await toast.promise(signInWithCredentials2(formData), {
+      success: '로그인 되었습니다.'
+    })
+    router.replace('/snack')
+    // router.refresh()
+  }
+
   return (
     <Card {...props}>
       <CardHeader>
@@ -33,82 +55,58 @@ export default function SigninForm({
       </CardHeader>
       <CardContent>
         <Form
-          action={signInWithCredentials}
-          // replace
-          // scroll={false}
-        >
-          <FieldGroup>
-            {/* <Field>
-              <FieldLabel htmlFor="name">Name</FieldLabel>
-              <Input
-                id="name"
-                type="text"
-                placeholder="John Doe"
-                required
-              />
-            </Field> */}
-            <Field>
-              <FieldLabel htmlFor="displayName">displayName</FieldLabel>
-              <Input
-                // id="displayName"
-                name="displayName"
-                type="text"
-                placeholder="John Doe"
-                required
-              />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="email">Email</FieldLabel>
-              <Input
-                name="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-              <FieldDescription>
-                We&apos;ll use this to contact you. We will not share your email
-                with anyone else.
-              </FieldDescription>
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="password">Password</FieldLabel>
-              <Input
-                name="password"
-                type="password"
-                required
-              />
-              <FieldDescription>
-                Must be at least 8 characters long.
-              </FieldDescription>
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="confirm-password">
-                Confirm Password
-              </FieldLabel>
-              <Input
-                name="confirm-password"
-                type="password"
-                required
-              />
-              <FieldDescription>Please confirm your password.</FieldDescription>
-            </Field>
+          schema={signupSchema}
+          onSubmit={onSubmit}
+          // id="form-snack-create"
+          // className="w-full sm:max-w-xl"
+          options={{ defaultValues }}>
+          {methods => (
             <FieldGroup>
-              <Field>
-                <Button type="submit">Create Account</Button>
-                <Button
-                  variant="outline"
-                  type="button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
-                    <path
-                      d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <span>Sign up with Google</span>
-                </Button>
-                {/* <Button
+              <FormInput
+                name="displayName"
+                label="displayName"
+                placeholder="John Doe"
+                required
+              />
+              <FormInput
+                name="email"
+                label="email"
+                placeholder="m@example.com"
+                type="email"
+                description="We'll use this to contact you. We will not share your email with anyone else."
+                required
+              />
+              <FormInput
+                name="password"
+                label="password"
+                type="password"
+                description="Must be at least 8 characters long."
+                required
+              />
+              <FormInput
+                name="passwordConfirm"
+                label="passwordConfirm"
+                type="password"
+                description="Please confirm your password."
+                required
+              />
+              <FieldGroup>
+                <Field>
+                  <Button type="submit">Create Account</Button>
+                  <Button
+                    variant="outline"
+                    type="button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24">
+                      <path
+                        d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <span>Sign up with Google</span>
+                  </Button>
+                  {/* <Button
                       variant="outline"
                       type="button">
                       <svg
@@ -121,12 +119,15 @@ export default function SigninForm({
                       </svg>
                       Sign up with GitHub
                     </Button> */}
-                <FieldDescription className="px-6 text-center">
-                  Already have an account? <a href="#">Sign in</a>
-                </FieldDescription>
-              </Field>
+                  <FieldDescription className="px-6 text-center">
+                    Already have an account?
+                    {/* Already have an account? <a href="#">Sign in</a> */}
+                    {/* Already have an account? <Link href="/signin">Sign in</Link> */}
+                  </FieldDescription>
+                </Field>
+              </FieldGroup>
             </FieldGroup>
-          </FieldGroup>
+          )}
         </Form>
       </CardContent>
     </Card>

@@ -20,6 +20,32 @@ export const {
   /* (필수) 인증 공급자 지정 → Credentials, Google/Github */
   providers: [
     Credentials({
+      /* credentials 데이터 및 타입 설정 */
+      /* credentials: {
+        email: {},
+        password: {}
+        // email: { label: 'Email', type: 'email' },
+        // password: { label: 'Password', type: 'password' }
+      },
+      async authorize(credentials) {
+        const parsed = signinSchema.safeParse(credentials)
+        if (!parsed.success) return null
+        // errors: parsed.error.flatten().fieldErrors
+
+        const user = await userService.findByEmail(parsed.data.email)
+        if (!user?.passwordHash) return null
+
+        const isValidPassword = await bcrypt.compare(parsed.data.password, user.passwordHash)
+        if (!isValidPassword) return null
+
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          role: user.role
+        }
+      } */
       /* 반환하는 사용자 정보(user, accessToken) 는 로그인이 성공하면 callbacks.jwt 함수의 user 변수로 전달됨 */
       authorize: async credentials => {
         const { displayName, email, password } = credentials

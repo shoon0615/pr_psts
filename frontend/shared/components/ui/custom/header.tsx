@@ -13,3 +13,11 @@ export default function Header() {
     </header>
   )
 }
+
+/* 'use client'
+
+import { SidebarTrigger } from '@/shared/components/ui/sidebar'
+
+export function SidebarTriggerButton() {
+  return <SidebarTrigger className="border-border -ml-1 rounded-full border" />
+} */

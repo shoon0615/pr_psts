@@ -1,6 +1,7 @@
 export declare module 'next-auth' {
   interface User {
     accessToken: string
+    // role: 'USER' | 'ADMIN'
   }
   interface Session {
     accessToken: string

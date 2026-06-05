@@ -2,10 +2,28 @@
 
 import { auth, signIn, signOut, update } from '@/shared/lib/auth'
 import { redirect } from 'next/navigation'
+import bcrypt from 'bcryptjs'
+import { AuthError } from 'next-auth'
 
 /**
  * 자격 증명 공급자(Credentials)를 사용 → 회원가입 및 로그인 구현
  */
+// const signInWithCredentials2 = async (formData: SignupInput) => {
+const signInWithCredentials2 = async formData => {
+  try {
+    await signIn('credentials', {
+      ...formData,
+      // redirectTo: '/snack' // 로그인 후 메인 페이지로 이동! → toast 메시지를 위해 submit 에서 처리
+      redirect: false
+    })
+  } catch (error) {
+    /* if (error instanceof AuthError) {
+      return error
+    } */
+    throw error
+  }
+}
+
 const signInWithCredentials = async (formData: FormData) => {
   await signIn('credentials', {
     displayName: formData.get('displayName') || '', // `'null'` 문자 방지
@@ -48,6 +66,7 @@ const signInWithGitHub = async () => {
 }
 
 const signOutWithForm = async (formData: FormData) => {
+  // await signOut({ redirectTo: '/' })
   await signOut()
 }
 
@@ -55,6 +74,7 @@ export {
   auth as getSession,
   update as updateSession,
   signInWithCredentials,
+  signInWithCredentials2,
   signInWithGoogle,
   signInWithGitHub,
   signOutWithForm
