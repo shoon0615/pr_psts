@@ -7,7 +7,7 @@ import { Spinner } from '@/shared/components/ui/spinner'
 import dynamic from 'next/dynamic'
 
 const SnackSearchClient = dynamic(
-  () => import('@/app/(default-layout)/(main)/snack/_components/search'),
+  () => import('@/app/(default-layout)/(main)/snack2/_components/search'),
   {
     ssr: false,
     loading: () => (

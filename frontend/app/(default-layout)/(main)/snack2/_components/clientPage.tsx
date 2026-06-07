@@ -1,12 +1,12 @@
 'use client'
 
-import Search from '@/app/(default-layout)/(main)/snack/_components/search'
-import Sort from '@/app/(default-layout)/(main)/snack/_components/sort'
+import Search from '@/app/(default-layout)/(main)/snack2/_components/search'
+import Sort from '@/app/(default-layout)/(main)/snack2/_components/sort'
 import { Field } from '@/shared/components/ui/field'
 import { Button } from '@/shared/components/ui/button'
 import Link from 'next/link'
-import Loader from '@/app/(default-layout)/(main)/snack/_components/loader'
-import List from '@/app/(default-layout)/(main)/snack/_components/list'
+import Loader from '@/app/(default-layout)/(main)/snack2/_components/loader'
+import List from '@/app/(default-layout)/(main)/snack2/_components/list'
 import { useSnackList } from '@/features/snack/hooks/useSnack'
 
 export default function ClientSnackPage() {

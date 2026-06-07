@@ -56,7 +56,7 @@ export default function SnackDetail() {
       })
     } */
     await toast.promise(mutateAsync(id))
-    router.replace('/snack')
+    router.replace('/snack2')
   }
 
   return (
@@ -164,7 +164,7 @@ export default function SnackDetail() {
               // className="mb-3 w-20 bg-gray-100 hover:bg-gray-200"
               className="mt-1 w-full bg-gray-400 text-lg font-bold hover:bg-gray-500"
               asChild>
-              <Link href={`/snack/${id}/edit`}>수정</Link>
+              <Link href={`/snack2/${id}/edit`}>수정</Link>
             </Button>
 
             {/* <Button

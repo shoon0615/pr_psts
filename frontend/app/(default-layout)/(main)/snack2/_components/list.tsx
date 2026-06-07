@@ -8,11 +8,17 @@ import qrImage from '@/.gemini/image.png'
 
 import { useSnackList } from '@/features/snack/hooks/useSnack'
 import EmptyState from '@/shared/components/ui/custom/empty-state'
-import Pagination from '@/app/(default-layout)/(main)/snack/_components/pagination'
+import Pagination from '@/app/(default-layout)/(main)/snack2/_components/pagination'
 
 export default function SnackList() {
   const { data } = useSnackList()
-  const { data: datas, items } = data
+  // const { data: datas, items } = data
+
+  /* const datas = data.data.list
+  const items = data.data.totalCount */
+  const {
+    data: { list: datas, totalCount: items }
+  } = data
 
   // if (datas.length === 0) return <EmptyState />
 
@@ -28,7 +34,7 @@ export default function SnackList() {
             {/* Main Card Body */}
             <Link
               // prefetch={true}
-              href={`/snack/${snack.id}`}
+              href={`/snack2/${snack.id}`}
               className="flex flex-col">
               <Card className="z-10 flex flex-col border-gray-200 py-0 transition-all duration-300 group-hover:rounded-b-none group-hover:shadow-lg">
                 <CardContent className="flex flex-col items-center p-6 text-center">
