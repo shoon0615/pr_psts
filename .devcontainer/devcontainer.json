@@ -7,9 +7,10 @@
     "docker-compose.search.yml",
     "docker-compose.db.yml",
     "docker-compose.message.yml"
+    // "docker-compose.cypress.yml"
   ],
   "service": "workspace",
-  // "runServices": ["workspace", "postgres", "redis", "elasticsearch", "kibana", "kafka"],    // service 명칭으로 실행하는 방식
+  // "runServices": ["workspace", "postgres", "redis", "elasticsearch", "kibana", "kafka", "cypress"],    // service 명칭으로 실행하는 방식
   "runServices": ["workspace", "postgres"], // 생략 시, workspace(devcontainer - main) 만 실행됨
   "workspaceFolder": "/home/vscode/${localWorkspaceFolderBasename}",
 
