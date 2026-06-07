@@ -5,6 +5,7 @@ dependencies {
     implementation project(':common')
     implementation project(':biz')
     implementation project(':domain')
+    implementation project(':infra')
 
     /* Security */
     implementation 'org.springframework.boot:spring-boot-starter-security'

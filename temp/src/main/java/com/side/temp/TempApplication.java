@@ -3,7 +3,7 @@ package com.side.temp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.side")
 public class TempApplication {
 
 	public static void main(String[] args) {

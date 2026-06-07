@@ -1,6 +1,6 @@
 {
   "features": {
-    "ghcr.io/devcontainers-contrib/features/projen:1": {
+    "ghcr.io/devcontainers-extra/features/projen:1": {
       "version": "1.0.3",
       "resolved": "ghcr.io/devcontainers-extra/features/projen@sha256:2c5f7184ea30ebd47b69a7c73af71c6f133af9af1059efae752f3881cb68aec5",
       "integrity": "sha256:2c5f7184ea30ebd47b69a7c73af71c6f133af9af1059efae752f3881cb68aec5"

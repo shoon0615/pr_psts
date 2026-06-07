@@ -26,6 +26,13 @@ subprojects {
 		}
 	}
 
+	// 생성자 파라미터 이름을 바이트코드에 보존
+	// -> Spring DI 에서 동일 타입 빈이 여러 개일 때 파라미터 이름으로 해결
+	// -> Lombok @RequiredArgsConstructor 사용 시 파라미터 이름 유지에 필수
+	tasks.withType(JavaCompile).configureEach {
+		options.compilerArgs << '-parameters'
+	}
+
 	configurations {
 		compileOnly {
 			extendsFrom annotationProcessor

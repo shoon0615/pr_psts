@@ -10,6 +10,16 @@ spring:
     active: local
 
 ---
+# Elasticsearch
+spring:
+  elasticsearch:
+    uris: http://localhost:9200
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+
+---
 # Messages
 spring:
   messages:
