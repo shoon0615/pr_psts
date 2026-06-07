@@ -1,36 +1,49 @@
-/**
+/*
  * packageName  : com.side.temp.api.controller
  * fileName     : RestCrudController
  * author       : SangHoon
  * date         : 2026-04-23
- * description  :
+ * description  : CRUD 예제 RestController
  * ===========================================================
  * DATE                 AUTHOR                NOTE
  * -----------------------------------------------------------
  * 2026-04-23          SangHoon             최초 생성
  */
+
 package com.side.temp.api.controller;
 
+// import com.side.temp.api.schema.RestCrudControllerDocs;
+
 import com.side.temp.biz.service.CrudService;
+import com.side.temp.domain.dto.request.CrudRequest;
+import jakarta.validation.Valid;
+import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/crud")
+// public class RestCrudController implements RestCrudControllerDocs {
 public class RestCrudController {
 
     private final CrudService crudService;
 
     /**
      * 조회(단건)
+     *
      * @method       : findByCrud
      * @author       : SangHoon
      * @date         : 2026-04-23 오전 10:38
@@ -47,6 +60,7 @@ public class RestCrudController {
      * @date         : 2026-04-23 오전 10:38
      */
     @GetMapping
+//    public ResponseEntity<?> findAllCrud(@RequestBody(required = false) final CrudRequest request) {
     public ResponseEntity<?> findAllCrud() {
         return ResponseEntity.ok(List.of(Map.of("data", "success")));
     }
@@ -58,8 +72,8 @@ public class RestCrudController {
      * @date         : 2026-04-23 오전 10:38
      */
     @PostMapping
-//    public ResponseEntity<?> createCrud(@Valid @RequestBody final CrudRequest request) {
-    public ResponseEntity<?> createCrud(final Map<String, Object> request) {
+//    public ResponseEntity<?> createCrud(final Map<String, Object> request) {
+    public ResponseEntity<?> createCrud(@Valid @RequestBody final CrudRequest request) {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -69,8 +83,11 @@ public class RestCrudController {
      * @author       : SangHoon
      * @date         : 2026-04-23 오전 10:38
      */
-    @PutMapping
-    public ResponseEntity<?> modifyCrud(@PathVariable final long id, final Map<String, Object> request) {
+    @PutMapping("/{id}")
+    public ResponseEntity<?> modifyCrud(
+        @PathVariable final long id,
+        @RequestBody final CrudRequest request
+    ) {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -80,7 +97,7 @@ public class RestCrudController {
      * @author       : SangHoon
      * @date         : 2026-04-23 오전 10:38
      */
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCrud(@PathVariable final long id) {
         return ResponseEntity.ok(HttpStatus.OK);
     }
