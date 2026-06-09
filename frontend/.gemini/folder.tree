@@ -1,0 +1,175 @@
+📦frontend
+ ┣ 📂app
+ ┃ ┣ 📂(default-layout)
+ ┃ ┣ 📂(empty-layout)
+ ┃ ┗ 📂api
+ ┣ 📂features
+ ┃ ┣ 📂common
+ ┃ ┣ 📂snack
+ ┃ ┃ ┣ 📂actions
+ ┃ ┃ ┣ 📂hooks
+ ┃ ┃ ┣ 📂prefetch
+ ┃ ┃ ┣ 📂queries
+ ┃ ┃ ┣ 📂repositories
+ ┃ ┃ ┣ 📂schema
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┗ 📂types
+ ┣ 📂mock
+ ┃ ┣ 📂docs
+ ┣ 📂public
+ ┣ 📂shared
+ ┃ ┣ 📂components
+ ┃ ┣ 📂hooks
+ ┃ ┣ 📂lib
+ ┃ ┣ 📂styles
+ ┃ ┗ 📂types
+
+---
+
+📦frontend
+ ┣ 📂.gemini
+ ┣ 📂app
+ ┃ ┣ 📂(default-layout)
+ ┃ ┃ ┣ 📂(main)
+ ┃ ┃ ┃ ┗ 📂snack
+ ┃ ┃ ┃ ┃ ┣ 📂[id]
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂edit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂_components
+ ┃ ┃ ┃ ┃ ┣ 📂new
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┣ 📂(public)
+ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┗ 📂signup
+ ┃ ┃ ┣ 📜layout.tsx
+ ┃ ┃ ┣ 📜loading.tsx
+ ┃ ┃ ┗ 📜provider.tsx
+ ┃ ┣ 📂(empty-layout)
+ ┃ ┗ 📂api
+ ┃ ┃ ┗ 📂snack
+ ┣ 📂features
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂hooks
+ ┃ ┃ ┣ 📂queries
+ ┃ ┃ ┣ 📂repositories
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┗ 📂types
+ ┃ ┗ 📂snack
+ ┃ ┃ ┣ 📂actions
+ ┃ ┃ ┣ 📂hooks
+ ┃ ┃ ┣ 📂prefetch
+ ┃ ┃ ┣ 📂queries
+ ┃ ┃ ┣ 📂repositories
+ ┃ ┃ ┣ 📂schema
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┗ 📂types
+ ┣ 📂mock
+ ┃ ┣ 📂docs
+ ┃ ┗ 📜snack.json
+ ┣ 📂public
+ ┣ 📂shared
+ ┃ ┣ 📂components
+ ┃ ┣ 📂hooks
+ ┃ ┣ 📂lib
+ ┃ ┣ 📂styles
+ ┃ ┗ 📂types
+
+
+📦frontend
+ ┣ 📂.gemini
+ ┣ 📂app
+ ┃ ┣ 📂(default-layout)
+ ┃ ┃ ┣ 📂(main)
+ ┃ ┃ ┃ ┗ 📂snack
+ ┃ ┃ ┃ ┃ ┣ 📂[id]
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂edit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂_components
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜list.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜loader.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜search-loader.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜search.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂new
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┣ 📂(public)
+ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┗ 📂signup
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┣ 📜layout.tsx
+ ┃ ┃ ┣ 📜loading.tsx
+ ┃ ┃ ┗ 📜provider.tsx
+ ┃ ┣ 📂(empty-layout)
+ ┃ ┃ ┣ 📂example
+ ┃ ┃ ┣ 📜layout.tsx
+ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┗ 📂api
+ ┃ ┃ ┗ 📂snack
+ ┃ ┃ ┃ ┗ 📜route.ts
+ ┣ 📂features
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂hooks
+ ┃ ┃ ┃ ┗ 📜useCommon.ts
+ ┃ ┃ ┣ 📂queries
+ ┃ ┃ ┃ ┗ 📜common.query.ts
+ ┃ ┃ ┣ 📂repositories
+ ┃ ┃ ┃ ┗ 📜common.repository.ts
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┃ ┗ 📜common.service.ts
+ ┃ ┃ ┗ 📂types
+ ┃ ┃ ┃ ┗ 📜common.type.ts
+ ┃ ┗ 📂snack
+ ┃ ┃ ┣ 📂actions
+ ┃ ┃ ┃ ┗ 📜snack.action.ts
+ ┃ ┃ ┣ 📂hooks
+ ┃ ┃ ┃ ┗ 📜useSnack.ts
+ ┃ ┃ ┣ 📂prefetch
+ ┃ ┃ ┃ ┣ 📜snack.prefetch.ts
+ ┃ ┃ ┣ 📂queries
+ ┃ ┃ ┃ ┗ 📜snack.query.ts
+ ┃ ┃ ┣ 📂repositories
+ ┃ ┃ ┃ ┣ 📜snack.api.repository.ts
+ ┃ ┃ ┃ ┗ 📜snack.prisma.repository.ts
+ ┃ ┃ ┣ 📂schema
+ ┃ ┃ ┃ ┗ 📜snack.schema.ts
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┃ ┗ 📜snack.service.ts
+ ┃ ┃ ┗ 📂types
+ ┃ ┃ ┃ ┗ 📜snack.type.ts
+ ┣ 📂mock
+ ┃ ┣ 📂docs
+ ┃ ┃ ┣ 📂20260509
+ ┃ ┃ ┃ ┣ 📜chapter.md
+ ┃ ┃ ┃ ┣ 📜next.md
+ ┃ ┃ ┣ 📂images
+ ┃ ┃ ┣ 📜form-guide.md
+ ┃ ┃ ┣ 📜form-next-demo.md
+ ┃ ┃ ┣ 📜form-rhf-demo.md
+ ┃ ┃ ┗ 📜qua.md
+ ┃ ┗ 📜snack.json
+ ┣ 📂public
+ ┣ 📂shared
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂ui
+ ┃ ┣ 📂hooks
+ ┃ ┃ ┣ 📜use-mobile.ts
+ ┃ ┃ ┗ 📜use-toast.ts
+ ┃ ┣ 📂lib
+ ┃ ┃ ┣ 📜axios.ts
+ ┃ ┃ ┣ 📜prisma.ts
+ ┃ ┃ ┣ 📜react-query.ts
+ ┃ ┃ ┗ 📜utils.ts
+ ┃ ┣ 📂styles
+ ┃ ┃ ┗ 📜globals.css
+ ┃ ┗ 📂types
+ ┃ ┃ ┣ 📜base.type.ts
+ ┃ ┃ ┗ 📜env.d.ts
+ ┣ 📜.env.local
+ ┣ 📜.gitignore
+ ┣ 📜.prettierrc
+ ┣ 📜next.config.ts
+ ┣ 📜package.json

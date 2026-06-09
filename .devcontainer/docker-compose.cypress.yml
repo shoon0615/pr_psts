@@ -1,0 +1,27 @@
+# docker-compose.cypress.yml
+services:
+  cypress:
+    container_name: cypress
+    image: cypress/included:15.16.0
+    working_dir: /e2e
+    profiles: ["cypress"]
+
+    environment:
+      CYPRESS_baseUrl: http://workspace:3000
+
+    volumes:
+      - cy_data:/e2e
+
+    networks:
+      - side_project_network
+
+    depends_on:
+      - workspace
+
+networks:
+  side_project_network:
+    driver: bridge
+
+volumes:
+  cy_data:
+    driver: local
