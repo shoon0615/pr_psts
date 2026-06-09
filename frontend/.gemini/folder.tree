@@ -1,116 +1,108 @@
 📦frontend
  ┣ 📂app
  ┃ ┣ 📂(default-layout)
- ┃ ┣ 📂(empty-layout)
+ ┃ ┃ ┣ 📂(main)
+ ┃ ┃ ┃ ┗ 📂proto
+ ┃ ┃ ┃ ┃ ┣ 📂[id]
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂edit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂new
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┣ 📂(public)
+ ┃ ┃ ┣ 📜error.tsx
+ ┃ ┃ ┣ 📜layout.tsx
+ ┃ ┃ ┣ 📜loading.tsx
+ ┃ ┃ ┣ 📜not-found.tsx
+ ┃ ┃ ┗ 📜provider.tsx
  ┃ ┗ 📂api
+ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┗ 📂[...nextauth]
+ ┃ ┃ ┃ ┃ ┗ 📜route.ts
+ ┃ ┃ ┣ 📂proto
+ ┃ ┃ ┃ ┗ 📜route.ts
  ┣ 📂features
+ ┃ ┣ 📂auth
+ ┃ ┃ ┗ 📂schema
  ┃ ┣ 📂common
- ┃ ┣ 📂snack
- ┃ ┃ ┣ 📂actions
  ┃ ┃ ┣ 📂hooks
- ┃ ┃ ┣ 📂prefetch
  ┃ ┃ ┣ 📂queries
  ┃ ┃ ┣ 📂repositories
- ┃ ┃ ┣ 📂schema
  ┃ ┃ ┣ 📂services
  ┃ ┃ ┗ 📂types
+ ┃ ┗ 📂proto
  ┣ 📂mock
  ┃ ┣ 📂docs
- ┣ 📂public
+ ┃ ┃ ┗ 📂images
+ ┃ ┗ 📜proto.json
  ┣ 📂shared
+ ┃ ┣ 📂actions
+ ┃ ┃ ┣ 📜auth.ts
+ ┃ ┃ ┗ 📜user.ts
  ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂provider
+ ┃ ┃ ┃ ┗ 📜session.tsx
+ ┃ ┃ ┗ 📂shadcn
+ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┗ 📂ui
  ┃ ┣ 📂hooks
+ ┃ ┃ ┗ 📜use-mobile.ts
  ┃ ┣ 📂lib
+ ┃ ┃ ┣ 📂axios
+ ┃ ┃ ┃ ┣ 📜core.ts
+ ┃ ┃ ┃ ┣ 📜external.ts
+ ┃ ┃ ┃ ┗ 📜interceptor.ts
+ ┃ ┃ ┣ 📜auth.ts
+ ┃ ┃ ┣ 📜fetch.ts
+ ┃ ┃ ┣ 📜prisma.ts
+ ┃ ┃ ┣ 📜react-query.ts
+ ┃ ┃ ┣ 📜toast.ts
+ ┃ ┃ ┗ 📜utils.ts
  ┃ ┣ 📂styles
  ┃ ┗ 📂types
+ ┣ 📂tests
+ 
 
 ---
 
+
 📦frontend
  ┣ 📂.gemini
+ ┃ ┣ 📜GEMINI.md
+ ┃ ┣ 📜folder.tree
+ ┃ ┣ 📜image.png
+ ┃ ┗ 📜settings.json
  ┣ 📂app
  ┃ ┣ 📂(default-layout)
  ┃ ┃ ┣ 📂(main)
- ┃ ┃ ┃ ┗ 📂snack
+ ┃ ┃ ┃ ┗ 📂proto
  ┃ ┃ ┃ ┃ ┣ 📂[id]
  ┃ ┃ ┃ ┃ ┃ ┣ 📂edit
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
  ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
- ┃ ┃ ┃ ┃ ┣ 📂_components
  ┃ ┃ ┃ ┃ ┣ 📂new
  ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
  ┃ ┃ ┃ ┃ ┗ 📜page.tsx
  ┃ ┃ ┣ 📂(public)
- ┃ ┃ ┃ ┣ 📂login
- ┃ ┃ ┃ ┗ 📂signup
+ ┃ ┃ ┣ 📜error.tsx
  ┃ ┃ ┣ 📜layout.tsx
  ┃ ┃ ┣ 📜loading.tsx
- ┃ ┃ ┗ 📜provider.tsx
- ┃ ┣ 📂(empty-layout)
- ┃ ┗ 📂api
- ┃ ┃ ┗ 📂snack
- ┣ 📂features
- ┃ ┣ 📂common
- ┃ ┃ ┣ 📂hooks
- ┃ ┃ ┣ 📂queries
- ┃ ┃ ┣ 📂repositories
- ┃ ┃ ┣ 📂services
- ┃ ┃ ┗ 📂types
- ┃ ┗ 📂snack
- ┃ ┃ ┣ 📂actions
- ┃ ┃ ┣ 📂hooks
- ┃ ┃ ┣ 📂prefetch
- ┃ ┃ ┣ 📂queries
- ┃ ┃ ┣ 📂repositories
- ┃ ┃ ┣ 📂schema
- ┃ ┃ ┣ 📂services
- ┃ ┃ ┗ 📂types
- ┣ 📂mock
- ┃ ┣ 📂docs
- ┃ ┗ 📜snack.json
- ┣ 📂public
- ┣ 📂shared
- ┃ ┣ 📂components
- ┃ ┣ 📂hooks
- ┃ ┣ 📂lib
- ┃ ┣ 📂styles
- ┃ ┗ 📂types
-
-
-📦frontend
- ┣ 📂.gemini
- ┣ 📂app
- ┃ ┣ 📂(default-layout)
- ┃ ┃ ┣ 📂(main)
- ┃ ┃ ┃ ┗ 📂snack
- ┃ ┃ ┃ ┃ ┣ 📂[id]
- ┃ ┃ ┃ ┃ ┃ ┣ 📂edit
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
- ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
- ┃ ┃ ┃ ┃ ┣ 📂_components
- ┃ ┃ ┃ ┃ ┃ ┣ 📜list.tsx
- ┃ ┃ ┃ ┃ ┃ ┣ 📜loader.tsx
- ┃ ┃ ┃ ┃ ┃ ┣ 📜search-loader.tsx
- ┃ ┃ ┃ ┃ ┃ ┗ 📜search.tsx
- ┃ ┃ ┃ ┃ ┣ 📂new
- ┃ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
- ┃ ┃ ┃ ┃ ┗ 📜page.tsx
- ┃ ┃ ┣ 📂(public)
- ┃ ┃ ┃ ┣ 📂login
- ┃ ┃ ┃ ┃ ┗ 📜page.tsx
- ┃ ┃ ┃ ┗ 📂signup
- ┃ ┃ ┃ ┃ ┗ 📜page.tsx
- ┃ ┃ ┣ 📜layout.tsx
- ┃ ┃ ┣ 📜loading.tsx
+ ┃ ┃ ┣ 📜not-found.tsx
  ┃ ┃ ┗ 📜provider.tsx
  ┃ ┣ 📂(empty-layout)
  ┃ ┃ ┣ 📂example
  ┃ ┃ ┣ 📜layout.tsx
  ┃ ┃ ┗ 📜page.tsx
  ┃ ┗ 📂api
- ┃ ┃ ┗ 📂snack
- ┃ ┃ ┃ ┗ 📜route.ts
+ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┗ 📂[...nextauth]
+ ┃ ┃ ┃ ┃ ┗ 📜route.ts
  ┣ 📂features
+ ┃ ┣ 📂auth
+ ┃ ┃ ┗ 📂schema
+ ┃ ┃ ┃ ┗ 📜auth.schema.ts
  ┃ ┣ 📂common
  ┃ ┃ ┣ 📂hooks
  ┃ ┃ ┃ ┗ 📜useCommon.ts
@@ -122,54 +114,67 @@
  ┃ ┃ ┃ ┗ 📜common.service.ts
  ┃ ┃ ┗ 📂types
  ┃ ┃ ┃ ┗ 📜common.type.ts
- ┃ ┗ 📂snack
- ┃ ┃ ┣ 📂actions
- ┃ ┃ ┃ ┗ 📜snack.action.ts
- ┃ ┃ ┣ 📂hooks
- ┃ ┃ ┃ ┗ 📜useSnack.ts
- ┃ ┃ ┣ 📂prefetch
- ┃ ┃ ┃ ┣ 📜snack.prefetch.ts
- ┃ ┃ ┣ 📂queries
- ┃ ┃ ┃ ┗ 📜snack.query.ts
- ┃ ┃ ┣ 📂repositories
- ┃ ┃ ┃ ┣ 📜snack.api.repository.ts
- ┃ ┃ ┃ ┗ 📜snack.prisma.repository.ts
- ┃ ┃ ┣ 📂schema
- ┃ ┃ ┃ ┗ 📜snack.schema.ts
- ┃ ┃ ┣ 📂services
- ┃ ┃ ┃ ┗ 📜snack.service.ts
- ┃ ┃ ┗ 📂types
- ┃ ┃ ┃ ┗ 📜snack.type.ts
+ ┃ ┗ 📂proto
  ┣ 📂mock
  ┃ ┣ 📂docs
- ┃ ┃ ┣ 📂20260509
- ┃ ┃ ┃ ┣ 📜chapter.md
- ┃ ┃ ┃ ┣ 📜next.md
- ┃ ┃ ┣ 📂images
- ┃ ┃ ┣ 📜form-guide.md
- ┃ ┃ ┣ 📜form-next-demo.md
- ┃ ┃ ┣ 📜form-rhf-demo.md
- ┃ ┃ ┗ 📜qua.md
+ ┃ ┃ ┗ 📂images
  ┃ ┗ 📜snack.json
  ┣ 📂public
+ ┃ ┣ 📜file.svg
+ ┃ ┣ 📜globe.svg
+ ┃ ┣ 📜next.svg
+ ┃ ┣ 📜vercel.svg
+ ┃ ┗ 📜window.svg
  ┣ 📂shared
+ ┃ ┣ 📂actions
+ ┃ ┃ ┣ 📜auth.ts
+ ┃ ┃ ┗ 📜user.ts
  ┃ ┣ 📂components
- ┃ ┃ ┣ 📂ui
+ ┃ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂provider
+ ┃ ┃ ┃ ┗ 📜session.tsx
+ ┃ ┃ ┗ 📂shadcn
+ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┗ 📂ui
  ┃ ┣ 📂hooks
- ┃ ┃ ┣ 📜use-mobile.ts
- ┃ ┃ ┗ 📜use-toast.ts
+ ┃ ┃ ┗ 📜use-mobile.ts
  ┃ ┣ 📂lib
- ┃ ┃ ┣ 📜axios.ts
+ ┃ ┃ ┣ 📂axios
+ ┃ ┃ ┃ ┣ 📜core.ts
+ ┃ ┃ ┃ ┣ 📜external.ts
+ ┃ ┃ ┃ ┗ 📜interceptor.ts
+ ┃ ┃ ┣ 📜auth.ts
+ ┃ ┃ ┣ 📜fetch.ts
  ┃ ┃ ┣ 📜prisma.ts
  ┃ ┃ ┣ 📜react-query.ts
+ ┃ ┃ ┣ 📜toast.ts
  ┃ ┃ ┗ 📜utils.ts
  ┃ ┣ 📂styles
  ┃ ┃ ┗ 📜globals.css
  ┃ ┗ 📂types
+ ┃ ┃ ┣ 📜auth.d.ts
  ┃ ┃ ┣ 📜base.type.ts
  ┃ ┃ ┗ 📜env.d.ts
+ ┣ 📂tests
+ ┃ ┗ 📜example.spec.ts
  ┣ 📜.env.local
  ┣ 📜.gitignore
  ┣ 📜.prettierrc
+ ┣ 📜AGENTS.md
+ ┣ 📜CLAUDE.md
+ ┣ 📜README.md
+ ┣ 📜components.json
+ ┣ 📜cypress.config.ts
+ ┣ 📜eslint.config.mjs
+ ┣ 📜next-env.d.ts
  ┣ 📜next.config.ts
  ┣ 📜package.json
+ ┣ 📜playwright.config.temp
+ ┣ 📜playwright.config.ts
+ ┣ 📜pnpm-lock.yaml
+ ┣ 📜postcss.config.mjs
+ ┣ 📜proxy.ts
+ ┣ 📜tsconfig.json
+ ┣ 📜tsconfig.tsbuildinfo
+ ┣ 📜vitest.config.ts
+ ┗ 📜vitest.setup.ts
