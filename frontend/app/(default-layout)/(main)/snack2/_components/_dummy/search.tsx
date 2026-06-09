@@ -1,0 +1,125 @@
+/** @deprecated `RHF` 라이브러리 사용 */
+'use client'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Card, CardContent } from '@/shared/components/shadcn/ui/card'
+import { Form, FormSelect } from '@/shared/components/shadcn/custom/form'
+
+import { SnackSearchParams } from '@/features/snack/types/snack.type'
+import {
+  createSnackSchema,
+  CreateSnackInput
+} from '@/features/snack/schema/snack.schema'
+import {
+  useSnackSearchParams,
+  useSnackSearchOptions
+} from '@/features/snack/hooks/useSnack'
+
+import { SubmitErrorHandler } from 'react-hook-form'
+
+export default function SnackSearch() {
+  const { searchParams, setSearchParams } = useSnackSearchParams()
+  const { brands, categories } = useSnackSearchOptions()
+
+  /* function onSubmit({ brand, category }: CreateSnackInput) {
+    setSearchParams({
+      page: 1,
+      brand,
+      category
+    })
+  } */
+
+  function onSubmit(formData: SnackSearchParams) {
+    console.log('formData', formData)
+    // const { brand, category } = formData
+    setSearchParams({
+      page: 1,
+      ...formData
+    })
+  }
+
+  const onError: SubmitErrorHandler<CreateSnackInput> = formData => {
+    console.log('Validation Errors:', formData)
+  }
+
+  return (
+    <div className="mb-4">
+      <Form
+        schema={createSnackSchema}
+        onSubmit={onSubmit}
+        onError={onError}
+        id="form-rhf-demo2"
+        className="w-full"
+        options={{ defaultValues: searchParams }}>
+        {methods => (
+          <Card>
+            <CardContent className="p-4">
+              <div className="mb-4 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2 lg:grid-cols-2">
+                <FormSelect
+                  name="brand"
+                  label="브랜드"
+                  placeholder="- 선택 -"
+                  items={brands}
+                />
+
+                <FormSelect
+                  name="category"
+                  label="카테고리"
+                  placeholder="- 선택 -"
+                  items={categories}
+                  /* items={[
+                    { label: '중앙', value: 'central' },
+                    { label: '서울', value: 'seoul' },
+                    { label: '부산', value: 'busan' }
+                  ]} */
+                />
+              </div>
+
+              <div className="mt-6 flex justify-center">
+                <Button className="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mr-2 h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path
+                      fillRule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  검색
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+      </Form>
+    </div>
+  )
+}
+
+/* 'use client'
+export default function Page() {
+  const [isPending, startTransition] = useTransition()
+  const { data, isFetching } = useSuspenseQuery({
+    queryKey: queryOptions,
+    queryFn: () => axios.get('/api/route')
+  })
+
+  function changePage(page: number) {
+    startTransition(() => {
+      setSearchParams({ page })
+    })
+  }
+
+  return (
+    <>
+      <Pagination
+        disabled={isPending}
+        onChange={changePage}
+      />
+      {isFetching && <SmallSpinner />}
+      <BoardList data={data} />
+    </>
+  )
+} */
