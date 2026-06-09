@@ -20,7 +20,7 @@ components/ui/sonner.tsx
 ```tsx
 // app/layout.tsx
 import type { ReactNode } from 'react'
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 
 export default function RootLayout({
   children
@@ -72,13 +72,13 @@ shadcn 제공 라이브러리
 ```ts
 /** @deprecated `구버전` */
 import * from '@/shared/hooks/use-toast'
-import * from '@/shared/components/ui/toast'
-import * from '@/shared/components/ui/toaster'
+import * from '@/shared/components/shadcn/ui/toast'
+import * from '@/shared/components/shadcn/ui/toaster'
 ```
 
 ```ts
 import { Toaster, toast, useSonner } from 'sonner'
-import { Toaster } from '@/shared/components/ui/custom/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/custom/sonner'
 ```
 
 ### 스니핏
@@ -235,7 +235,7 @@ import {
   AlertAction,
   AlertDescription,
   AlertTitle
-} from '@/shared/components/ui/alert'
+} from '@/shared/components/shadcn/ui/alert'
 
 export default function Example() {
   return (
@@ -287,7 +287,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@/shared/components/ui/alert-dialog'
+} from '@/shared/components/shadcn/ui/alert-dialog'
 
 function DeleteConfirm() {
   return (

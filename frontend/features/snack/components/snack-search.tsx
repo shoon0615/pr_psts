@@ -1,9 +1,13 @@
 'use client'
 
 import React from 'react'
-import { FormInput, FormSelect } from '@/shared/components/ui/custom/form'
+import { FormInput, FormSelect } from '@/shared/components/shadcn/custom/form'
 import { CommonSearchForm } from '@/shared/components/common/common-search-form'
-import { useSnackSearchParams, useSnackSearchOptions, useSnackListLoading } from '@/features/snack/hooks/useSnack'
+import {
+  useSnackSearchParams,
+  useSnackSearchOptions,
+  useSnackListLoading
+} from '@/features/snack/hooks/useSnack'
 
 export function SnackSearch() {
   const { searchParams, setSearchParams } = useSnackSearchParams()
@@ -33,8 +37,7 @@ export function SnackSearch() {
           contents: '',
           page: 1
         })
-      }}
-    >
+      }}>
       {() => (
         <>
           <FormSelect

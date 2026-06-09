@@ -4,13 +4,13 @@ import {
   EmptyDescription,
   EmptyHeader,
   EmptyTitle
-} from '@/shared/components/ui/empty'
+} from '@/shared/components/shadcn/ui/empty'
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput
-} from '@/shared/components/ui/input-group'
-import { Kbd } from '@/shared/components/ui/kbd'
+} from '@/shared/components/shadcn/ui/input-group'
+import { Kbd } from '@/shared/components/shadcn/ui/kbd'
 import { SearchIcon } from 'lucide-react'
 
 export default function EmptyInputGroup() {
@@ -42,14 +42,14 @@ export default function EmptyInputGroup() {
 }
 
 /* import Link from 'next/link'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
+} from '@/shared/components/shadcn/ui/card'
 
 export default function NotFound() {
   return (

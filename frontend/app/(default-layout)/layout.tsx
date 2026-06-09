@@ -5,11 +5,14 @@ import { cn } from '@/shared/lib/utils'
 
 import AppProvider from '@/app/(default-layout)/provider'
 
-import { SidebarProvider, SidebarInset } from '@/shared/components/ui/sidebar'
-import Sidebar from '@/shared/components/ui/custom/sidebar'
-import Header from '@/shared/components/ui/custom/header'
-import Footer from '@/shared/components/ui/custom/footer'
-import { Toaster } from '@/shared/components/ui/custom/sonner'
+import {
+  SidebarProvider,
+  SidebarInset
+} from '@/shared/components/shadcn/ui/sidebar'
+import Sidebar from '@/shared/components/shadcn/custom/sidebar'
+import Header from '@/shared/components/shadcn/custom/header'
+import Footer from '@/shared/components/shadcn/custom/footer'
+import { Toaster } from '@/shared/components/shadcn/custom/sonner'
 
 import { getSession } from '@/shared/actions/auth'
 

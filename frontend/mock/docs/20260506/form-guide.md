@@ -17,6 +17,7 @@
 ## 2. 기본 사용 방법
 
 ### 필수 라이브러리 설치 확인
+
 ```bash
 npm install react-hook-form zod @hookform/resolvers/zod @radix-ui/react-label @radix-ui/react-slot
 ```
@@ -24,26 +25,28 @@ npm install react-hook-form zod @hookform/resolvers/zod @radix-ui/react-label @r
 ### 단계별 적용 가이드
 
 #### 1) 스키마 정의 (Zod)
+
 ```typescript
-import { z } from "zod"
+import { z } from 'zod'
 
 const formSchema = z.object({
   username: z.string().min(2, {
-    message: "사용자 이름은 최소 2글자 이상이어야 합니다.",
-  }),
+    message: '사용자 이름은 최소 2글자 이상이어야 합니다.'
+  })
 })
 ```
 
 #### 2) 폼 초기화
+
 ```tsx
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
   defaultValues: {
-    username: "",
-  },
+    username: ''
+  }
 })
 
 function onSubmit(values: z.infer<typeof formSchema>) {
@@ -52,6 +55,7 @@ function onSubmit(values: z.infer<typeof formSchema>) {
 ```
 
 #### 3) UI 렌더링
+
 ```tsx
 import {
   Form,
@@ -60,15 +64,17 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from "@/shared/components/ui/form"
-import { Input } from "@/shared/components/ui/input"
-import { Button } from "@/shared/components/ui/button"
+  FormMessage
+} from '@/shared/components/shadcn/ui/form'
+import { Input } from '@/shared/components/shadcn/ui/input'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 export function ProfileForm() {
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8">
         <FormField
           control={form.control}
           name="username"
@@ -76,11 +82,12 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>사용자 이름</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <Input
+                  placeholder="username"
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>
-                공개적으로 표시될 이름입니다.
-              </FormDescription>
+              <FormDescription>공개적으로 표시될 이름입니다.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -97,16 +104,21 @@ export function ProfileForm() {
 ## 3. 고급 활용 및 팁
 
 ### 커스텀 입력 컴포넌트 연결
+
 `FormControl`은 하위 요소로 전달된 컴포넌트에 접근성 관련 속성(`id`, `aria-describedby` 등)을 주입합니다. 만약 커스텀 컴포넌트를 사용한다면 `forwardRef`가 적용되어 있어야 정상적으로 동작합니다.
 
 ### 폼 필드 상태 접근
+
 `useFormField` 훅을 사용하면 `FormField` 내부 어디서든 현재 필드의 에러 상태나 ID 등에 접근할 수 있습니다.
+
 ```tsx
 const { error, formItemId, isDirty } = useFormField()
 ```
 
 ### 접근성(Accessibility)
+
 이 컴포넌트는 다음과 같은 접근성 기능을 자동으로 처리합니다:
+
 - `FormLabel`과 `FormControl`의 ID 기반 연결 (`htmlFor`)
 - 에러 발생 시 `aria-invalid` 상태 업데이트
 - 설명문 및 에러 메시지와 입력창의 연결 (`aria-describedby`)

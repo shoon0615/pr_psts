@@ -29,27 +29,30 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CalendarIcon } from 'lucide-react'
 
 import { cn } from '@/shared/lib/utils'
-import { Label } from '@/shared/components/ui/label'
-import { Input } from '@/shared/components/ui/input'
+import { Label } from '@/shared/components/shadcn/ui/label'
+import { Input } from '@/shared/components/shadcn/ui/input'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '@/shared/components/ui/select'
-import { Checkbox } from '@/shared/components/ui/checkbox'
-import { RadioGroup, RadioGroupItem } from '@/shared/components/ui/radio-group'
-import { Switch } from '@/shared/components/ui/switch'
-import { Textarea } from '@/shared/components/ui/textarea'
-import { Calendar } from '@/shared/components/ui/custom/calendar'
+} from '@/shared/components/shadcn/ui/select'
+import { Checkbox } from '@/shared/components/shadcn/ui/checkbox'
+import {
+  RadioGroup,
+  RadioGroupItem
+} from '@/shared/components/shadcn/ui/radio-group'
+import { Switch } from '@/shared/components/shadcn/ui/switch'
+import { Textarea } from '@/shared/components/shadcn/ui/textarea'
+import { Calendar } from '@/shared/components/shadcn/custom/calendar'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
-} from '@/shared/components/ui/popover'
-import { Button } from '@/shared/components/ui/button'
-import { Slider } from '@/shared/components/ui/slider'
+} from '@/shared/components/shadcn/ui/popover'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Slider } from '@/shared/components/shadcn/ui/slider'
 // import Form from 'next/form'
 
 // --- Internal Components & Hooks ---

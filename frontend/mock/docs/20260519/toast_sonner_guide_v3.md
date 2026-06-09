@@ -92,7 +92,7 @@ Sonner의 `<Toaster />`는 앱에 한 번 배치하면 됩니다. Next.js App Ro
 ```tsx
 // app/layout.tsx
 import type { ReactNode } from 'react'
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -1155,15 +1155,15 @@ import {
   Toast,
   ToastProvider,
   ToastViewport
-} from '@/shared/components/ui/toast'
-import { Toaster } from '@/shared/components/ui/toaster'
+} from '@/shared/components/shadcn/ui/toast'
+import { Toaster } from '@/shared/components/shadcn/ui/toaster'
 ```
 
 Sonner를 기준으로 정리한다면 다음처럼 단순화합니다.
 
 ```ts
 import { toast } from 'sonner'
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 ```
 
 | 구분                | 기존 use-toast                 | sonner                          |
@@ -1182,7 +1182,7 @@ import { Toaster } from '@/shared/components/ui/sonner'
 ```tsx
 // app/layout.tsx
 import type { ReactNode } from 'react'
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

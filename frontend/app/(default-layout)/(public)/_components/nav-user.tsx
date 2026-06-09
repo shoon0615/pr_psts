@@ -13,7 +13,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage
-} from '@/shared/components/ui/avatar'
+} from '@/shared/components/shadcn/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,19 +22,19 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/shared/components/ui/dropdown-menu'
+} from '@/shared/components/shadcn/ui/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar
-} from '@/shared/components/ui/sidebar'
+} from '@/shared/components/shadcn/ui/sidebar'
 import type { Session } from 'next-auth'
 import { getSession } from '@/shared/actions/auth'
 import { useSession } from '@/shared/components/provider/session'
 import Link from 'next/link'
 import Form from 'next/form'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { signOutWithForm } from '@/shared/actions/auth'
 
 // NextAuth를 사용한다면 보통은 Session의 user 를 그대로 넘겨서 사용

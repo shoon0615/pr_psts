@@ -1,16 +1,13 @@
-import {
-  Example,
-  ExampleWrapper,
-} from '@/shared/components/example'
+import { Example, ExampleWrapper } from '@/shared/components/example'
 import {
   Alert,
   AlertAction,
   AlertDescription,
-  AlertTitle,
-} from '@/shared/components/ui/alert'
-import { Badge } from '@/shared/components/ui/badge'
-import { Button } from '@/shared/components/ui/button'
-import { CircleAlertIcon } from "lucide-react"
+  AlertTitle
+} from '@/shared/components/shadcn/ui/alert'
+import { Badge } from '@/shared/components/shadcn/ui/badge'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { CircleAlertIcon } from 'lucide-react'
 
 export function AlertExample() {
   return (
@@ -51,32 +48,28 @@ function AlertExample2() {
     <Example title="With Icons">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>
             Let&apos;s try one with icon, title and a <a href="#">link</a>.
           </AlertTitle>
         </Alert>
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertDescription>
-            This one has an icon and a description only. No title.{" "}
+            This one has an icon and a description only. No title.{' '}
             <a href="#">But it has a link</a> and a <a href="#">second link</a>.
           </AlertDescription>
         </Alert>
 
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>Success! Your changes have been saved</AlertTitle>
           <AlertDescription>
             This is an alert with icon, title and description.
           </AlertDescription>
         </Alert>
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>
             This is a very long alert title that demonstrates how the component
             handles extended text content and potentially wraps across multiple
@@ -84,8 +77,7 @@ function AlertExample2() {
           </AlertTitle>
         </Alert>
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertDescription>
             This is a very long alert description that demonstrates how the
             component handles extended text content and potentially wraps across
@@ -93,8 +85,7 @@ function AlertExample2() {
           </AlertDescription>
         </Alert>
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>
             This is an extremely long alert title that spans multiple lines to
             demonstrate how the component handles very lengthy headings while
@@ -119,16 +110,14 @@ function AlertExample3() {
     <Example title="Destructive">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert variant="destructive">
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>Something went wrong!</AlertTitle>
           <AlertDescription>
             Your session has expired. Please log in again.
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>Unable to process your payment.</AlertTitle>
           <AlertDescription>
             <p>
@@ -152,16 +141,14 @@ function AlertExample4() {
     <Example title="With Actions">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
           <AlertAction>
             <Button size="xs">Undo</Button>
           </AlertAction>
         </Alert>
         <Alert>
-          <CircleAlertIcon
-          />
+          <CircleAlertIcon />
           <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
           <AlertDescription>
             This is a very long alert title that demonstrates how the component

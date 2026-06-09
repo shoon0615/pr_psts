@@ -13,15 +13,15 @@ import {
   ComboboxList,
   ComboboxValue,
   useComboboxAnchor
-} from '@/shared/components/ui/combobox'
+} from '@/shared/components/shadcn/ui/combobox'
 import { Example, ExampleWrapper } from '@/shared/components/example'
 import {
   Avatar,
   AvatarFallback,
   AvatarImage
-} from '@/shared/components/ui/avatar'
-import { Badge } from '@/shared/components/ui/badge'
-import { Button } from '@/shared/components/ui/button'
+} from '@/shared/components/shadcn/ui/avatar'
+import { Badge } from '@/shared/components/shadcn/ui/badge'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardAction,
@@ -30,8 +30,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
-import { Checkbox } from '@/shared/components/ui/checkbox'
+} from '@/shared/components/shadcn/ui/card'
+import { Checkbox } from '@/shared/components/shadcn/ui/checkbox'
 import {
   Command,
   CommandEmpty,
@@ -39,7 +39,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList
-} from '@/shared/components/ui/command'
+} from '@/shared/components/shadcn/ui/command'
 import {
   Drawer,
   DrawerClose,
@@ -47,7 +47,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger
-} from '@/shared/components/ui/drawer'
+} from '@/shared/components/shadcn/ui/drawer'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,7 +56,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/shared/components/ui/dropdown-menu'
+} from '@/shared/components/shadcn/ui/dropdown-menu'
 import {
   Empty,
   EmptyContent,
@@ -64,7 +64,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle
-} from '@/shared/components/ui/empty'
+} from '@/shared/components/shadcn/ui/empty'
 import {
   Field,
   FieldContent,
@@ -73,15 +73,15 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet
-} from '@/shared/components/ui/field'
-import { Input } from '@/shared/components/ui/input'
+} from '@/shared/components/shadcn/ui/field'
+import { Input } from '@/shared/components/shadcn/ui/input'
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea
-} from '@/shared/components/ui/input-group'
+} from '@/shared/components/shadcn/ui/input-group'
 import {
   Item,
   ItemActions,
@@ -91,28 +91,28 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle
-} from '@/shared/components/ui/item'
-import { Kbd } from '@/shared/components/ui/kbd'
-import { NativeSelect } from '@/shared/components/ui/native-select'
+} from '@/shared/components/shadcn/ui/item'
+import { Kbd } from '@/shared/components/shadcn/ui/kbd'
+import { NativeSelect } from '@/shared/components/shadcn/ui/native-select'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
-} from '@/shared/components/ui/popover'
-import { Separator } from '@/shared/components/ui/custom/separator'
-import { Spinner } from '@/shared/components/ui/spinner'
+} from '@/shared/components/shadcn/ui/popover'
+import { Separator } from '@/shared/components/shadcn/custom/separator'
+import { Spinner } from '@/shared/components/shadcn/ui/spinner'
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger
-} from '@/shared/components/ui/tabs'
-import { Textarea } from '@/shared/components/ui/textarea'
+} from '@/shared/components/shadcn/ui/tabs'
+import { Textarea } from '@/shared/components/shadcn/ui/textarea'
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
-} from '@/shared/components/ui/tooltip'
+} from '@/shared/components/shadcn/ui/tooltip'
 import {
   PlusIcon,
   MoreHorizontalIcon,

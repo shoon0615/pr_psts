@@ -5,9 +5,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/shared/components/ui/dropdown-menu'
-import { Button } from '@/shared/components/ui/button'
+  DropdownMenuTrigger
+} from '@/shared/components/shadcn/ui/dropdown-menu'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { MoreHorizontal } from 'lucide-react'
 
 type ActionMenuItem = {
@@ -27,8 +27,7 @@ export function ActionMenu({ items }: ActionMenuProps) {
         <Button
           type="button"
           variant="ghost"
-          size="icon"
-        >
+          size="icon">
           <MoreHorizontal className="h-4 w-4" />
           <span className="sr-only">메뉴 열기</span>
         </Button>
@@ -38,8 +37,9 @@ export function ActionMenu({ items }: ActionMenuProps) {
           <DropdownMenuItem
             key={item.label}
             onClick={item.onClick}
-            className={item.destructive ? 'text-destructive focus:text-destructive' : ''}
-          >
+            className={
+              item.destructive ? 'text-destructive focus:text-destructive' : ''
+            }>
             {item.label}
           </DropdownMenuItem>
         ))}

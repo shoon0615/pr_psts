@@ -42,7 +42,7 @@ import { toast } from 'sonner'
 ```
 
 ```tsx
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 ```
 
 ### 사용 비권장 / 정리 대상
@@ -52,8 +52,8 @@ import { Toaster } from '@/shared/components/ui/sonner'
 ```ts
 /** @deprecated sonner 사용 권장 */
 import { useToast } from '@/shared/hooks/use-toast'
-import { Toast } from '@/shared/components/ui/toast'
-import { Toaster } from '@/shared/components/ui/toaster'
+import { Toast } from '@/shared/components/shadcn/ui/toast'
+import { Toaster } from '@/shared/components/shadcn/ui/toaster'
 ```
 
 정리 기준은 다음과 같습니다.
@@ -95,7 +95,7 @@ Next.js App Router 기준으로는 보통 root layout에 한 번만 추가합니
 
 ```tsx
 // app/layout.tsx
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 
 export default function RootLayout({
   children
@@ -138,7 +138,7 @@ export default function RootLayout({
 
 ```tsx
 // app/layout.tsx
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 import {
   CheckCircle2,
   Info,
@@ -812,7 +812,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@/shared/components/ui/alert-dialog'
+} from '@/shared/components/shadcn/ui/alert-dialog'
 
 export function DeleteSnackButton({ id }: { id: number }) {
   async function handleDelete() {

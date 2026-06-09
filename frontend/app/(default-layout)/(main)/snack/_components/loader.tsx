@@ -4,7 +4,7 @@ import { LoaderIcon } from 'lucide-react'
 import { Suspense } from 'react'
 // import { QueryErrorResetBoundary } from '@tanstack/react-query'
 // import { ErrorBoundary } from 'react-error-boundary';
-// import { Notifications } from '@/shared/components/ui/notifications';
+// import { Notifications } from '@/shared/components/shadcn/ui/notifications';
 
 function Spinner({ className, ...props }: React.ComponentProps<'svg'>) {
   return (

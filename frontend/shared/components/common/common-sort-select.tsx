@@ -6,8 +6,8 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from '@/shared/components/ui/select'
+  SelectValue
+} from '@/shared/components/shadcn/ui/select'
 
 export type SortOption<TValue extends string = string> = {
   label: string
@@ -32,8 +32,7 @@ export function CommonSortSelect<TValue extends string>({
   return (
     <Select
       value={value}
-      onValueChange={val => onChange(val as TValue)}
-    >
+      onValueChange={val => onChange(val as TValue)}>
       <SelectTrigger className={className ?? 'w-[160px]'}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
@@ -41,8 +40,7 @@ export function CommonSortSelect<TValue extends string>({
         {options.map(option => (
           <SelectItem
             key={option.value}
-            value={option.value}
-          >
+            value={option.value}>
             {option.label}
           </SelectItem>
         ))}

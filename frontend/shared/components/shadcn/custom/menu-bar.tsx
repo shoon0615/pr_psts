@@ -7,7 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator
-} from '@/shared/components/ui/breadcrumb'
+} from '@/shared/components/shadcn/ui/breadcrumb'
 
 export default function MenuBar() {
   return (

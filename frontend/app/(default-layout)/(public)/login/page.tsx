@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Mail, Lock, User, LogIn } from 'lucide-react'
 
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardContent,
@@ -11,9 +11,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
-import { Input } from '@/shared/components/ui/input'
-import { Label } from '@/shared/components/ui/label'
+} from '@/shared/components/shadcn/ui/card'
+import { Input } from '@/shared/components/shadcn/ui/input'
+import { Label } from '@/shared/components/shadcn/ui/label'
 
 export default function LoginPage() {
   return (

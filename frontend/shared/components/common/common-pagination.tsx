@@ -9,8 +9,8 @@ import {
   PaginationNext,
   PaginationPrevious,
   PaginationEllipsis,
-  PaginationButton,
-} from '@/shared/components/ui/custom/pagination'
+  PaginationButton
+} from '@/shared/components/shadcn/custom/pagination'
 
 type CommonPaginationProps = {
   currentPage: number
@@ -92,8 +92,7 @@ export function CommonPagination({
             ) : (
               <PaginationButton
                 isActive={page === currentPage}
-                onClick={() => onPageChange(page as number)}
-              >
+                onClick={() => onPageChange(page as number)}>
                 {page}
               </PaginationButton>
             )}
@@ -102,7 +101,9 @@ export function CommonPagination({
 
         <PaginationItem>
           <PaginationNext
-            onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
+            onClick={() =>
+              currentPage < totalPages && onPageChange(currentPage + 1)
+            }
             disabled={currentPage >= totalPages}
             className="cursor-pointer"
           />

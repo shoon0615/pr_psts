@@ -7,8 +7,8 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
-} from '@/shared/components/ui/table'
+  TableRow
+} from '@/shared/components/shadcn/ui/table'
 import { cn } from '@/shared/lib/utils'
 
 export type Column<T> = {
@@ -38,8 +38,7 @@ export function CommonTable<T>({
           {columns.map(column => (
             <TableHead
               key={column.key}
-              className={column.className}
-            >
+              className={column.className}>
               {column.header}
             </TableHead>
           ))}
@@ -50,8 +49,7 @@ export function CommonTable<T>({
           <TableRow>
             <TableCell
               colSpan={columns.length}
-              className="h-24 text-center"
-            >
+              className="h-24 text-center">
               데이터가 없습니다.
             </TableCell>
           </TableRow>
@@ -61,8 +59,7 @@ export function CommonTable<T>({
               {columns.map(column => (
                 <TableCell
                   key={column.key}
-                  className={column.className}
-                >
+                  className={column.className}>
                   {column.cell(item)}
                 </TableCell>
               ))}

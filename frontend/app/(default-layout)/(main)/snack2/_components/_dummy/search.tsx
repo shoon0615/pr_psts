@@ -1,8 +1,8 @@
 /** @deprecated `RHF` 라이브러리 사용 */
 'use client'
-import { Button } from '@/shared/components/ui/button'
-import { Card, CardContent } from '@/shared/components/ui/card'
-import { Form, FormSelect } from '@/shared/components/ui/custom/form'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Card, CardContent } from '@/shared/components/shadcn/ui/card'
+import { Form, FormSelect } from '@/shared/components/shadcn/custom/form'
 
 import { SnackSearchParams } from '@/features/snack/types/snack.type'
 import {

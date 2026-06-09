@@ -162,15 +162,15 @@ export function SnackPagination() {
 
 ```tsx
 import Form from 'next/form'
-import { Input } from '@/shared/components/ui/input'
-import { Button } from '@/shared/components/ui/button'
+import { Input } from '@/shared/components/shadcn/ui/input'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '@/shared/components/ui/select'
+} from '@/shared/components/shadcn/ui/select'
 
 type Props = {
   defaultValues?: {

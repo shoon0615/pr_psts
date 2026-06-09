@@ -11,8 +11,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@/shared/components/ui/alert-dialog'
-import { Button } from '@/shared/components/ui/button'
+} from '@/shared/components/shadcn/ui/alert-dialog'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 type ConfirmDialogButtonProps = {
   label: string

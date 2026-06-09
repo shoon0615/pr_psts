@@ -44,10 +44,9 @@ export default function AppProvider({
         <NuqsAdapter>
           <SessionProvider>
             {process.env.DEV && <ReactQueryDevtools />}
-
-            {/* <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration> */}
-
-            {children}
+            <ReactQueryStreamedHydration>
+              {children}
+            </ReactQueryStreamedHydration>
           </SessionProvider>
         </NuqsAdapter>
       </QueryClientProvider>

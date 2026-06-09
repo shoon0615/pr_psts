@@ -1,17 +1,17 @@
-import { Button } from '@/shared/components/ui/button'
-import { Card, CardContent } from '@/shared/components/ui/card'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Card, CardContent } from '@/shared/components/shadcn/ui/card'
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem
-} from '@/shared/components/ui/select'
-import { Input } from '@/shared/components/ui/input'
-import { Checkbox } from '@/shared/components/ui/checkbox'
-import { Badge } from '@/shared/components/ui/badge'
-import { Label } from '@/shared/components/ui/label'
-import { Separator } from '@/shared/components/ui/custom/separator'
+} from '@/shared/components/shadcn/ui/select'
+import { Input } from '@/shared/components/shadcn/ui/input'
+import { Checkbox } from '@/shared/components/shadcn/ui/checkbox'
+import { Badge } from '@/shared/components/shadcn/ui/badge'
+import { Label } from '@/shared/components/shadcn/ui/label'
+import { Separator } from '@/shared/components/shadcn/custom/separator'
 
 import * as o from '@/app/(default-layout)/(main)/notice/_components/options'
 import List from '@/app/(default-layout)/(main)/notice/_components/notice-list'

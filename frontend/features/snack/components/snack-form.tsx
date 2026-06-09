@@ -6,9 +6,9 @@ import {
   FormInput,
   FormSelect,
   FormTextarea
-} from '@/shared/components/ui/custom/form'
+} from '@/shared/components/shadcn/custom/form'
 import { SubmitButton } from '@/shared/components/common/submit-button'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { useRouter } from 'next/navigation'
 import {
   createSnackSchema,

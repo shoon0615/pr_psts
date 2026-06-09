@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardContent,
@@ -8,15 +8,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
-import { Field } from '@/shared/components/ui/field'
+} from '@/shared/components/shadcn/ui/card'
+import { Field } from '@/shared/components/shadcn/ui/field'
 import {
   Form,
   FormInput,
   FormSelect,
   FormSelect2,
   FormTextarea
-} from '@/shared/components/ui/custom/form'
+} from '@/shared/components/shadcn/custom/form'
 import { SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 
 import {

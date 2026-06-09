@@ -1,28 +1,28 @@
 'use client'
 
 import { cn } from '@/shared/lib/utils'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
+} from '@/shared/components/shadcn/ui/card'
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel
-} from '@/shared/components/ui/field'
-import { Input } from '@/shared/components/ui/input'
+} from '@/shared/components/shadcn/ui/field'
+import { Input } from '@/shared/components/shadcn/ui/input'
 
 import {
   signupSchema,
   SignupInput,
   signupDefaultValues as defaultValues
 } from '@/features/auth/schema/auth.schema'
-import { Form, FormInput } from '@/shared/components/ui/custom/form'
+import { Form, FormInput } from '@/shared/components/shadcn/custom/form'
 import {
   signInWithCredentials,
   signInWithCredentials2

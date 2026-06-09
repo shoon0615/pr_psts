@@ -8,15 +8,15 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@/shared/components/ui/dropdown-menu'
+} from '@/shared/components/shadcn/ui/dropdown-menu'
 import {
   Item,
   ItemActions,
   ItemContent,
   ItemDescription,
   ItemTitle
-} from '@/shared/components/ui/item'
-import { Label } from '@/shared/components/ui/label'
+} from '@/shared/components/shadcn/ui/item'
+import { Label } from '@/shared/components/shadcn/ui/label'
 import {
   Sidebar,
   SidebarContent,
@@ -30,7 +30,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail
-} from '@/shared/components/ui/sidebar'
+} from '@/shared/components/shadcn/ui/sidebar'
 import { ChevronsUpDownIcon, CheckIcon, SearchIcon } from 'lucide-react'
 import { NavUser } from '@/app/(default-layout)/(public)/_components/nav-user'
 import type { Session } from 'next-auth'

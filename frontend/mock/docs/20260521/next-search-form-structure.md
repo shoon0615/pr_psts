@@ -244,8 +244,8 @@ export default function SnackPage() {
 import { useEffect, useState } from 'react'
 import { useQueryStates } from 'nuqs'
 import { snackSearchParams } from '@/features/snack/schema/snack-search-params'
-import { Input } from '@/shared/components/ui/input'
-import { Button } from '@/shared/components/ui/button'
+import { Input } from '@/shared/components/shadcn/ui/input'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 export function SnackSearchForm() {
   const [searchParams, setSearchParams] = useQueryStates(snackSearchParams)
@@ -319,8 +319,8 @@ export function SnackSearchForm() {
 ```tsx
 // app/(default-layout)/(main)/snack/_components/snack-search-form.tsx
 import Form from 'next/form'
-import { Input } from '@/shared/components/ui/input'
-import { Button } from '@/shared/components/ui/button'
+import { Input } from '@/shared/components/shadcn/ui/input'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 type Props = {
   defaultValues?: {
@@ -389,7 +389,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '@/shared/components/ui/select'
+} from '@/shared/components/shadcn/ui/select'
 
 const ALL = 'all'
 
@@ -511,7 +511,7 @@ export function SnackList() {
 
 import { useQueryStates } from 'nuqs'
 import { snackSearchParams } from '@/features/snack/schema/snack-search-params'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { useSnackList } from '@/features/snack/hooks/use-snack-list'
 
 export function SnackPagination() {
@@ -614,7 +614,7 @@ export function SnackListView({ items }) {
 
 ```tsx
 // app/(default-layout)/(main)/snack/_components/snack-pagination-view.tsx
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 export function SnackPaginationView({ page, totalPages, onChangePage }) {
   return (

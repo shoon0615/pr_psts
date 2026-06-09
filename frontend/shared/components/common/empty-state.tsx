@@ -6,9 +6,9 @@ import {
   EmptyDescription,
   EmptyHeader,
   EmptyTitle
-} from '@/shared/components/ui/empty'
+} from '@/shared/components/shadcn/ui/empty'
 import { SearchX, PackageOpen } from 'lucide-react'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 type EmptyStateProps = {
   title?: string
@@ -39,8 +39,7 @@ export function EmptyState({
         <Button
           onClick={action.onClick}
           variant="outline"
-          className="mt-4"
-        >
+          className="mt-4">
           {action.label}
         </Button>
       )}

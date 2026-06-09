@@ -42,26 +42,26 @@ Auth
 
 ## 도메인별 역할
 
-| 도메인 | 역할 | 주요 기능 |
-|---|---|---|
-| snack | CRUD 학습용 메인 예제 | 목록, 상세, 생성, 수정, 삭제, 검색, 정렬, 페이징 |
-| board | 게시판 확장 예제 | 목록, 상세, 작성, 수정, 삭제, 작성자 권한 |
-| auth | 회원 기능 | 로그인, 회원가입, 로그아웃, 마이페이지, 세션 |
+| 도메인 | 역할                  | 주요 기능                                        |
+| ------ | --------------------- | ------------------------------------------------ |
+| snack  | CRUD 학습용 메인 예제 | 목록, 상세, 생성, 수정, 삭제, 검색, 정렬, 페이징 |
+| board  | 게시판 확장 예제      | 목록, 상세, 작성, 수정, 삭제, 작성자 권한        |
+| auth   | 회원 기능             | 로그인, 회원가입, 로그아웃, 마이페이지, 세션     |
 
 ---
 
 ## 기술 연결
 
-| 영역 | 기술 |
-|---|---|
-| Page | Next.js App Router |
-| Form | React Hook Form + Zod |
-| Query | TanStack Query |
-| Search | qs + nuqs |
-| Auth | Auth.js |
-| State | Zustand |
-| DB | Prisma 또는 json-server |
-| UI | shadcn/ui |
+| 영역   | 기술                    |
+| ------ | ----------------------- |
+| Page   | Next.js App Router      |
+| Form   | React Hook Form + Zod   |
+| Query  | TanStack Query          |
+| Search | qs + nuqs               |
+| Auth   | Auth.js                 |
+| State  | Zustand                 |
+| DB     | Prisma 또는 json-server |
+| UI     | shadcn/ui               |
 
 ---
 
@@ -345,17 +345,17 @@ Snack은 CRUD와 검색/정렬/페이징을 연습하기 좋은 메인 도메인
 
 ## Snack 기능
 
-| 기능 | 설명 |
-|---|---|
-| 목록 | 간식 목록 조회 |
-| 상세 | 간식 상세 조회 |
-| 생성 | 간식 등록 |
-| 수정 | 간식 정보 수정 |
-| 삭제 | 간식 삭제 |
-| 검색 | 이름/내용 검색 |
-| 필터 | 브랜드/카테고리 필터 |
-| 정렬 | 가격/이름/생성일 정렬 |
-| 페이징 | 페이지 단위 조회 |
+| 기능   | 설명                  |
+| ------ | --------------------- |
+| 목록   | 간식 목록 조회        |
+| 상세   | 간식 상세 조회        |
+| 생성   | 간식 등록             |
+| 수정   | 간식 정보 수정        |
+| 삭제   | 간식 삭제             |
+| 검색   | 이름/내용 검색        |
+| 필터   | 브랜드/카테고리 필터  |
+| 정렬   | 가격/이름/생성일 정렬 |
+| 페이징 | 페이지 단위 조회      |
 
 ---
 
@@ -509,7 +509,10 @@ export const snackDetailQueryOptions = (id: string) =>
 ```ts
 // features/snack/prefetch/snack.prefetch.ts
 import type { QueryClient } from '@tanstack/react-query'
-import { snackDetailQueryOptions, snackListQueryOptions } from '../queries/snack.query'
+import {
+  snackDetailQueryOptions,
+  snackListQueryOptions
+} from '../queries/snack.query'
 import type { SnackSearchParams } from '../types/snack.type'
 
 export async function prefetchSnackList(
@@ -626,7 +629,11 @@ export async function deleteSnackAction(id: string) {
 // features/snack/hooks/use-snack.ts
 'use client'
 
-import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery
+} from '@tanstack/react-query'
 import {
   createSnackAction,
   deleteSnackAction,
@@ -637,7 +644,11 @@ import {
   snackKeys,
   snackListQueryOptions
 } from '../queries/snack.query'
-import type { CreateSnackInput, SnackSearchParams, UpdateSnackInput } from '../types/snack.type'
+import type {
+  CreateSnackInput,
+  SnackSearchParams,
+  UpdateSnackInput
+} from '../types/snack.type'
 
 export function useSnackList(params: SnackSearchParams) {
   return useSuspenseQuery(snackListQueryOptions(params))
@@ -757,15 +768,15 @@ Board는 게시글 CRUD와 작성자 권한을 학습하기 위한 도메인입�
 
 ## Board 기능
 
-| 기능 | 설명 |
-|---|---|
-| 목록 | 게시글 목록 |
-| 상세 | 게시글 상세 |
-| 작성 | 로그인 사용자 작성 |
+| 기능 | 설명                    |
+| ---- | ----------------------- |
+| 목록 | 게시글 목록             |
+| 상세 | 게시글 상세             |
+| 작성 | 로그인 사용자 작성      |
 | 수정 | 작성자 또는 관리자 수정 |
 | 삭제 | 작성자 또는 관리자 삭제 |
-| 검색 | 제목/내용 검색 |
-| 권한 | 본인 글만 수정/삭제 |
+| 검색 | 제목/내용 검색          |
+| 권한 | 본인 글만 수정/삭제     |
 
 ---
 
@@ -959,13 +970,13 @@ Auth는 로그인, 회원가입, 로그아웃, 마이페이지를 담당합니�
 
 ## Auth 기능
 
-| 기능 | 설명 |
-|---|---|
-| 로그인 | Credentials 로그인 |
-| 회원가입 | 계정 생성 |
-| 로그아웃 | 세션 종료 |
-| 마이페이지 | 내 정보 조회/수정 |
-| 권한 | role 기반 접근 제어 |
+| 기능       | 설명                |
+| ---------- | ------------------- |
+| 로그인     | Credentials 로그인  |
+| 회원가입   | 계정 생성           |
+| 로그아웃   | 세션 종료           |
+| 마이페이지 | 내 정보 조회/수정   |
+| 권한       | role 기반 접근 제어 |
 
 ---
 
@@ -1094,11 +1105,7 @@ export const userRepository = {
     })
   },
 
-  create(input: {
-    email: string
-    name: string
-    passwordHash: string
-  }) {
+  create(input: { email: string; name: string; passwordHash: string }) {
     return prisma.user.create({
       data: input
     })
@@ -1116,8 +1123,13 @@ export const userRepository = {
 // shared/components/form/form-input.tsx
 'use client'
 
-import { useController, type FieldValues, type Path, type Control } from 'react-hook-form'
-import { Input } from '@/shared/components/ui/input'
+import {
+  useController,
+  type FieldValues,
+  type Path,
+  type Control
+} from 'react-hook-form'
+import { Input } from '@/shared/components/shadcn/ui/input'
 
 type FormInputProps<T extends FieldValues> = {
   control: Control<T>
@@ -1142,7 +1154,11 @@ export function FormInput<T extends FieldValues>({
   return (
     <div>
       <label>{label}</label>
-      <Input {...field} type={type} placeholder={placeholder} />
+      <Input
+        {...field}
+        type={type}
+        placeholder={placeholder}
+      />
       {error?.message && <p>{error.message}</p>}
     </div>
   )
@@ -1181,7 +1197,9 @@ export function ConfirmDialog({
       <h2>{title}</h2>
       {description && <p>{description}</p>}
       <button onClick={() => onOpenChange(false)}>취소</button>
-      <button disabled={pending} onClick={onConfirm}>
+      <button
+        disabled={pending}
+        onClick={onConfirm}>
         {pending ? '처리 중...' : '확인'}
       </button>
     </div>
@@ -1236,9 +1254,7 @@ export function ReactQueryProvider({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryStreamedHydration>
-        {children}
-      </ReactQueryStreamedHydration>
+      <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
     </QueryClientProvider>
   )
 }
@@ -1353,11 +1369,11 @@ session
 
 Snack과 Board는 비슷하지만 완전히 같지는 않습니다.
 
-| 도메인 | 차이 |
-|---|---|
-| Snack | 상품 CRUD 중심 |
-| Board | 작성자 권한 중심 |
-| Auth | 세션/사용자 중심 |
+| 도메인 | 차이             |
+| ------ | ---------------- |
+| Snack  | 상품 CRUD 중심   |
+| Board  | 작성자 권한 중심 |
+| Auth   | 세션/사용자 중심 |
 
 ---
 

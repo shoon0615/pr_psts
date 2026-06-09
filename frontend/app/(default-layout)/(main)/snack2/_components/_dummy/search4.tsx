@@ -2,16 +2,24 @@
 
 import { useTransition } from 'react'
 import { Search, RotateCcw } from 'lucide-react'
-import { Button } from '@/shared/components/ui/button'
-import { Card, CardContent, CardFooter } from '@/shared/components/ui/card'
-import { Field, FieldGroup, FieldLabel } from '@/shared/components/ui/field'
-import { Input } from '@/shared/components/ui/input'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import {
+  Card,
+  CardContent,
+  CardFooter
+} from '@/shared/components/shadcn/ui/card'
+import {
+  Field,
+  FieldGroup,
+  FieldLabel
+} from '@/shared/components/shadcn/ui/field'
+import { Input } from '@/shared/components/shadcn/ui/input'
 import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption
-} from '@/shared/components/ui/native-select'
-import { Spinner } from '@/shared/components/ui/spinner'
+} from '@/shared/components/shadcn/ui/native-select'
+import { Spinner } from '@/shared/components/shadcn/ui/spinner'
 
 import {
   useSnackSearchParams,

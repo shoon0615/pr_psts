@@ -9,7 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
   PaginationButton
-} from '@/shared/components/ui/custom/pagination'
+} from '@/shared/components/shadcn/custom/pagination'
 import { useSnackSearchParams } from '@/features/snack/hooks/useSnack'
 
 export default function SnackPagination({

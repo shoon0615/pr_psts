@@ -2,14 +2,14 @@
 
 import * as React from 'react'
 
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@/shared/components/ui/dropdown-menu'
+} from '@/shared/components/shadcn/ui/dropdown-menu'
 import {
   Item,
   ItemActions,
@@ -17,8 +17,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle
-} from '@/shared/components/ui/item'
-import { Label } from '@/shared/components/ui/label'
+} from '@/shared/components/shadcn/ui/item'
+import { Label } from '@/shared/components/shadcn/ui/label'
 import {
   Sidebar,
   SidebarContent,
@@ -34,7 +34,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger
-} from '@/shared/components/ui/sidebar'
+} from '@/shared/components/shadcn/ui/sidebar'
 import { ChevronsUpDownIcon, CheckIcon, SearchIcon } from 'lucide-react'
 
 export function SidebarExample() {

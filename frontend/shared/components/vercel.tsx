@@ -6,10 +6,10 @@ import { type DateRange } from 'react-day-picker'
 import { Area, AreaChart } from 'recharts'
 
 import { Example, ExampleWrapper } from '@/shared/components/example'
-import { Alert, AlertDescription } from '@/shared/components/ui/alert'
-import { Badge } from '@/shared/components/ui/badge'
-import { Button } from '@/shared/components/ui/button'
-import { Calendar } from '@/shared/components/ui/calendar'
+import { Alert, AlertDescription } from '@/shared/components/shadcn/ui/alert'
+import { Badge } from '@/shared/components/shadcn/ui/badge'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Calendar } from '@/shared/components/shadcn/ui/calendar'
 import {
   Card,
   CardAction,
@@ -18,13 +18,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
+} from '@/shared/components/shadcn/ui/card'
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig
-} from '@/shared/components/ui/chart'
+} from '@/shared/components/shadcn/ui/chart'
 import {
   Dialog,
   DialogClose,
@@ -34,27 +34,31 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '@/shared/components/ui/dialog'
+} from '@/shared/components/shadcn/ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/shared/components/ui/dropdown-menu'
+} from '@/shared/components/shadcn/ui/dropdown-menu'
 import {
   Empty,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyTitle
-} from '@/shared/components/ui/empty'
-import { Field, FieldGroup, FieldLabel } from '@/shared/components/ui/field'
+} from '@/shared/components/shadcn/ui/empty'
+import {
+  Field,
+  FieldGroup,
+  FieldLabel
+} from '@/shared/components/shadcn/ui/field'
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput
-} from '@/shared/components/ui/input-group'
+} from '@/shared/components/shadcn/ui/input-group'
 import {
   Item,
   ItemActions,
@@ -65,17 +69,17 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle
-} from '@/shared/components/ui/item'
+} from '@/shared/components/shadcn/ui/item'
 import {
   NativeSelect,
   NativeSelectOption
-} from '@/shared/components/ui/native-select'
+} from '@/shared/components/shadcn/ui/native-select'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
-} from '@/shared/components/ui/popover'
-import { Textarea } from '@/shared/components/ui/textarea'
+} from '@/shared/components/shadcn/ui/popover'
+import { Textarea } from '@/shared/components/shadcn/ui/textarea'
 import {
   CalendarIcon,
   Search,

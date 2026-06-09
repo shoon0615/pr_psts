@@ -11,7 +11,7 @@ import { ko } from 'date-fns/locale'
 import { format } from 'date-fns'
 
 import { cn } from '@/shared/lib/utils'
-import { Button, buttonVariants } from '@/shared/components/ui/button'
+import { Button, buttonVariants } from '@/shared/components/shadcn/ui/button'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,

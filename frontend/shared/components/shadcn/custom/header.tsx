@@ -1,6 +1,6 @@
-import { SidebarTrigger } from '@/shared/components/ui/sidebar'
-import MenuBar from '@/shared/components/ui/custom/menu-bar'
-import MenuNav from '@/shared/components/ui/custom/menu-nav'
+import { SidebarTrigger } from '@/shared/components/shadcn/ui/sidebar'
+import MenuBar from '@/shared/components/shadcn/custom/menu-bar'
+import MenuNav from '@/shared/components/shadcn/custom/menu-nav'
 
 export default function Header() {
   return (
@@ -16,7 +16,7 @@ export default function Header() {
 
 /* 'use client'
 
-import { SidebarTrigger } from '@/shared/components/ui/sidebar'
+import { SidebarTrigger } from '@/shared/components/shadcn/ui/sidebar'
 
 export function SidebarTriggerButton() {
   return <SidebarTrigger className="border-border -ml-1 rounded-full border" />

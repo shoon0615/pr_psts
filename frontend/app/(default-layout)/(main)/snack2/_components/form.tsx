@@ -13,22 +13,22 @@ import {
 } from '@/features/snack/schema/snack.schema'
 import { toast } from '@/shared/lib/toast'
 
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
-import { Field } from '@/shared/components/ui/field'
+} from '@/shared/components/shadcn/ui/card'
+import { Field } from '@/shared/components/shadcn/ui/field'
 import {
   Form,
   FormInput,
   FormSelect,
   FormSelect2,
   FormTextarea
-} from '@/shared/components/ui/custom/form'
+} from '@/shared/components/shadcn/custom/form'
 
 export default function SnackForm() {
   // const { id } = useParams()

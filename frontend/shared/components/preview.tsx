@@ -15,16 +15,16 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@/shared/components/ui/alert-dialog'
+} from '@/shared/components/shadcn/ui/alert-dialog'
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarImage
-} from '@/shared/components/ui/avatar'
-import { Badge } from '@/shared/components/ui/badge'
-import { Button } from '@/shared/components/ui/button'
-import { ButtonGroup } from '@/shared/components/ui/button-group'
+} from '@/shared/components/shadcn/ui/avatar'
+import { Badge } from '@/shared/components/shadcn/ui/badge'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { ButtonGroup } from '@/shared/components/shadcn/ui/button-group'
 import {
   Card,
   CardAction,
@@ -33,8 +33,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
-import { Checkbox } from '@/shared/components/ui/checkbox'
+} from '@/shared/components/shadcn/ui/card'
+import { Checkbox } from '@/shared/components/shadcn/ui/checkbox'
 import {
   Combobox,
   ComboboxContent,
@@ -42,7 +42,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList
-} from '@/shared/components/ui/combobox'
+} from '@/shared/components/shadcn/ui/combobox'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -59,7 +59,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
-} from '@/shared/components/ui/dropdown-menu'
+} from '@/shared/components/shadcn/ui/dropdown-menu'
 import {
   Empty,
   EmptyContent,
@@ -67,7 +67,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle
-} from '@/shared/components/ui/empty'
+} from '@/shared/components/shadcn/ui/empty'
 import {
   Field,
   FieldContent,
@@ -78,8 +78,8 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle
-} from '@/shared/components/ui/field'
-import { Input } from '@/shared/components/ui/input'
+} from '@/shared/components/shadcn/ui/field'
+import { Input } from '@/shared/components/shadcn/ui/input'
 import {
   InputGroup,
   InputGroupAddon,
@@ -87,7 +87,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea
-} from '@/shared/components/ui/input-group'
+} from '@/shared/components/shadcn/ui/input-group'
 import {
   Item,
   ItemActions,
@@ -95,8 +95,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle
-} from '@/shared/components/ui/item'
-import { Label } from '@/shared/components/ui/label'
+} from '@/shared/components/shadcn/ui/item'
+import { Label } from '@/shared/components/shadcn/ui/label'
 import {
   Popover,
   PopoverContent,
@@ -104,8 +104,11 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger
-} from '@/shared/components/ui/popover'
-import { RadioGroup, RadioGroupItem } from '@/shared/components/ui/radio-group'
+} from '@/shared/components/shadcn/ui/popover'
+import {
+  RadioGroup,
+  RadioGroupItem
+} from '@/shared/components/shadcn/ui/radio-group'
 import {
   Select,
   SelectContent,
@@ -113,8 +116,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '@/shared/components/ui/select'
-import { Separator } from '@/shared/components/ui/custom/separator'
+} from '@/shared/components/shadcn/ui/select'
+import { Separator } from '@/shared/components/shadcn/custom/separator'
 import {
   Sheet,
   SheetClose,
@@ -124,16 +127,16 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger
-} from '@/shared/components/ui/sheet'
-import { Slider } from '@/shared/components/ui/slider'
-import { Spinner } from '@/shared/components/ui/spinner'
-import { Switch } from '@/shared/components/ui/switch'
-import { Textarea } from '@/shared/components/ui/textarea'
+} from '@/shared/components/shadcn/ui/sheet'
+import { Slider } from '@/shared/components/shadcn/ui/slider'
+import { Spinner } from '@/shared/components/shadcn/ui/spinner'
+import { Switch } from '@/shared/components/shadcn/ui/switch'
+import { Textarea } from '@/shared/components/shadcn/ui/textarea'
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
-} from '@/shared/components/ui/tooltip'
+} from '@/shared/components/shadcn/ui/tooltip'
 import {
   MinusIcon,
   PlusIcon,

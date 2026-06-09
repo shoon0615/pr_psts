@@ -7,8 +7,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
-import { Button } from '@/shared/components/ui/button'
+} from '@/shared/components/shadcn/ui/card'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { Snack } from '@/features/snack/types/snack.type'
 import { ConfirmDialogButton } from '@/shared/components/common/confirm-dialog-button'
 import { useRemoveSnack } from '@/features/snack/hooks/useSnack'

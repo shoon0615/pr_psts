@@ -3,8 +3,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle
-} from '@/shared/components/ui/empty'
-import { Spinner } from '@/shared/components/ui/spinner'
+} from '@/shared/components/shadcn/ui/empty'
+import { Spinner } from '@/shared/components/shadcn/ui/spinner'
 
 export default function Loader() {
   return (

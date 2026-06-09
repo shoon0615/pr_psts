@@ -7,8 +7,8 @@ import {
   ItemMedia,
   ItemHeader,
   ItemTitle
-} from '@/shared/components/ui/item'
-import { Badge } from '@/shared/components/ui/badge'
+} from '@/shared/components/shadcn/ui/item'
+import { Badge } from '@/shared/components/shadcn/ui/badge'
 import { Notice } from '@/app/(default-layout)/(main)/notice/_types/notice'
 
 export default function NoticeItem({ data }: { data: Notice }) {

@@ -3,7 +3,7 @@ import {
   EmptyDescription,
   EmptyHeader,
   EmptyTitle
-} from '@/shared/components/ui/empty'
+} from '@/shared/components/shadcn/ui/empty'
 import { PackageOpen, SearchX } from 'lucide-react'
 
 type EmptyStateProps = {

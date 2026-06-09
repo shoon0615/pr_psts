@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { AlertCircle } from 'lucide-react'
 
 type ErrorStateProps = {
@@ -24,8 +24,7 @@ export function ErrorState({
         <Button
           onClick={onReset}
           variant="outline"
-          className="mt-6"
-        >
+          className="mt-6">
           다시 시도
         </Button>
       )}

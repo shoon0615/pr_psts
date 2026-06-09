@@ -1,4 +1,4 @@
-import { SelectContent, SelectItem } from '@/shared/components/ui/select'
+import { SelectContent, SelectItem } from '@/shared/components/shadcn/ui/select'
 
 export function ActivityRegionProvince() {
   return (

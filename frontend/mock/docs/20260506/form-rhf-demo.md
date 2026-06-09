@@ -3,65 +3,65 @@
 이 예제는 `react-hook-form`과 `zod`를 사용하여 유효성 검사를 처리하는 shadcn/ui의 최신 폼 작성 방식입니다.
 
 ```tsx
-"use client"
+'use client'
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import * as React from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Controller, useForm } from 'react-hook-form'
+import { toast } from 'sonner'
+import * as z from 'zod'
 
-import { Button } from "@/shared/components/ui/button"
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card"
+  CardTitle
+} from '@/shared/components/shadcn/ui/card'
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
-  FieldLabel,
-} from "@/shared/components/ui/field"
-import { Input } from "@/shared/components/ui/input"
+  FieldLabel
+} from '@/shared/components/shadcn/ui/field'
+import { Input } from '@/shared/components/shadcn/ui/input'
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-  InputGroupTextarea,
-} from "@/shared/components/ui/input-group"
+  InputGroupTextarea
+} from '@/shared/components/shadcn/ui/input-group'
 
 const formSchema = z.object({
   title: z
     .string()
-    .min(5, "Bug title must be at least 5 characters.")
-    .max(32, "Bug title must be at most 32 characters."),
+    .min(5, 'Bug title must be at least 5 characters.')
+    .max(32, 'Bug title must be at most 32 characters.'),
   description: z
     .string()
-    .min(20, "Description must be at least 20 characters.")
-    .max(100, "Description must be at most 100 characters."),
+    .min(20, 'Description must be at least 20 characters.')
+    .max(100, 'Description must be at most 100 characters.')
 })
 
 export default function BugReportForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      description: "",
-    },
+      title: '',
+      description: ''
+    }
   })
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    toast("You submitted the following values:", {
+    toast('You submitted the following values:', {
       description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
-      ),
+      )
     })
   }
 
@@ -74,7 +74,9 @@ export default function BugReportForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          id="form-rhf-demo"
+          onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
               name="title"
@@ -135,10 +137,15 @@ export default function BugReportForm() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button type="submit" form="form-rhf-demo">
+          <Button
+            type="submit"
+            form="form-rhf-demo">
             Submit
           </Button>
         </Field>

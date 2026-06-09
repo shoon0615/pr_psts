@@ -74,7 +74,7 @@ import { toast } from 'sonner'
 ```
 
 ```tsx
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 ```
 
 ### 사용 비권장 / 구버전 정리 대상
@@ -84,8 +84,8 @@ import { Toaster } from '@/shared/components/ui/sonner'
 ```ts
 /** @deprecated sonner 사용 권장 */
 import { useToast } from '@/shared/hooks/use-toast'
-import { Toast } from '@/shared/components/ui/toast'
-import { Toaster } from '@/shared/components/ui/toaster'
+import { Toast } from '@/shared/components/shadcn/ui/toast'
+import { Toaster } from '@/shared/components/shadcn/ui/toaster'
 ```
 
 이유는 `shadcn/ui`에서 현재 `Sonner` 컴포넌트를 별도 컴포넌트로 제공하고 있고, `toast` 호출도 `sonner` 패키지의 API를 직접 사용하는 구조가 단순하기 때문입니다.
@@ -122,7 +122,7 @@ Next.js App Router 기준으로는 보통 root layout 또는 provider 영역에 
 
 ```tsx
 // app/layout.tsx
-import { Toaster } from '@/shared/components/ui/sonner'
+import { Toaster } from '@/shared/components/shadcn/ui/sonner'
 
 export default function RootLayout({
   children
@@ -423,7 +423,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@/shared/components/ui/alert-dialog'
+} from '@/shared/components/shadcn/ui/alert-dialog'
 
 export function DeleteSnackButton({ id }: { id: number }) {
   async function handleDelete() {

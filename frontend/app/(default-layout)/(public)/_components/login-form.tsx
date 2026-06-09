@@ -1,19 +1,19 @@
 import { cn } from '@/shared/lib/utils'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '@/shared/components/ui/card'
+} from '@/shared/components/shadcn/ui/card'
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel
-} from '@/shared/components/ui/field'
-import { Input } from '@/shared/components/ui/input'
+} from '@/shared/components/shadcn/ui/field'
+import { Input } from '@/shared/components/shadcn/ui/input'
 
 import Form from 'next/form'
 import { signInWithCredentials, signInWithGoogle } from '@/shared/actions/auth'

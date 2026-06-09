@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { Loader2 } from 'lucide-react'
 
 type SubmitButtonProps = {
@@ -27,8 +27,7 @@ export function SubmitButton({
       disabled={isPending}
       variant={variant}
       className={className}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
       {isPending ? pendingLabel : label}
     </Button>

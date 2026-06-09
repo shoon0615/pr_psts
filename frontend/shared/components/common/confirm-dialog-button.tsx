@@ -10,9 +10,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/shared/components/ui/alert-dialog'
-import { Button } from '@/shared/components/ui/button'
+  AlertDialogTrigger
+} from '@/shared/components/shadcn/ui/alert-dialog'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 type ConfirmDialogButtonProps = {
   label?: string
@@ -49,8 +49,7 @@ export function ConfirmDialogButton({
             type="button"
             variant={variant}
             className={className}
-            {...buttonProps}
-          >
+            {...buttonProps}>
             {label}
           </Button>
         )}
@@ -66,8 +65,11 @@ export function ConfirmDialogButton({
           <AlertDialogCancel>{cancelLabel}</AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
-            className={variant === 'destructive' ? 'bg-destructive text-destructive-foreground hover:bg-destructive/90' : ''}
-          >
+            className={
+              variant === 'destructive'
+                ? 'bg-destructive text-destructive-foreground hover:bg-destructive/90'
+                : ''
+            }>
             {confirmLabel}
           </AlertDialogAction>
         </AlertDialogFooter>

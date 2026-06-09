@@ -5,7 +5,7 @@ import {
   EmptyDescription,
   EmptyHeader,
   EmptyTitle
-} from '@/shared/components/ui/empty'
+} from '@/shared/components/shadcn/ui/empty'
 
 export default function Error() {
   return (
@@ -24,12 +24,12 @@ export default function Error() {
 /* import { useEffect } from 'react'
 import { AlertCircle } from 'lucide-react'
 
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import {
   Alert,
   AlertDescription,
   AlertTitle
-} from '@/shared/components/ui/alert'
+} from '@/shared/components/shadcn/ui/alert'
 
 export default function Error({
   error,

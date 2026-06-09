@@ -10,7 +10,7 @@ import { Snack } from '@/features/snack/types/snack.type'
 import { useRemoveSnack } from '@/features/snack/hooks/useSnack'
 import { toast } from 'sonner'
 import { Edit, Trash2, MoreVertical } from 'lucide-react'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/shadcn/ui/button'
 
 export function SnackTable({ data }: { data: Snack[] }) {
   const router = useRouter()
@@ -32,8 +32,7 @@ export function SnackTable({ data }: { data: Snack[] }) {
       cell: item => (
         <Link
           href={`/snack/${item.id}`}
-          className="hover:underline font-medium"
-        >
+          className="font-medium hover:underline">
           {item.title}
         </Link>
       )
@@ -68,7 +67,7 @@ export function SnackTable({ data }: { data: Snack[] }) {
               destructive: true,
               onClick: () => {
                 // ActionMenu inside a table often triggers a confirmation dialog
-                // Here we use the ConfirmDialogButton as a separate trigger or 
+                // Here we use the ConfirmDialogButton as a separate trigger or
                 // we can just keep the current Trash icon for quick delete
               }
             }
@@ -89,8 +88,7 @@ export function SnackTable({ data }: { data: Snack[] }) {
           variant="ghost"
           size="icon"
           onClick={() => router.push(`/snack/${item.id}/edit`)}
-          className="h-8 w-8"
-        >
+          className="h-8 w-8">
           <Edit className="h-4 w-4" />
           <span className="sr-only">수정</span>
         </Button>
@@ -99,9 +97,8 @@ export function SnackTable({ data }: { data: Snack[] }) {
           description={`'${item.title}' 간식을 삭제하시겠습니까?`}
           onConfirm={() => handleDelete(item.id)}
           variant="ghost"
-          className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
-          label=""
-        >
+          className="text-destructive hover:text-destructive hover:bg-destructive/10 h-8 w-8 p-0"
+          label="">
           <Trash2 className="h-4 w-4" />
           <span className="sr-only">삭제</span>
         </ConfirmDialogButton>

@@ -2,15 +2,15 @@
 
 import Image from 'next/image'
 import { useParams, useRouter, notFound } from 'next/navigation'
-import { Card, CardContent } from '@/shared/components/ui/card'
-import { Button } from '@/shared/components/ui/button'
-import { Badge } from '@/shared/components/ui/badge'
-import { Separator } from '@/shared/components/ui/custom/separator'
+import { Card, CardContent } from '@/shared/components/shadcn/ui/card'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Badge } from '@/shared/components/shadcn/ui/badge'
+import { Separator } from '@/shared/components/shadcn/custom/separator'
 import qrImage from '@/.gemini/image.png'
 import Link from 'next/link'
 
 import { toast } from '@/shared/lib/toast'
-import { ConfirmDialogButton } from '@/shared/components/ui/custom/alert-dialog-button'
+import { ConfirmDialogButton } from '@/shared/components/shadcn/custom/alert-dialog-button'
 
 import { useSnackDetail, useRemoveSnack } from '@/features/snack/hooks/useSnack'
 import { formatPrice } from '@/shared/lib/utils'

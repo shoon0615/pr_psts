@@ -1,7 +1,15 @@
 'use client'
-import { Button } from '@/shared/components/ui/button'
-import { Card, CardContent, CardFooter } from '@/shared/components/ui/card'
-import { Field, FieldGroup, FieldLabel } from '@/shared/components/ui/field'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import {
+  Card,
+  CardContent,
+  CardFooter
+} from '@/shared/components/shadcn/ui/card'
+import {
+  Field,
+  FieldGroup,
+  FieldLabel
+} from '@/shared/components/shadcn/ui/field'
 import {
   Select,
   SelectContent,
@@ -9,10 +17,10 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue
-} from '@/shared/components/ui/select'
+} from '@/shared/components/shadcn/ui/select'
 
 import { Search } from 'lucide-react'
-import { Spinner } from '@/shared/components/ui/spinner'
+import { Spinner } from '@/shared/components/shadcn/ui/spinner'
 
 import { useFormStatus } from 'react-dom'
 import { SnackSearchParams } from '@/features/snack/types/snack.type'

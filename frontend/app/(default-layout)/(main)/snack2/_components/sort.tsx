@@ -6,12 +6,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '@/shared/components/ui/select'
+} from '@/shared/components/shadcn/ui/select'
 import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption
-} from '@/shared/components/ui/native-select'
+} from '@/shared/components/shadcn/ui/native-select'
 import { useSnackSearchParams } from '@/features/snack/hooks/useSnack'
 import { SORT_OPTIONS, SortType } from '@/features/snack/types/snack.type'
 

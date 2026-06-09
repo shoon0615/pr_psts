@@ -2,8 +2,8 @@
 
 import Search from '@/app/(default-layout)/(main)/snack2/_components/search'
 import Sort from '@/app/(default-layout)/(main)/snack2/_components/sort'
-import { Field } from '@/shared/components/ui/field'
-import { Button } from '@/shared/components/ui/button'
+import { Field } from '@/shared/components/shadcn/ui/field'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import Link from 'next/link'
 import Loader from '@/app/(default-layout)/(main)/snack2/_components/loader'
 import List from '@/app/(default-layout)/(main)/snack2/_components/list'

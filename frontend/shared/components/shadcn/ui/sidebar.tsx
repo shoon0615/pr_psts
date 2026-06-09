@@ -5,22 +5,22 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { Slot } from 'radix-ui'
 
 import { cn } from '@/shared/lib/utils'
-import { Button } from '@/shared/components/ui/button'
-import { Input } from '@/shared/components/ui/input'
-import { Separator } from '@/shared/components/ui/custom/separator'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Input } from '@/shared/components/shadcn/ui/input'
+import { Separator } from '@/shared/components/shadcn/custom/separator'
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle
-} from '@/shared/components/ui/sheet'
-import { Skeleton } from '@/shared/components/ui/skeleton'
+} from '@/shared/components/shadcn/ui/sheet'
+import { Skeleton } from '@/shared/components/shadcn/ui/skeleton'
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
-} from '@/shared/components/ui/tooltip'
+} from '@/shared/components/shadcn/ui/tooltip'
 import { useIsMobile } from '@/shared/hooks/use-mobile'
 import { PanelLeftIcon } from 'lucide-react'
 

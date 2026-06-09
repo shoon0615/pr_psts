@@ -1,8 +1,8 @@
 'use client'
 
-import { Button } from '@/shared/components/ui/button'
-import { Card, CardContent } from '@/shared/components/ui/card'
-import { Spinner } from '@/shared/components/ui/spinner'
+import { Button } from '@/shared/components/shadcn/ui/button'
+import { Card, CardContent } from '@/shared/components/shadcn/ui/card'
+import { Spinner } from '@/shared/components/shadcn/ui/spinner'
 
 import dynamic from 'next/dynamic'
 

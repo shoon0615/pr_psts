@@ -2,7 +2,12 @@
 
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from '@/shared/components/shadcn/ui/card'
 import { SnackForm } from '@/features/snack/components/snack-form'
 import { useCreateSnack } from '@/features/snack/hooks/useSnack'
 import { snackDefaultValues } from '@/features/snack/schema/snack.schema'
@@ -24,7 +29,7 @@ export default function SnackNewPage() {
   }
 
   return (
-    <div className="container mx-auto py-8 max-w-2xl">
+    <div className="container mx-auto max-w-2xl py-8">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">새 간식 등록</CardTitle>

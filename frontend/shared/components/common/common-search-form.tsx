@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Form } from '@/shared/components/ui/custom/form'
-import { Button } from '@/shared/components/ui/button'
+import { Form } from '@/shared/components/shadcn/custom/form'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import { UseFormReturn, FieldValues, DefaultValues } from 'react-hook-form'
 import { z } from 'zod'
 

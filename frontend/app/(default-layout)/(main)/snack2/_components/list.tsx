@@ -1,13 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { Card, CardContent } from '@/shared/components/ui/card'
-import { Button } from '@/shared/components/ui/button'
+import { Card, CardContent } from '@/shared/components/shadcn/ui/card'
+import { Button } from '@/shared/components/shadcn/ui/button'
 import Image from 'next/image'
 import qrImage from '@/.gemini/image.png'
 
 import { useSnackList } from '@/features/snack/hooks/useSnack'
-import EmptyState from '@/shared/components/ui/custom/empty-state'
+import EmptyState from '@/shared/components/shadcn/custom/empty-state'
 import Pagination from '@/app/(default-layout)/(main)/snack2/_components/pagination'
 
 export default function SnackList() {

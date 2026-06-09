@@ -12,7 +12,7 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport
-} from '@/shared/components/ui/toast'
+} from '@/shared/components/shadcn/ui/toast'
 
 /**
  * @deprecated `구버전`

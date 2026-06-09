@@ -1,6 +1,6 @@
 import Item from '@/app/(default-layout)/(main)/notice/_components/notice-item'
 
-import { Card, CardContent } from '@/shared/components/ui/card'
+import { Card, CardContent } from '@/shared/components/shadcn/ui/card'
 import NotFound from '@/app/(default-layout)/(main)/notice/_components/not-found'
 
 import { getNotices } from '@/app/(default-layout)/(main)/notice/_actions/notice.actions'

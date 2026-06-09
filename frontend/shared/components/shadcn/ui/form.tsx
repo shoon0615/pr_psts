@@ -10,28 +10,28 @@ import {
   useFormState,
   type ControllerProps,
   type FieldPath,
-  type FieldValues,
+  type FieldValues
 } from 'react-hook-form'
 
 import { cn } from '@/shared/lib/utils'
-import { Label } from '@/shared/components/ui/label'
+import { Label } from '@/shared/components/shadcn/ui/label'
 
 const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 > = {
   name: TName
 }
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue,
+  {} as FormFieldContextValue
 )
 
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
@@ -61,7 +61,7 @@ const useFormField = () => {
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
-    ...fieldState,
+    ...fieldState
   }
 }
 
@@ -70,7 +70,7 @@ type FormItemContextValue = {
 }
 
 const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue,
+  {} as FormItemContextValue
 )
 
 function FormItem({ className, ...props }: React.ComponentProps<'div'>) {
@@ -148,8 +148,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
       data-slot="form-message"
       id={formMessageId}
       className={cn('text-destructive text-sm', className)}
-      {...props}
-    >
+      {...props}>
       {body}
     </p>
   )
@@ -163,5 +162,5 @@ export {
   FormControl,
   FormDescription,
   FormMessage,
-  FormField,
+  FormField
 }
