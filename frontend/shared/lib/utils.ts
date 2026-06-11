@@ -30,10 +30,10 @@ const removeEmptyQueryParams = <T extends object>(params: T) => {
 }
 
 /** 일부 인자만 Partial<?> 적용 */
-type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 /** 일부 인자만 Required 적용 */
-type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
+export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 
 /** 숫자에 콤마 삽입 */
 /* export const formatPrice = (price: number | string) => {

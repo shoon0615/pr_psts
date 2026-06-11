@@ -1,5 +1,3 @@
-// import 'server-only'
-
 import axios from 'axios'
 import { apiInstance } from '@/shared/lib/axios/interceptor'
 import qs from 'qs'

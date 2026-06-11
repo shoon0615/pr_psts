@@ -1,8 +1,6 @@
-'use client'
-
-import React from 'react'
 import {
   Empty,
+  EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyTitle
@@ -21,27 +19,28 @@ type EmptyStateProps = {
 }
 
 export function EmptyState({
-  title = '데이터가 없습니다.',
-  description = '조건을 변경하거나 새로운 데이터를 등록해 보세요.',
-  icon = 'package',
+  title = '검색 결과가 없습니다.',
+  description = '다른 검색어로 다시 시도해 보세요.',
+  icon = 'search',
   action
 }: EmptyStateProps) {
   const Icon = icon === 'search' ? SearchX : PackageOpen
-
   return (
-    <Empty className="h-[400px]">
+    <Empty className="h-96">
       <Icon className="text-muted-foreground size-12" />
       <EmptyHeader>
         <EmptyTitle>{title}</EmptyTitle>
         <EmptyDescription>{description}</EmptyDescription>
       </EmptyHeader>
       {action && (
-        <Button
-          onClick={action.onClick}
-          variant="outline"
-          className="mt-4">
-          {action.label}
-        </Button>
+        <EmptyContent>
+          <Button
+            onClick={action.onClick}
+            variant="outline"
+            className="mt-4">
+            {action.label}
+          </Button>
+        </EmptyContent>
       )}
     </Empty>
   )

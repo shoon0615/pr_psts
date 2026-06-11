@@ -1,7 +1,9 @@
-export default function ProtoEditPage() {
+import { ProtoList } from '@/features/proto/components/list'
+
+export default async function ProtoEditPage() {
   return (
     <div>
-      <div>123</div>
+      <ProtoList />
     </div>
   )
 }

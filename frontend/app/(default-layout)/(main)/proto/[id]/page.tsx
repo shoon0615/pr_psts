@@ -1,7 +1,9 @@
-export default function ProtoDetailPage() {
+import { ProtoList } from '@/features/proto/components/list'
+
+export default async function ProtoDetailPage() {
   return (
     <div>
-      <div>123</div>
+      <ProtoList />
     </div>
   )
 }

@@ -1,10 +1,13 @@
 export interface Common {
-  // id: number
+  id: string
+  label: string
+  value: string
+}
+
+export interface CommonJson {
   id: string
   code?: string
   name: string
   label?: string
   value?: string
 }
-
-// export type Brands = Common

@@ -32,7 +32,7 @@ import {
   SidebarRail
 } from '@/shared/components/shadcn/ui/sidebar'
 import { ChevronsUpDownIcon, CheckIcon, SearchIcon } from 'lucide-react'
-import { NavUser } from '@/app/(default-layout)/(public)/_components/nav-user'
+// import { NavUser } from '@/app/(default-layout)/(public)/_components/nav-user'
 import type { Session } from 'next-auth'
 
 export default function SideBar({ user }: { user?: Session['user'] }) {
@@ -160,10 +160,7 @@ export default function SideBar({ user }: { user?: Session['user'] }) {
           </SidebarGroup>
         ))}
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={user} />
-        {/* <NavUser user={data.user} /> */}
-      </SidebarFooter>
+      <SidebarFooter>{/* <NavUser user={user} /> */}</SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

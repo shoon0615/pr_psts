@@ -1,13 +1,7 @@
-import { commonRepository as repository } from '@/features/common/repositories/common.repository'
-import { Common } from '@/features/common/types/common.type'
-
-const convertLabel = async (list: Common[]) =>
-  list.map(data => ({
-    label: data?.label ?? data.name,
-    value: data?.value ?? data.id
-  }))
+// import { commonRepository as repository } from '@/features/common/repositories/common.api.repository'
+import { commonRepository as repository } from '@/features/common/repositories/common.json.repository'
 
 export const commonService = {
-  getBrands: () => repository.getBrands().then(convertLabel),
-  getCategories: () => repository.getCategories().then(convertLabel)
+  getBrands: () => repository.getBrands(),
+  getCategories: () => repository.getCategories()
 }
