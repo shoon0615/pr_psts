@@ -1,0 +1,71 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-06-20T00:00:00.000Z",
+  "activeFeatures": [
+    "todo2"
+  ],
+  "primaryFeature": "todo2",
+  "features": {
+    "todo2": {
+      "phase": "design",
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {
+        "plan": "docs/01-plan/features/todo2.plan.md"
+      },
+      "taskChain": [
+        {
+          "phase": "plan",
+          "status": "completed",
+          "createdAt": "2026-06-20T00:00:00.000Z",
+          "completedAt": "2026-06-20T00:00:00.000Z",
+          "note": "기존 계획을 폐기하고 app/api/proto 패턴 기준으로 다시 작성함"
+        },
+        {
+          "phase": "design",
+          "status": "active",
+          "createdAt": "2026-06-20T00:00:00.000Z"
+        },
+        {
+          "phase": "do",
+          "status": "pending",
+          "createdAt": "2026-06-20T00:00:00.000Z"
+        },
+        {
+          "phase": "check",
+          "status": "pending",
+          "createdAt": "2026-06-20T00:00:00.000Z"
+        },
+        {
+          "phase": "report",
+          "status": "pending",
+          "createdAt": "2026-06-20T00:00:00.000Z"
+        }
+      ],
+      "timestamps": {
+        "started": "2026-06-20T00:00:00.000Z",
+        "lastUpdated": "2026-06-20T00:00:00.000Z"
+      }
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Starter",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-06-20T00:00:00.000Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-06-20T00:00:00.000Z"
+  },
+  "history": [
+    {
+      "feature": "todo2",
+      "action": "plan_recreated",
+      "phase": "plan",
+      "nextPhase": "design",
+      "timestamp": "2026-06-20T00:00:00.000Z",
+      "note": "app/api/proto 패턴을 기준으로 계획 문서를 재작성함"
+    }
+  ]
+}

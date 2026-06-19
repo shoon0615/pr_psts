@@ -1,0 +1,16 @@
+# bkit-codex MCP server (PDCA methodology automation)
+[mcp_servers.bkit]
+command = "node"
+args = ["./.bkit-codex/packages/mcp-server/index.js"]
+startup_timeout_sec = 10
+tool_timeout_sec = 60
+required = true
+
+[mcp_servers.bkit.tools.bkit_init]
+approval_mode = "approve"
+
+[mcp_servers.bkit.tools.bkit_pdca_plan]
+approval_mode = "approve"
+
+[mcp_servers.bkit.tools.bkit_complete_phase]
+approval_mode = "approve"
